@@ -84,7 +84,7 @@ public class GUI implements ActionListener{
 	private void isRightAnswer(JButton button) {
 		if(button.getName().equals(rightAnswer)) {					//Checks if the button pressed is the same as the correct one,
 			//button.setText("RÄTT!");									//Changes the button text to "RÄTT!" if the answer is right
-			button.setBackground(new Color(0, 200, 0));							//Changes the button color to greed to indicate a correct answer
+			button.setBackground(new Color(0, 150, 0));							//Changes the button color to greed to indicate a correct answer
 			rightCounter();												//Counts the number of rightAnswer
 		}
 		else {
