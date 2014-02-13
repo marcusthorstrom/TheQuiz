@@ -1,6 +1,11 @@
+import javax.swing.JButton;
+
 
 public class GameEngine {
 	
+	/**
+	 * 
+	 */
 	public GameEngine() {
 	
 		GUI gui = new GUI();
@@ -8,28 +13,36 @@ public class GameEngine {
 		
 	}
 	
+	/**
+	 * 
+	 */
 	public static void main(String [ ] args)
 	{
 	      GameEngine gameengine = new GameEngine();
 	}
-
-	public void name(){
-		System.out.println("Hello World");
+	
+	/**
+	 * 
+	 */
+	public JButton GetSource(){
+		return null;
 	}
-
-	public void Store(){	
-		//store saker
-	}
-
-
-	public void IOSA(){
+	
+	/**
+	 * 
+	 */
+	public Boolean CheckAnswer(){
+		Boolean statement = true;
 		
+		return statement;
 	}
-
-
-	public void skriva(){
-		
-	}
+	/**
+	 * 
+	 */
 	//rightCounter();												//Counts the number of rightAnswer
+	
+	/**
+	 * 
+	 */
 	//wrongCounter();												//Counts the number of wrongAnswer
 }
