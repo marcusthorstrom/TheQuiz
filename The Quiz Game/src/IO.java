@@ -1,5 +1,4 @@
 import java.io.BufferedReader;
-import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -9,7 +8,7 @@ public class IO {
 	private ArrayList<ArrayList<String>> allQuestions;
 	private BufferedReader br;
 	public IO() {
-		File file = new File("C:\\fragor.txt");
+		
 	}
 	public ArrayList<ArrayList<String>> readFile() {
 		questions = new ArrayList<String>();
