@@ -9,7 +9,7 @@ public class IO {
 	private ArrayList<ArrayList<String>> allQuestions;
 	private BufferedReader br;
 	public IO() {
-		File file = new File("C:\\fragor.txt");
+		
 	}
 	public ArrayList<ArrayList<String>> readFile() {
 		questions = new ArrayList<String>();
