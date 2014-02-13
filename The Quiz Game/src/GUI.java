@@ -37,7 +37,7 @@ public class GUI implements ActionListener{
 		gameWindow.setResizable(false);									//makes the window resizable
 		gameWindow.setVisible(true);									//makes the window visible
 		gameWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);		//Closes the game on exit		
-		askQuestion(new ArrayList<String>( Arrays.asList("Vem sköt presidenten", "Alex", "Vidara", "Simon", "Obama")));
+		//askQuestion(new ArrayList<String>( Arrays.asList("Vem sköt presidenten", "Alex", "Vidara", "Simon", "Obama")));
 
 	}
 	/**

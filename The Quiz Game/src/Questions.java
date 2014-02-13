@@ -9,7 +9,7 @@ public class Questions {
 	/**
 	 * 
 	 */
-	public ArrayList<ArrayList<String>> getQuestion(int x){
+	public ArrayList<ArrayList<String>> getQuestions(int x){
 		return null;	
 	}
 	
