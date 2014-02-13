@@ -102,7 +102,7 @@ public class GUI implements ActionListener{
 	public void setRightAnswer(){
 		for(JButton b: buttons){
 			if(b.getName().equals(rightAnswer)){
-				b.setBackground(Color.GREEN);
+				b.setBackground(new Color(0, 150, 0));
 			}
 		}
 	}
