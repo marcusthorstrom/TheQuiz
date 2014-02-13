@@ -59,7 +59,7 @@ public class GUI implements ActionListener{
 		Collections.shuffle(answers);								//Shuffles the list to make them appear in different order.
 		contentPane = gameWindow.getContentPane();					//The top content pane
 		question = new JLabel(question1, JLabel.CENTER);			//Makes a new label with the question
-		question.setFont(new Font("Sans", Font.BOLD, 20));			//Sets the font for the question
+		question.setFont(new Font("Arial", Font.BOLD, 20));			//Sets the font for the question
 		contentPane.setLayout(new BorderLayout());					//adds a container, this one for storing the buttons in the bottom
 		contentPane.setBackground(Color.WHITE);						//Sets the background of the pane
 		contentPane.add(question, BorderLayout.CENTER);				//Adds the question to the top of the layout
@@ -68,7 +68,7 @@ public class GUI implements ActionListener{
 		buttons = new ArrayList<JButton>();
 		for(String answer: answers){								//Iterates through the shuffled answer List
 			borderPane.add(button = new JButton(answer));			//Adding the button to the pane
-			button.setFont(new Font("Sans", Font.BOLD, 15));		//Sets the font of the button and the size to 15
+			button.setFont(new Font("Arial", Font.BOLD, 15));		//Sets the font of the button and the size to 15
 			button.setBackground(Color.WHITE);						//Sets the color of the button
 			button.setName(answer);									//Setting the name for comparing the button to the right answer
 			button.addActionListener(this);
@@ -84,12 +84,12 @@ public class GUI implements ActionListener{
 	private void isRightAnswer(JButton button) {
 		if(button.getName().equals(rightAnswer)) {					//Checks if the button pressed is the same as the correct one,
 			//button.setText("RÄTT!");									//Changes the button text to "RÄTT!" if the answer is right
-			button.setBackground(Color.GREEN);							//Changes the button color to greed to indicate a correct answer
+			button.setBackground(new Color(0, 200, 0));							//Changes the button color to greed to indicate a correct answer
 			rightCounter();												//Counts the number of rightAnswer
 		}
 		else {
 			//button.setText("FEL!");									//Changes the text to "FEL!" if the answer is wrong
-			button.setBackground(Color.RED);							//Changes the color to red to indicate a wrong answer
+			button.setBackground(new Color(200, 0, 0));							//Changes the color to red to indicate a wrong answer
 			wrongCounter();												//Counts the number of wrongAnswer
 			setRightAnswer();
 		}
@@ -98,6 +98,7 @@ public class GUI implements ActionListener{
 			b.setEnabled(false);
 		}
 	}
+
 	public void setRightAnswer(){
 		for(JButton b: buttons){
 			if(b.getName().equals(rightAnswer)){
