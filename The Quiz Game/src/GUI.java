@@ -74,7 +74,7 @@ public class GUI implements ActionListener{
 			button.addActionListener(this);
 			buttons.add(button);
 		}
-
+//
 	}
 	/**
 	 * Checks if the button pressed is the right button
