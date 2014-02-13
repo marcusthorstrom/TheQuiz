@@ -1,20 +1,20 @@
 
 public class Questions {
 
-	private Questions() {
-		
+	Public Questions() {
+		IO io = new IO();
 	}
 	/**
 	 * 
 	 */
-	public String GetQuestion(int x){
+	public String getQuestion(int x){
 		return "getquestion";	
 	}
 	
 	/**
 	 * 
 	 */
-	public void SetQuestion(int x){
+	public void setQuestion(int x){
 		// här ska vi skriva kod för att lägga till en fråga	
 	}
 
