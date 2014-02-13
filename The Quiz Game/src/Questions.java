@@ -5,9 +5,9 @@ import java.util.Collections;
 public class Questions {
 
 	private IO io;
-
+	
 	public Questions() {
-		IO io = new IO();
+		io = new IO();
 		getQuestion(1);
 	}
 	/**
