@@ -9,9 +9,8 @@ public class Questions {
 
 	public Questions() {
 		io = new IO();
-		getQuestion(1);
-
 	}
+	
 	/**
 	 * 
 	 */
