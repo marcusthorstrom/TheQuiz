@@ -19,7 +19,7 @@ public class GameEngine {
 	 */
 	public static void main(String [ ] args)
 	{
-	      GameEngine gameengine = new GameEngine();
+	      new Questions();
 	}
 	
 	/**
