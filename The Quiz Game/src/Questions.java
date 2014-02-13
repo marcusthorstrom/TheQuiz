@@ -1,14 +1,16 @@
+import java.util.ArrayList;
+
 
 public class Questions {
 
-	Public Questions() {
+	public Questions() {
 		IO io = new IO();
 	}
 	/**
 	 * 
 	 */
-	public String getQuestion(int x){
-		return "getquestion";	
+	public ArrayList<ArrayList<String>> getQuestion(int x){
+		return null;	
 	}
 	
 	/**
