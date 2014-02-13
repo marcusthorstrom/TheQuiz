@@ -6,6 +6,7 @@ import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 
 import javax.swing.JButton;
@@ -36,7 +37,7 @@ public class GUI implements ActionListener{
 		gameWindow.setResizable(false);									//makes the window resizable
 		gameWindow.setVisible(true);									//makes the window visible
 		gameWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);		//Closes the game on exit		
-		askQuestion("Vem sköt president Kennedy?", "Alex", "Vidar", "Simon", "Emil");
+		askQuestion(new ArrayList<String>( Arrays.asList("Vem sköt presidenten", "Alex", "Vidara", "Simon", "Obama")));
 
 	}
 	/**
@@ -47,18 +48,16 @@ public class GUI implements ActionListener{
 	 * @param AnswerC	--||-- C --------||------------
 	 * @param AnswerD	--||-- D --------||------------
 	 */
-	public void askQuestion(String question1, String AnswerA, String AnswerB, String AnswerC, String AnswerD) {
-
-		rightAnswer = AnswerA;											//Declares the right Answer to compare the selected one with
+	public void askQuestion(ArrayList<String> questions) {
+		rightAnswer = questions.get(1);											//Declares the right Answer to compare the selected one with
 		answers = new ArrayList<String>();								//Creates an arrayList to store the answers in
-		answers.add(AnswerA);											//Adds the answer A to the List
-		answers.add(AnswerB);			
-		answers.add(AnswerC);
-		answers.add(AnswerD);
-
+		answers.add(questions.get(1));											//Adds the answer A to the List
+		answers.add(questions.get(2));			
+		answers.add(questions.get(3));
+		answers.add(questions.get(4));
 		Collections.shuffle(answers);									//Shuffles the list to make them appear in different order.
 		contentPane = gameWindow.getContentPane();						//The top content pane
-		question = new JLabel(question1, JLabel.CENTER);				//Makes a new label with the question
+		question = new JLabel(questions.get(0), JLabel.CENTER);				//Makes a new label with the question
 		question.setFont(new Font("Arial", Font.BOLD, 20));				//Sets the font for the question
 		contentPane.setLayout(new BorderLayout());						//adds a container, this one for storing the buttons in the bottom
 		contentPane.setBackground(Color.WHITE);							//Sets the background of the pane
@@ -114,7 +113,7 @@ public class GUI implements ActionListener{
 		contentPane.removeAll();										//Removes all the containers in the contenPane to clear the window to get ready for the next question
 		contentPane.repaint();											//Repaints the content
 		contentPane.revalidate();										//Revalidates the content
-		askQuestion("Fråga 2", "Svar A", "Svar B", "Svar C", "Svar D");	//Asks a new question
+		//askQuestion("Fråga 2", "Svar A", "Svar B", "Svar C", "Svar D");	//Asks a new question
 	}
 	
 	public void actionPerformed(ActionEvent e){
