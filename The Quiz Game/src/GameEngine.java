@@ -30,4 +30,6 @@ public class GameEngine {
 	public void skriva(){
 		
 	}
+	//rightCounter();												//Counts the number of rightAnswer
+	//wrongCounter();												//Counts the number of wrongAnswer
 }
