@@ -1,6 +1,9 @@
 
 public class Questions {
 
+	private Questions() {
+		
+	}
 	/**
 	 * 
 	 */
