@@ -17,10 +17,11 @@ public class Questions {
 		ArrayList<ArrayList<String>> a = io.readFile();
 		ArrayList<ArrayList<String>> b = new ArrayList<ArrayList<String>>();
 		Collections.shuffle(a);
-		for(int i = 0; i < x; i++) {
+		for(int i = 0; i <= x; i++) {
 			b.add((a.get(i)));
 		}
 		return b;	
+
 	}
 	
 	/**
