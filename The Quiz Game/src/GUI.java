@@ -115,7 +115,7 @@ public class GUI implements ActionListener{
 		contentPane.repaint();											//Repaints the content
 		contentPane.revalidate();										//Revalidates the content
 		askQuestion("Fråga 2", "Svar A", "Svar B", "Svar C", "Svar D");	//Asks a new question
-	
+	}
 	
 	public void actionPerformed(ActionEvent e){
 		Object objekt = e.getSource();
