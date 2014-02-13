@@ -10,6 +10,7 @@ public class GameEngine {
 	
 		GUI gui = new GUI();
 		Questions questions = new Questions();
+		gui.askQuestion(questions.getQuestion(1).get(0));
 		
 	}
 	
