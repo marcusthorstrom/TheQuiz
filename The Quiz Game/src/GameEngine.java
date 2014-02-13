@@ -23,10 +23,4 @@ public class GameEngine {
 
 	public void skriva()
 	{}
-
-	
-	
-	public static void main(String [] args) {
-		new GUI();
-	}
 }

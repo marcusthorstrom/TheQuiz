@@ -114,7 +114,7 @@ public class GUI implements ActionListener{
  * the main function to be able to execute the program	
  * @param args
  */
-public static void main (String args[]) {
+public static void main (String[] args) {
 		new GUI();
 	}
 public void actionPerformed(ActionEvent e){
