@@ -14,7 +14,6 @@ public class IO {
 	public ArrayList<ArrayList<String>> readFile() {
 		questions = new ArrayList<String>();
 		allQuestions = new ArrayList<ArrayList<String>>();
-		new ArrayList<String>();
 		try {
 			
 			if (OSDetector.isMac()){
@@ -22,7 +21,7 @@ public class IO {
 			}
 			else if (OSDetector.isWindows())
 			{
-				br = new BufferedReader(new FileReader("C://fragor.txt"));
+				br = new BufferedReader(new FileReader("fragor.txt"));
 			}
 			
 			String line;
