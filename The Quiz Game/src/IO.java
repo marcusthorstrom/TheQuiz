@@ -10,7 +10,6 @@ public class IO {
 	private BufferedReader br;
 	public IO() {
 		
-		new OSDetector();
 	}
 	public ArrayList<ArrayList<String>> readFile() {
 		questions = new ArrayList<String>();
