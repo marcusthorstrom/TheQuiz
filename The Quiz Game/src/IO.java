@@ -1,8 +1,10 @@
 import java.io.*;
-import java.util.ArrayList;
+import java.util.*;
 
 
 public class IO {
+	
+	private static final String STANDARDFRAGOR = "fragor.txt"; 
 	private ArrayList<String> questions;
 	private ArrayList<ArrayList<String>> allQuestions;
 	private BufferedReader br;
@@ -14,12 +16,12 @@ public class IO {
 		try {
 			
 			if (OSDetector.isMac()){
-			//br = new BufferedReader(new FileReader(System.getProperty ("user.home") + "/Desktop/" + "fragor.txt"));
-			br = new BufferedReader(new FileReader("fragor.txt"));
+			//br = new BufferedReader(new FileReader(System.getProperty ("user.home") + "/Desktop/" + STANDARDFRAGOR));
+			br = new BufferedReader(new FileReader(STANDARDFRAGOR));
 			}
 			else if (OSDetector.isWindows())
 			{
-				br = new BufferedReader(new FileReader("fragor.txt"));
+				br = new BufferedReader(new FileReader(STANDARDFRAGOR));
 			}
 			
 			String line;
@@ -49,32 +51,24 @@ public class IO {
 		return allQuestions;
 	}
 	
-	/* public void newQuestion(ArrayList<String> question){
+	/**
+	 * Method for adding questions to fragor.txt
+	 * 
+	 */
+	public void newQuestion(ArrayList<String> question){
 		try {
-	        BufferedWriter out = new BufferedWriter(new FileWriter("fragor.txt"));
-	            for (int i = 0; i < 4; i++) {
-	                out.write("test " + "\n");
-	            }
-	            out.close();
-	        } catch (IOException e) {}
+	        BufferedWriter bw = new BufferedWriter(new FileWriter(STANDARDFRAGOR,true));	
+	        
+	        Iterator<String> it = question.iterator(); //Sets an iterator to the arrayList in order iterate through it.
+	        while(it.hasNext()){
+	        	bw.write(it.next()+"\n");		
+	        }
+	        bw.write("\n");
+	        bw.close();
+	        
+	        } 
+		catch (IOException e) {
+			System.out.println("ERROR! Error occurd when write");
+		}
 	} 
-	BufferedWriter out = null;
-try  
-{
-    FileWriter fstream = new FileWriter("out.txt", true); //true tells to append data.
-    out = new BufferedWriter(fstream);
-    out.write("\nsue");
 }
-catch (IOException e)
-{
-    System.err.println("Error: " + e.getMessage());
-}
-finally
-{
-    if(out != null) {
-        out.close();
-    }
-}
-	*/
-}
-
