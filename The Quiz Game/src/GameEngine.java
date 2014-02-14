@@ -10,7 +10,7 @@ public class GameEngine {
 		new OSDetector();
 		GUI gui = new GUI();
 		Questions questions = new Questions();
-		gui.askQuestion(questions.getQuestion(1).get(0));
+		gui.askQuestion(questions.getQuestions(1).get(0));
 		
 	}
 	

@@ -1,38 +1,49 @@
-import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Random;
+import java.util.ArrayList;
 
 
-public class Questions {
-	private ArrayList<ArrayList<String>> a;
-	private ArrayList<ArrayList<String>> b;
-	private IO io;
-
-	public Questions() {
-		io = new IO();
+public class Questions{
+	
+	private ArrayList<ArrayList<String>> originalList;
+	private ArrayList<ArrayList<String>> newList;
+	IO io;
+	
+	
+	
+	public Questions()
+	{
+	    io = new IO();	//Creates a new instance of IO.
 	}
 	
+	
 	/**
-	 * 
+	 * Get an array from IO, calls shuffle-method. Takes x lists and puts them in a new list to be returned. 
 	 */
-	public ArrayList<ArrayList<String>> getQuestion(int x){
-		a = io.readFile();
-		b = new ArrayList<ArrayList<String>>();
-		Collections.shuffle(a);
-		for(int i = 0; i <= x; i++) {
-			b.add((a.get(i)));
+	public ArrayList<ArrayList<String>> getQuestions(int x)
+	{
+		newList = new ArrayList<ArrayList<String>>();
+		originalList = io.readFile();
+		shuffle(originalList);			//Shuffles the original List. 
+		
+		for(int i = 0; i < x; i++)
+		{
+			newList.add(originalList.get(i));
 		}
-		return b;	
-
+		return newList;
+		
 	}
 	
+
 	/**
-	 * 
+	 * Shuffles arraylist as parameter with system time as seed.
 	 */
-	public void setQuestion(int x){
-		// här ska vi skriva kod för att lägga till en fråga	
+	private void shuffle(ArrayList<ArrayList<String>> list)
+	{
+		long seed = System.nanoTime();				//New seed for randomizer.
+		Collections.shuffle(list, new Random(seed));	
 	}
+	
+	
 
 }
-
-
-
