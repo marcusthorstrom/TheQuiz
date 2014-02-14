@@ -24,6 +24,7 @@ public class GUI implements ActionListener{
 	private String rightAnswer;
 	private ArrayList<String> answers;
 	private ArrayList<JButton> buttons;
+	private Sounds sound;
 
 	/**
 	 * Initiates the window 
@@ -35,7 +36,8 @@ public class GUI implements ActionListener{
 		gameWindow.setSize(500,200);									//Sets the size for the window
 		gameWindow.setResizable(false);									//makes the window resizable
 		gameWindow.setVisible(true);									//makes the window visible
-		gameWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);		//Closes the game on exit		
+		gameWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);		//Closes the game on exit
+		sound = new Sounds();											//GUI should probably not be playing the sound.
 		//askQuestion(new ArrayList<String>( Arrays.asList("Vem sköt presidenten", "Alex", "Vidara", "Simon", "Obama")));
 
 	}
@@ -84,12 +86,14 @@ public class GUI implements ActionListener{
 			//button.setText("RÄTT!");									//Changes the button text to "RÄTT!" if the answer is right
 			button.setBackground(new Color(0, 150, 0));					//Changes the button color to greed to indicate a correct answer
 			button.setOpaque(true);
+			sound.playCorrect();	//GUI should probably not be playing the sound!
 		}
 		else {
 			//button.setText("FEL!");									//Changes the text to "FEL!" if the answer is wrong
 			button.setBackground(new Color(200, 0, 0));					//Changes the color to red to indicate a wrong answer
 			button.setOpaque(true);
 			setRightAnswer();
+			sound.playIncorrect();	//GUI should probably not be playing the sound!
 		}
 		//nextQuestion();
 		for(JButton b: buttons){
