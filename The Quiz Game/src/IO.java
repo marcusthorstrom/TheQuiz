@@ -1,4 +1,5 @@
 import java.io.BufferedReader;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -36,9 +37,15 @@ public class IO {
 					questions.add(line);
 				}
 			}
-		}catch (IOException e) {
+		}
+		catch(FileNotFoundException e){
+			System.out.println("File not found!");
+		}
+		
+		catch (IOException e) {
 			System.out.println("ERROR! Error occurd when file was read.");
 		}
+		
 		return allQuestions;
 		//
 	} 
