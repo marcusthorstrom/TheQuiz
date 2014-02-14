@@ -17,14 +17,12 @@ public class IO {
 		try {
 			br = new BufferedReader(new FileReader("C:\\fragor.txt"));
 			String line;
-			int k = 0;
 			while((line = br.readLine()) != null) {
 				if(line.equals("")){
 					@SuppressWarnings("unchecked")
 					ArrayList<String> tempQuest = ((ArrayList<String>) questions.clone());
-					allQuestions.add(k, tempQuest);
+					allQuestions.add(tempQuest);
 					questions.clear();
-					k++;
 				}
 				else {
 					questions.add(line);
