@@ -23,7 +23,7 @@ public class IO {
 			}
 			else if (OSDetector.isWindows())
 			{
-				br = new BufferedReader(new FileReader("//fragor.txt"));
+				br = new BufferedReader(new FileReader("C://fragor.txt"));
 			}
 			
 			String line;
