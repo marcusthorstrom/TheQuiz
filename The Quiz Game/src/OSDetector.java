@@ -13,11 +13,14 @@ public class OSDetector
     }
 
     public static boolean isWindows() {
+    	if(isWindows) {
     	System.out.println("Windows");
-    	return isWindows; }
+    	}
+    	return isWindows; 
+    }
     public static boolean isLinux() { return isLinux; }
     public static boolean isMac() { 
-    	System.out.println("Mac");
+    	if(isMac) { System.out.println("Mac");}
     	return isMac; };
 
 }
