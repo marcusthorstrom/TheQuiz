@@ -83,12 +83,12 @@ public class GUI implements ActionListener{
 		if(button.getName().equals(rightAnswer)) {						//Checks if the button pressed is the same as the correct one,
 			//button.setText("RÄTT!");									//Changes the button text to "RÄTT!" if the answer is right
 			button.setBackground(new Color(0, 150, 0));					//Changes the button color to greed to indicate a correct answer
-			
+			button.setOpaque(true);
 		}
 		else {
 			//button.setText("FEL!");									//Changes the text to "FEL!" if the answer is wrong
 			button.setBackground(new Color(200, 0, 0));					//Changes the color to red to indicate a wrong answer
-			
+			button.setOpaque(true);
 			setRightAnswer();
 		}
 		//nextQuestion();
@@ -101,6 +101,7 @@ public class GUI implements ActionListener{
 		for(JButton b: buttons){
 			if(b.getName().equals(rightAnswer)){
 				b.setBackground(new Color(0, 150, 0));					//Nice looking green
+				b.setOpaque(true);
 			}
 		}
 	}
