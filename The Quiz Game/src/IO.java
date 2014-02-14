@@ -11,7 +11,7 @@ public class IO {
 	private BufferedReader br;
 	public IO() {
 	}
-	public void readFile() {
+	private void readFile() {
 		questions = new ArrayList<String>();
 		allQuestions = new ArrayList<ArrayList<String>>();
 		try {
