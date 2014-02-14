@@ -3,19 +3,29 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 
+
 public class IO {
 	private ArrayList<String> questions;
 	private ArrayList<ArrayList<String>> allQuestions;
 	private BufferedReader br;
 	public IO() {
 		
+		new OSDetector();
 	}
 	public ArrayList<ArrayList<String>> readFile() {
 		questions = new ArrayList<String>();
 		allQuestions = new ArrayList<ArrayList<String>>();
 		new ArrayList<String>();
 		try {
-			br = new BufferedReader(new FileReader("\\fragor.txt"));
+			
+			if (OSDetector.isMac()){
+			br = new BufferedReader(new FileReader(System.getProperty ("user.home") + "/Desktop/" + "fragor.txt"));
+			}
+			else if (OSDetector.isWindows())
+			{
+				br = new BufferedReader(new FileReader("//fragor.txt"));
+			}
+			
 			String line;
 			while((line = br.readLine()) != null) {
 				if(line.equals("")){
@@ -24,7 +34,7 @@ public class IO {
 					allQuestions.add(tempQuest);
 					questions.clear();
 				}
-				else {
+				else { 
 					questions.add(line);
 				}
 			}
