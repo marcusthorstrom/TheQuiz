@@ -10,7 +10,7 @@ public class IO {
 	public IO() {
 		
 	}
-	public ArrayList<ArrayList<String>> readFile() {
+	/*public ArrayList<ArrayList<String>> readFile() {
 		questions = new ArrayList<String>();
 		allQuestions = new ArrayList<ArrayList<String>>();
 		new ArrayList<String>();
@@ -35,6 +35,6 @@ public class IO {
 		}
 		return allQuestions;
 		//
-	}
+	} */
 }
 
