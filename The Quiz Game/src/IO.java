@@ -15,7 +15,7 @@ public class IO {
 		allQuestions = new ArrayList<ArrayList<String>>();
 		new ArrayList<String>();
 		try {
-			br = new BufferedReader(new FileReader("C:\\fragor.txt"));
+			br = new BufferedReader(new FileReader("\\fragor.txt"));
 			String line;
 			while((line = br.readLine()) != null) {
 				if(line.equals("")){
