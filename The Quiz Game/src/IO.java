@@ -10,9 +10,8 @@ public class IO {
 	private ArrayList<ArrayList<String>> allQuestions;
 	private BufferedReader br;
 	public IO() {
-		
 	}
-	public ArrayList<ArrayList<String>> readFile() {
+	public void readFile() {
 		questions = new ArrayList<String>();
 		allQuestions = new ArrayList<ArrayList<String>>();
 		try {
@@ -37,6 +36,7 @@ public class IO {
 					questions.add(line);
 				}
 			}
+			br.close();
 		}
 		catch(FileNotFoundException e){
 			System.out.println("File not found!");
@@ -45,9 +45,10 @@ public class IO {
 		catch (IOException e) {
 			System.out.println("ERROR! Error occurd when file was read.");
 		}
-		
+	}
+	public ArrayList<ArrayList<String>> getArray(){
+		readFile();
 		return allQuestions;
-		//
-	} 
+	}
 }
 

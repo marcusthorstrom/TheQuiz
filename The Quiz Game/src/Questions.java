@@ -23,7 +23,7 @@ public class Questions{
 	public ArrayList<ArrayList<String>> getQuestions(int x)
 	{
 		newList = new ArrayList<ArrayList<String>>();
-		originalList = io.readFile();
+		originalList = io.getArray();
 		shuffle(originalList);			//Shuffles the original List. 
 		
 		for(int i = 0; i < x; i++)
