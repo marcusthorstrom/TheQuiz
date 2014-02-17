@@ -66,6 +66,7 @@ public class GUI implements ActionListener{
 		contentPane.add(borderPane = new Container(), BorderLayout.SOUTH); //adds the button layout to the bottom of the layout
 		borderPane.setLayout(new GridLayout(2,2,5,5));					//Sets the layout of the buttons to a grid 2x2
 		buttons = new ArrayList<JButton>();
+		
 		for(String answer: answers){									//Iterates through the shuffled answer List
 			borderPane.add(button = new JButton(answer));				//Adding the button to the pane
 			button.setFont(new Font("Arial", Font.BOLD, 15));			//Sets the font of the button and the size to 15
@@ -74,7 +75,11 @@ public class GUI implements ActionListener{
 			button.addActionListener(this);
 			buttons.add(button);
 		}
-
+		
+		if(questions.size() == 6 && questions.get(5) != null ){		//If there is a 6th element in arrayList that isn't empty... 
+			sound.playSound(questions.get(5));						//Play as sound.
+		}
+		
 	}
 	/**
 	 * Checks if the button pressed is the right button
@@ -86,6 +91,7 @@ public class GUI implements ActionListener{
 			//button.setText("RÄTT!");									//Changes the button text to "RÄTT!" if the answer is right
 			button.setBackground(new Color(0, 150, 0));					//Changes the button color to greed to indicate a correct answer
 			button.setOpaque(true);
+			sound.stopSound();
 			sound.playCorrect();	//GUI should probably not be playing the sound!
 		}
 		else {
@@ -93,6 +99,7 @@ public class GUI implements ActionListener{
 			button.setBackground(new Color(200, 0, 0));					//Changes the color to red to indicate a wrong answer
 			button.setOpaque(true);
 			setRightAnswer();
+			sound.stopSound();
 			sound.playIncorrect();	//GUI should probably not be playing the sound!
 		}
 		//nextQuestion();
