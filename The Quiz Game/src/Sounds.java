@@ -47,6 +47,16 @@ public class Sounds {
 			//Might be needed for closing after the try-statement. Will look into it...
 		}*/ 
 	}
+	
+	public void stopSound()
+	{
+		try{
+		clip.stop();
+		}
+		catch(NullPointerException e){
+			
+		}
+	}
 
 	/*
 	 * Plays the correct sound.
