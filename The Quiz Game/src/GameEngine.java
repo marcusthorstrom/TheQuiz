@@ -10,6 +10,7 @@ public class GameEngine {
 	private ArrayList<ArrayList<String>> q;
 	private GUI gui;
 	private boolean isReady = true;
+	private boolean isFinished;
 	
 	/**
 	 * 
@@ -18,7 +19,7 @@ public class GameEngine {
 		new OSDetector();
 		gui = new GUI(this);
 		Questions questions = new Questions();
-		q = questions.getQuestions(5);
+		q = questions.getQuestions(2);
 		playGame();
 		
 	}
@@ -26,15 +27,20 @@ public class GameEngine {
 		for(int i = 0; i < q.size(); i++) {
 			if(isReady) {
 				gui.askQuestion(q.get(i));
+				isFinished = false;
 				
 			}
 			else{
 				i = i-1;
 			}
 		}
-		System.out.println("Rätt svar:" + rightCount);
-		System.out.println("Fel svar:" + wrongCount);
-
+		while(true) {
+			if(isFinished) {
+				System.out.println("Rätt svar:" + rightCount);
+				System.out.println("Fel svar:" + wrongCount);
+				break;
+			}
+		}
 	}
 	
 	/**
@@ -70,11 +76,13 @@ public class GameEngine {
 	
 	public boolean isRightAnswer(String answer) {
 		if(rightAnswer.equals(answer)) {
-			++rightCount;									//adding one the number of rightAnswer
+			isFinished = true;
+			rightCount+= 1;									//adding one the number of rightAnswer
 			return true;
 		}
 		else {
-			++wrongCount;									//adding one the number of wrongAnswer
+			wrongCount+= 1;									//adding one the number of wrongAnswer'
+			isFinished = true;
 			return false;
 		}
 	}
@@ -84,6 +92,9 @@ public class GameEngine {
 	}
 	public boolean getIsReady() {
 		return isReady;
+	}
+	public void setIsFinished(boolean ready) {
+		isFinished = ready;
 	}
 }									
 

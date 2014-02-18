@@ -23,7 +23,6 @@ public class GUI implements ActionListener{
 	private Container borderPane;
 	private JLabel question;
 	private JButton button;
-	private String rightAnswer;
 	private ArrayList<String> answers;
 	private ArrayList<JButton> buttons;
 	private Sounds sound;
@@ -69,7 +68,6 @@ public class GUI implements ActionListener{
 		contentPane.add(borderPane = new Container(), BorderLayout.SOUTH); //adds the button layout to the bottom of the layout
 		borderPane.setLayout(new GridLayout(2,2,5,5));					//Sets the layout of the buttons to a grid 2x2
 		buttons = new ArrayList<JButton>();
-		
 		for(String answer: answers){									//Iterates through the shuffled answer List
 			borderPane.add(button = new JButton(answer));				//Adding the button to the pane
 			button.setFont(new Font("Arial", Font.BOLD, 15));			//Sets the font of the button and the size to 15
