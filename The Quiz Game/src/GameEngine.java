@@ -50,23 +50,12 @@ public class GameEngine {
 	
 	public boolean isRightAnswer(String answer) {
 		if(rightAnswer.equals(answer)) {
-			rightCount++;
+			rightCount++;									//adding one the number of rightAnswer
 			return true;
 		}
 		else {
-			wrongCount++;
+			wrongCount++;									//adding one the number of wrongAnswer
 			return false;
 		}
-	}
-	
-
-	/**
-	 * 
-	 */
-	//rightCounter();												//Counts the number of rightAnswer
-	
-	/**
-	 * 
-	 */
-	//wrongCounter();												//Counts the number of wrongAnswer
+	}									
 }
