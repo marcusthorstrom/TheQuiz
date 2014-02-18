@@ -7,6 +7,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Collections;
+import javax.swing.Timer;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -25,12 +26,13 @@ public class GUI implements ActionListener{
 	private ArrayList<String> answers;
 	private ArrayList<JButton> buttons;
 	private Sounds sound;
+	private GameEngine ge;
 
 	/**
 	 * Initiates the window 
 	 */
-	public GUI() {
-
+	public GUI(GameEngine ge) {
+		this.ge = ge;
 		gameWindow = new JFrame("The Quiz Game");						//New JFrame for containing the whole game
 		gameWindow.pack();												//Repacks the whole window
 		gameWindow.setSize(500,200);									//Sets the size for the window
@@ -50,7 +52,7 @@ public class GUI implements ActionListener{
 	 * @param AnswerD	--||-- D --------||------------
 	 */
 	public void askQuestion(ArrayList<String> questions) {
-		rightAnswer = questions.get(1);											//Declares the right Answer to compare the selected one with
+		ge.setRight(questions.get(1));											//Declares the right Answer to compare the selected one with
 		answers = new ArrayList<String>();								//Creates an arrayList to store the answers in
 		answers.add(questions.get(1));											//Adds the answer A to the List
 		answers.add(questions.get(2));			
@@ -87,7 +89,7 @@ public class GUI implements ActionListener{
 	 * @throws InterruptedException 
 	 */
 	private void isRightAnswer(JButton button) {
-		if(button.getName().equals(rightAnswer)) {						//Checks if the button pressed is the same as the correct one,
+		if(ge.isRightAnswer(button.getName())) {						//Checks if the button pressed is the same as the correct one,
 			//button.setText("RÄTT!");									//Changes the button text to "RÄTT!" if the answer is right
 			button.setBackground(new Color(0, 150, 0));					//Changes the button color to greed to indicate a correct answer
 			button.setOpaque(true);
@@ -102,7 +104,6 @@ public class GUI implements ActionListener{
 			sound.stopSound();
 			sound.playIncorrect();	//GUI should probably not be playing the sound!
 		}
-		//nextQuestion();
 		for(JButton b: buttons){
 			b.setEnabled(false);
 		}
@@ -110,7 +111,7 @@ public class GUI implements ActionListener{
 
 	public void setRightAnswer(){
 		for(JButton b: buttons){
-			if(b.getName().equals(rightAnswer)){
+			if(b.getName().equals(ge.getRight())){
 				b.setBackground(new Color(0, 150, 0));					//Nice looking green
 				b.setOpaque(true);
 			}
