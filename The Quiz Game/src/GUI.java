@@ -7,8 +7,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Collections;
-import javax.swing.Timer;
 
+import javax.swing.Timer;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -28,6 +28,7 @@ public class GUI implements ActionListener{
 	private ArrayList<JButton> buttons;
 	private Sounds sound;
 	private GameEngine ge;
+	private Timer timer;
 
 	/**
 	 * Initiates the window 
@@ -41,8 +42,6 @@ public class GUI implements ActionListener{
 		gameWindow.setVisible(true);									//makes the window visible
 		gameWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);		//Closes the game on exit
 		sound = new Sounds();											//GUI should probably not be playing the sound.
-		//askQuestion(new ArrayList<String>( Arrays.asList("Vem sköt presidenten", "Alex", "Vidara", "Simon", "Obama")));
-
 	}
 	/**
 	 * Creates the frame for asking the question
@@ -108,7 +107,6 @@ public class GUI implements ActionListener{
 		}
 		for(JButton b: buttons){
 			b.setEnabled(false);
-			windowDelay();
 		}
 		windowDelay();
 	}
@@ -129,8 +127,6 @@ public class GUI implements ActionListener{
 		ge.setIsReady(true);
 		contentPane.removeAll();										//Removes all the containers in the contenPane to clear the window to get ready for the next question
 		contentPane.repaint();											//Repaints the content
-		//contentPane.revalidate();										//Revalidates the content
-		//askQuestion("Fråga 2", "Svar A", "Svar B", "Svar C", "Svar D");	//Asks a new question
 	}
 	
 	public void actionPerformed(ActionEvent e){
@@ -140,15 +136,18 @@ public class GUI implements ActionListener{
 			isRightAnswer(button);
 
 		}
-		else {}
-	}
-	
-	public void windowDelay(){
-		Timer timer = new Timer(3000, new ActionListener(){
+		else if (objekt instanceof Timer) {
+			nextQuestion();
+			timer.stop();
 			
-		    public void actionPerformed(ActionEvent e) { nextQuestion(); }    
-		}); 
+		}
+	}
+	public void windowDelay(){
+		Timer timer = new Timer(2000, this);
 		timer.start();
+	}
+	public void stopTimer() {
+		timer.stop();
 	}
 
 }

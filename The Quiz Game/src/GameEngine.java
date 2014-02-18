@@ -26,11 +26,14 @@ public class GameEngine {
 		for(int i = 0; i < q.size(); i++) {
 			if(isReady) {
 				gui.askQuestion(q.get(i));
+				
 			}
 			else{
 				i = i-1;
 			}
 		}
+		System.out.println("Rätt svar:" + rightCount);
+		System.out.println("Fel svar:" + wrongCount);
 
 	}
 	
@@ -67,11 +70,11 @@ public class GameEngine {
 	
 	public boolean isRightAnswer(String answer) {
 		if(rightAnswer.equals(answer)) {
-			rightCount++;									//adding one the number of rightAnswer
+			++rightCount;									//adding one the number of rightAnswer
 			return true;
 		}
 		else {
-			wrongCount++;									//adding one the number of wrongAnswer
+			++wrongCount;									//adding one the number of wrongAnswer
 			return false;
 		}
 	}
@@ -79,7 +82,9 @@ public class GameEngine {
 	public void setIsReady(boolean ready) {
 		isReady = ready;
 	}
-
+	public boolean getIsReady() {
+		return isReady;
+	}
 }									
 
 
