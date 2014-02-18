@@ -35,6 +35,7 @@ public class GameEngine {
 			}
 		}
 		while(true) {
+			System.out.println("LOOPING");
 			if(isFinished) {
 				System.out.println("Rätt svar:" + rightCount);
 				System.out.println("Fel svar:" + wrongCount);
