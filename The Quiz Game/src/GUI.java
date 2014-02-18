@@ -12,6 +12,7 @@ import javax.swing.Timer;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.Timer;
 
 public class GUI implements ActionListener{
 	/**
@@ -107,6 +108,7 @@ public class GUI implements ActionListener{
 		}
 		for(JButton b: buttons){
 			b.setEnabled(false);
+			windowDelay();
 		}
 		windowDelay();
 	}
@@ -140,8 +142,9 @@ public class GUI implements ActionListener{
 		}
 		else {}
 	}
+	
 	public void windowDelay(){
-		Timer timer = new Timer(2000, new ActionListener(){
+		Timer timer = new Timer(3000, new ActionListener(){
 			
 		    public void actionPerformed(ActionEvent e) { nextQuestion(); }    
 		}); 
