@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 import javax.swing.JButton;
 
 
@@ -5,16 +7,31 @@ public class GameEngine {
 	public int rightCount = 0;
 	public int wrongCount = 0;
 	private String rightAnswer;
+	private ArrayList<ArrayList<String>> q;
+	private GUI gui;
+	private boolean isReady = true;
 	
 	/**
 	 * 
 	 */
 	public GameEngine() {
 		new OSDetector();
-		GUI gui = new GUI(this);
+		gui = new GUI(this);
 		Questions questions = new Questions();
-		gui.askQuestion(questions.getQuestions(1).get(0));
+		q = questions.getQuestions(5);
+		playGame();
 		
+	}
+	public void playGame() {
+		for(int i = 0; i < q.size(); i++) {
+			if(isReady) {
+				gui.askQuestion(q.get(i));
+			}
+			else{
+				i = i-1;
+			}
+		}
+
 	}
 	
 	/**
@@ -58,15 +75,7 @@ public class GameEngine {
 			return false;
 		}
 	}
-	
-
-	/**
-	 * 
-	 */
-	//rightCounter();												//Counts the number of rightAnswer
-	
-	/**
-	 * 
-	 */
-	//wrongCounter();												//Counts the number of wrongAnswer
+	public void setIsReady(boolean ready) {
+		isReady = ready;
+	}
 }

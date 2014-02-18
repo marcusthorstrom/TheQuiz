@@ -52,6 +52,7 @@ public class GUI implements ActionListener{
 	 * @param AnswerD	--||-- D --------||------------
 	 */
 	public void askQuestion(ArrayList<String> questions) {
+		ge.setIsReady(false);
 		ge.setRight(questions.get(1));											//Declares the right Answer to compare the selected one with
 		answers = new ArrayList<String>();								//Creates an arrayList to store the answers in
 		answers.add(questions.get(1));											//Adds the answer A to the List
@@ -107,6 +108,7 @@ public class GUI implements ActionListener{
 		for(JButton b: buttons){
 			b.setEnabled(false);
 		}
+		windowDelay();
 	}
 
 	public void setRightAnswer(){
@@ -122,9 +124,10 @@ public class GUI implements ActionListener{
 	 * Gets the pane ready for the next question by clearing the pane
 	 */
 	public void nextQuestion() {
+		ge.setIsReady(true);
 		contentPane.removeAll();										//Removes all the containers in the contenPane to clear the window to get ready for the next question
 		contentPane.repaint();											//Repaints the content
-		contentPane.revalidate();										//Revalidates the content
+		//contentPane.revalidate();										//Revalidates the content
 		//askQuestion("Fråga 2", "Svar A", "Svar B", "Svar C", "Svar D");	//Asks a new question
 	}
 	
@@ -137,6 +140,12 @@ public class GUI implements ActionListener{
 		}
 		else {}
 	}
-	
+	public void windowDelay(){
+		Timer timer = new Timer(2000, new ActionListener(){
+			
+		    public void actionPerformed(ActionEvent e) { nextQuestion(); }    
+		}); 
+		timer.start();
+	}
 
 }
