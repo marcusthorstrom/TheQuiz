@@ -82,6 +82,10 @@ public class GUI implements ActionListener{
 		}
 		
 	}
+	public void showResult(int rightCount, int wrongCount) {
+		JLabel label;
+		gameWindow.add(label = new JLabel("Du svarade rätt på: "+rightCount+" av: "+(rightCount+wrongCount), JLabel.CENTER), new BorderLayout().CENTER);
+	}
 	/**
 	 * Checks if the button pressed is the right button
 	 * @param button The pressed button
@@ -121,7 +125,7 @@ public class GUI implements ActionListener{
 	/**
 	 * Gets the pane ready for the next question by clearing the pane
 	 */
-	public void nextQuestion() {
+	public void resetFrame() {
 		ge.setIsReady(true);
 		contentPane.removeAll();										//Removes all the containers in the contenPane to clear the window to get ready for the next question
 		contentPane.repaint();											//Repaints the content
@@ -135,16 +139,13 @@ public class GUI implements ActionListener{
 
 		}
 		else if (objekt instanceof Timer) {
-			nextQuestion();
+			resetFrame();
 			timer.stop();
 			
 		}
 	}
 	public void windowDelay(){
 		timer.restart();
-	}
-	public void stopTimer() {
-		timer.stop();
 	}
 
 }
