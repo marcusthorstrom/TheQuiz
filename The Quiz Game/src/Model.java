@@ -8,7 +8,7 @@ public class Model extends Observable{
 	public void Model()
 	{
 		Model model = new Model();
-		View view = new View(model);
+		View view = new View();
 		Controller controller = new Controller(model, view);
 	}
 
