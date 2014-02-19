@@ -27,7 +27,7 @@ public class GUI implements ActionListener{
 	private ArrayList<JButton> buttons;
 	private Sounds sound;
 	private GameEngine ge;
-	private Timer timer;
+	private Timer timer =  new Timer(2000, this);;
 
 	/**
 	 * Initiates the window 
@@ -141,8 +141,7 @@ public class GUI implements ActionListener{
 		}
 	}
 	public void windowDelay(){
-		Timer timer = new Timer(2000, this);
-		timer.start();
+		timer.restart();
 	}
 	public void stopTimer() {
 		timer.stop();

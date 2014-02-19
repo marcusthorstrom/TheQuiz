@@ -35,7 +35,12 @@ public class GameEngine {
 			}
 		}
 		while(true) {
-			System.out.println("LOOPING");
+			try {
+				Thread.sleep(1);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			if(isFinished) {
 				System.out.println("Rätt svar:" + rightCount);
 				System.out.println("Fel svar:" + wrongCount);
