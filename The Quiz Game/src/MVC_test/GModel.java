@@ -1,10 +1,32 @@
 package MVC_test;
 
-public class GModel {
+import java.util.ArrayList;
+import java.util.Observable;
+
+public class GModel extends Observable {
 	
 	private String rightAnswer;
 	private boolean isReady;
-	public GModel() {
+	private ArrayList<String> activeQuestion;
+	
+	
+	public GModel(GView view) {
+		
+		addObserver(view);
+		
+		
+		
+		Questions q = new Questions();
+		ArrayList<ArrayList<String>> qu = q.getQuestions(1);
+		
+		
+		for(int i = 0; i < qu.size(); i++) {
+			setRight(qu.get(i).get(1));
+			activeQuestion = qu.get(i);
+			notifyObservers(activeQuestion);
+			
+		
+		}
 		
 	}
 	public void setRight(String rightAnswer) {
@@ -23,12 +45,17 @@ public class GModel {
 		}
 	}
 	
+	
 	public void setIsReady(boolean ready) {
 		isReady = ready;
 	}
+	
+	
 	public boolean getIsReady() {
 		return isReady;
 	}
+	
+	
 	public void setIsFinished(boolean ready) {
 	}
 }

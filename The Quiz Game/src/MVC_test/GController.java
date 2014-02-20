@@ -21,15 +21,7 @@ public class GController {
 		
 		this.view.addAnswerListner(new AnswerListener());
 		this.view.addTimerListner(new TimerListener());
-		Questions q = new Questions();
-		ArrayList<ArrayList<String>> qu = q.getQuestions(1);
 		
-		
-		for(int i = 0; i < qu.size(); i++) {
-			view.askQuestion(qu.get(i));
-			model.setRight(qu.get(i).get(1));
-			//Testing
-		}
 	}
 
 	

@@ -8,6 +8,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Observable;
+import java.util.Observer;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -15,7 +17,7 @@ import javax.swing.JTextArea;
 import javax.swing.Timer;
 
 
-public class GView {
+public class GView implements Observer{
 	private JFrame gameWindow;
 	private ArrayList<String> answers;
 	private Container contentPane;
@@ -37,6 +39,8 @@ public class GView {
 
 
 	public GView() {
+		
+		
 		gameWindow = new JFrame("The Quiz Game");						//New JFrame for containing the whole game
 		gameWindow.pack();												//Repacks the whole window
 		gameWindow.setSize(500,200);									//Sets the size for the window
@@ -121,6 +125,17 @@ public class GView {
 			}
 		}
 		timer.start();
+	}
+	
+	
+	@Override
+	public void update(Observable o, Object arg) {
+		if(o instanceof GModel && arg instanceof ArrayList<?>)
+		{
+			ArrayList<String> qList = (ArrayList<String>)arg;
+			askQuestion(qList);
+		}
+		
 	}
 
 	
