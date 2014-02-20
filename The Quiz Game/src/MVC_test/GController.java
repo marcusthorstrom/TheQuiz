@@ -29,13 +29,18 @@ public class GController {
 			Object objekt = e.getSource();
 			if(objekt instanceof JButton) {
 				JButton button = (JButton)objekt;
-				if(model.isRightAnswer(button.getText())) {
+					model.setChosenAnswer(button.getText());
+					model.isRightAnswer();
+					//view.setWrongAnswer(button.getText());
+				
+				
+				/*if(model.isRightAnswer(button.getText())) {
 					view.setRightAnswer(model.getRight());
 				}
 				else {
 					view.setWrongAnswer(button.getText());
 					view.setRightAnswer(model.getRight());
-				}
+				}*/
 			}
 			view.disableButtons();
 		}

@@ -6,12 +6,15 @@ import java.util.Observable;
 public class GModel extends Observable {
 	
 	private String rightAnswer;
+	private String chosenAnswer;
 	private boolean isReady;
 	private ArrayList<String> activeQuestion;
 	private int rightCount = 0;
 	private int wrongCount = 0;
 	private int qNumber = 0;
-	private int gameRounds = 5;
+	private static final int GAME_ROUNDS = 5;
+	private boolean correctAnswer = false;
+	
 	
 	
 	ArrayList<ArrayList<String>> qu;
@@ -20,15 +23,13 @@ public class GModel extends Observable {
 		
 		addObserver(view);
 		Questions q = new Questions();
-		qu = q.getQuestions(gameRounds);
-		
-		playGame();
+		qu = q.getQuestions(GAME_ROUNDS);
 		
 	}
 	
 	public void changeActiveQuestion(){
-		if(qNumber >= gameRounds){
-			System.out.println("Slutspelat: \n rŠtt: " + rightCount + "\n fel: " + wrongCount);
+		if(qNumber >= GAME_ROUNDS){
+			System.out.println("Slutspelat: \n rätt: " + rightCount + "\n fel: " + wrongCount);
 		}
 		
 		else{
@@ -39,29 +40,57 @@ public class GModel extends Observable {
 		}
 	}
 	
+	
 	public void playGame(){
+			changeActiveQuestion();
 		
-		changeActiveQuestion();
 	}
+	
+	
+	public void setChosenAnswer(String chosenAnswer)
+	{
+		this.chosenAnswer = chosenAnswer;
+	}
+	
 	
 	public void setRight(String rightAnswer) {
 		this.rightAnswer = rightAnswer; 
 	}
 	
+	
+	
+	
 	public String getRight() {
 		return rightAnswer;
 	}
 	
-	public boolean isRightAnswer(String answer) {
-		if(rightAnswer.equals(answer)) {
+	
+	public void isRightAnswer() {
+		if(rightAnswer.equals(chosenAnswer)) {
+			//correctAnswer = true;
 			rightCount++;
-			return true;
+			//return true;
 		}
 		else {
+			//correctAnswer = false;
 			wrongCount++;
-			return false;
+			//return false;
 		}
+		setChanged();
+		notifyObservers(chosenAnswer);
 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	public void setIsReady(boolean ready) {

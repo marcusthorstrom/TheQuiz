@@ -28,6 +28,7 @@ public class GView implements Observer{
 	private JButton buttonC;
 	private JButton buttonD;
 	private ArrayList<JButton> buttons;
+	private String rightAnswer;
 	
 	
 	Timer timer =  new Timer(2000, new ActionListener() { 
@@ -81,6 +82,7 @@ public class GView implements Observer{
 		answers.add(questions.get(2));			
 		answers.add(questions.get(3));
 		answers.add(questions.get(4));
+		rightAnswer = answers.get(0);
 		Collections.shuffle(answers);									//Shuffles the list to make them appear in different order.
 		question.setText(questions.get(0));
 		buttonA.setText(answers.get(0));
@@ -110,7 +112,9 @@ public class GView implements Observer{
 			b.setEnabled(false);
 		}
 	}
-	public void setRightAnswer(String rightAnswer) {
+	
+	
+	/*public void setRightAnswer(String rightAnswer) {
 		for(JButton b: buttons) {
 			if(b.getText().equals(rightAnswer)) {
 				b.setBackground(new Color(0, 150, 0));
@@ -125,7 +129,19 @@ public class GView implements Observer{
 			}
 		}
 		timer.start();
+	}*/
+	
+	public void setColor(String  chosenAnswer){
+		for(JButton b: buttons){
+			if(b.getText().equals(chosenAnswer))
+				b.setBackground(new Color(200, 0, 0));
+			if(b.getText().equals(rightAnswer))
+				b.setBackground(new Color(0, 150, 0));
+		}
+		timer.start();
+		
 	}
+	
 	
 	
 	@Override
@@ -135,6 +151,20 @@ public class GView implements Observer{
 			@SuppressWarnings("unchecked")
 			ArrayList<String> qList = (ArrayList<String>)arg;
 			askQuestion(qList);
+		}
+		else if(o instanceof GModel && arg instanceof Boolean)
+		{
+			boolean choice = (Boolean)arg;
+			if(choice == true)
+			{
+				//setRightAnswer(answers.get(1));
+			}
+		}
+		
+		else if(o instanceof GModel && arg instanceof String)
+		{
+			String ans = (String)arg;
+			setColor(ans);
 		}
 		
 	}
