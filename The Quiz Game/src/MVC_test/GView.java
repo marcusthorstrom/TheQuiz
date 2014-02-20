@@ -132,6 +132,7 @@ public class GView implements Observer{
 	public void update(Observable o, Object arg) {
 		if(o instanceof GModel && arg instanceof ArrayList<?>)
 		{
+			@SuppressWarnings("unchecked")
 			ArrayList<String> qList = (ArrayList<String>)arg;
 			askQuestion(qList);
 		}

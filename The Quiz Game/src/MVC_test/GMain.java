@@ -5,6 +5,5 @@ public class GMain {
 		GView view = new GView();
 		GModel model = new GModel(view);
 		GController controller = new GController(view, model);
-		
 	}
 }

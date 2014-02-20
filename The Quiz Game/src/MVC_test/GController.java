@@ -11,8 +11,6 @@ public class GController {
 	
 	private GView view;
 	private GModel model;
-	public int rightCount = 0;
-	public int wrongCount = 0;
 	
 	
 	public GController(GView view, GModel model) {
@@ -42,6 +40,8 @@ public class GController {
 			view.disableButtons();
 		}
 	}
+	
+	
 	class TimerListener implements ActionListener {
 		@Override
 		public void actionPerformed(ActionEvent e) {
