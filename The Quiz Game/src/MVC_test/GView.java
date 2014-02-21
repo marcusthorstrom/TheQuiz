@@ -141,6 +141,16 @@ public class GView implements Observer {
 		
 	}
 
+	public void showResult(int [] a) {
+		int rightA = a[0];
+		int wrongA = a[1];
+		
+		borderPane.removeAll();
+		
+		question.setText("Du fick: "+rightA+" av totlat "+(wrongA+rightA));
+		
+	}
+	
 	public void disableButtons() {
 		for (JButton b : buttons) {
 			b.setEnabled(false);
@@ -205,6 +215,9 @@ public class GView implements Observer {
 		else if (o instanceof GModel && arg instanceof String) {
 			String ans = (String) arg;
 			setColor(ans);
+		}
+		else if(o instanceof GModel && arg instanceof int[]) {
+			showResult((int[]) arg);
 		}
 
 	}

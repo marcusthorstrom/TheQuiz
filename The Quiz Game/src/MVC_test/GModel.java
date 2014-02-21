@@ -27,6 +27,9 @@ public class GModel extends Observable {
 		if (qNumber >= GAME_ROUNDS) {
 			System.out.println("Slutspelat! \n rätt: " + rightCount
 					+ "\n fel: " + wrongCount);
+			int[] a = {rightCount, wrongCount};
+			setChanged();
+			notifyObservers(a);
 			
 		}
 
