@@ -17,9 +17,9 @@ public class GameEngine {
 	 */
 	public GameEngine() {
 		new OSDetector();
-		gui = new GUI(this);
 		Questions questions = new Questions();
 		q = questions.getQuestions(3);
+		gui = new GUI(this);
 		playGame();
 		
 	}

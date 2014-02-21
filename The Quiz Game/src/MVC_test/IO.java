@@ -24,6 +24,9 @@ public class IO {
 			{
 				br = new BufferedReader(new FileReader(STANDARDFRAGOR));
 			}
+			else if(OSDetector.isLinux()){
+				br = new BufferedReader(new FileReader(System.getProperty ("user.home") + "/Desktop/" + STANDARDFRAGOR));
+			}
 			
 			String line;
 			while((line = br.readLine()) != null) {
