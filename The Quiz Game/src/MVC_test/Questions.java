@@ -51,13 +51,13 @@ public class Questions{
 	
 	
 	
-	public ArrayList<SingleQuestion> getQuestions(int x){
+	public ArrayList<SingleQuestion> getQuestions(int y){
 		
 		newList = new ArrayList<SingleQuestion>();
 		shuffle(objectList);	
 
-		for(int i = 0; i < x; i++){
-			newList.add(objectList.get(i));
+		for(int x = 0; x < y; x++){
+			newList.add(objectList.get(x));
 		}
 		
 		return newList;

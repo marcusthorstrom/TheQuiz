@@ -111,6 +111,10 @@ public class GView implements Observer {
 		buttonC.setText(answers.get(2));
 		buttonD.setText(answers.get(3));
 		enableButtons();
+		
+		if(quest.hasSound()){
+			sound.playSound(quest.getSound());
+		}
 	}
 
 	void addAnswerListner(ActionListener listenForPressedAnswer) {

@@ -10,6 +10,7 @@ public class SingleQuestion {
 	private String answer3;
 	private String answer4;
 	private String sound;
+	public boolean containsSound = false;
 	
 	public SingleQuestion(ArrayList<String> questionArray){
 
@@ -19,8 +20,11 @@ public class SingleQuestion {
 		this.answer3 = questionArray.get(4);
 		this.answer4 = questionArray.get(5);
 		
-		if(questionArray.size() >= 6)
+		if(questionArray.size() >= 6){
+			
+			containsSound = true;
 			this.sound = questionArray.get(6);
+		}
 	}
 	
 	
@@ -53,6 +57,11 @@ public class SingleQuestion {
 	public String getSound()
 	{
 		return sound;
+	}
+	
+	public boolean hasSound()
+	{
+		return containsSound;
 	}
 
 }
