@@ -16,6 +16,7 @@ public class GModel extends Observable {
 	private int qNumber = 0;
 	private static final int GAME_ROUNDS = 5;
 	ArrayList<ArrayList<String>> qu;
+	private boolean isCorrect = false;
 
 	public GModel() {
 		Questions q = new Questions();
@@ -61,13 +62,17 @@ public class GModel extends Observable {
 	public void isRightAnswer() {
 		if (rightAnswer.equals(chosenAnswer)) {
 			rightCount++;
+			isCorrect = true;
 			// return true;
 		} else {
 			wrongCount++;
+			isCorrect = false;
 			// return false;
 		}
 		setChanged();
 		notifyObservers(chosenAnswer);
+		setChanged();
+		notifyObservers(isCorrect);
 	}
 
 	public void setIsReady(boolean ready) {
