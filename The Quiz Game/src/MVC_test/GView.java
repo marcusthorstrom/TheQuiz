@@ -139,7 +139,7 @@ public class GView implements Observer {
 		
 		borderPane.removeAll();
 		
-		question.setText("Du fick: "+rightA+" av totlat "+(wrongA+rightA));
+		question.setText("Du fick: "+rightA+" av totalt "+(wrongA+rightA));
 		
 	}
 	
