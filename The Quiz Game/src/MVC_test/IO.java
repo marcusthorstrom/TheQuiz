@@ -32,9 +32,11 @@ public class IO {
 				//br = new BufferedReader(new FileReader(System.getProperty ("user.home") + "/Desktop/" + STANDARDFRAGOR));
 				//br = new BufferedReader(new FileReader(STANDARDFRAGOR));
 				
-				File file = new File(STANDARDFRAGOR);
+				//File file = new File(STANDARDFRAGOR);
+				
+				
 				br  = new BufferedReader(
-					    new InputStreamReader(new FileInputStream(file),"ISO-8859-1"));
+					    new InputStreamReader(new FileInputStream(STANDARDFRAGOR),"ISO-8859-1"));
 			}
 			else if (OSDetector.isWindows())
 			{
@@ -42,7 +44,8 @@ public class IO {
 			}
 			else if(OSDetector.isLinux()){
 				//br = new BufferedReader(new FileReader(System.getProperty ("user.home") + "/Desktop/" + STANDARDFRAGOR));
-				File file = new File(System.getProperty ("user.home") + "/Desktop/" + STANDARDFRAGOR);
+				//File file = new File(System.getProperty ("user.home") + "/Desktop/" + STANDARDFRAGOR);
+				String file = (System.getProperty ("user.home") + "/Desktop/" + STANDARDFRAGOR);
 
 				br  = new BufferedReader(
 				    new InputStreamReader(new FileInputStream(file),"ISO-8859-1"));
