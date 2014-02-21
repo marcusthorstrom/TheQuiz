@@ -9,7 +9,7 @@ public class Questions{
 	private ArrayList<ArrayList<String>> originalList;
 	private ArrayList<SingleQuestion> newList;
 	private ArrayList<SingleQuestion> objectList;
-	IO io;
+	private IO io;
 	
 	
 	

@@ -16,15 +16,15 @@ public class SingleQuestion {
 
 		this.question = questionArray.get(0);
 		this.correctAnswer = questionArray.get(1);
-		this.answer2 = questionArray.get(3);
-		this.answer3 = questionArray.get(4);
-		this.answer4 = questionArray.get(5);
+		this.answer2 = questionArray.get(2);
+		this.answer3 = questionArray.get(3);
+		this.answer4 = questionArray.get(4);
 		
-		if(questionArray.size() >= 6){
+		/*if(questionArray.size() >= 5){
 			
 			containsSound = true;
-			this.sound = questionArray.get(6);
-		}
+			this.sound = questionArray.get(5);
+		}*/
 	}
 	
 	
