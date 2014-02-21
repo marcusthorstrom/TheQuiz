@@ -10,14 +10,15 @@ public class GModel extends Observable {
 	private String rightAnswer;
 	private String chosenAnswer;
 	private boolean isReady;
-	private ArrayList<String> activeQuestion;
+	private SingleQuestion activeQuestion;
 	private int rightCount = 0;
 	private int wrongCount = 0;
 	private int qNumber = 0;
 	private static final int GAME_ROUNDS = 5;
-	ArrayList<ArrayList<String>> qu;
+	private ArrayList<SingleQuestion> qu;
 	private boolean isCorrect = false;
 
+	
 	public GModel() {
 		Questions q = new Questions();
 		qu = q.getQuestions(GAME_ROUNDS);
@@ -34,7 +35,7 @@ public class GModel extends Observable {
 
 		else {
 			activeQuestion = qu.get(qNumber);
-			setRight(activeQuestion.get(1));
+			setRight(activeQuestion.getCorrectAnswer());
 			setChanged();
 			notifyObservers(activeQuestion);
 		}

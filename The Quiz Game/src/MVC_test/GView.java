@@ -89,7 +89,7 @@ public class GView implements Observer {
 	}
 
 
-	public void askQuestion(ArrayList<String> questions) {
+	public void askQuestion(SingleQuestion quest) {
 
 		for( JButton b: buttons)
 			b.setBackground(Color.white);
@@ -98,14 +98,14 @@ public class GView implements Observer {
 
 		answers = new ArrayList<String>(); 								// Creates an arrayList to store the
 		// answers in
-		answers.add(questions.get(1)); 									// Adds the answer A to the List
-		answers.add(questions.get(2));
-		answers.add(questions.get(3));
-		answers.add(questions.get(4));
+		answers.add(quest.getCorrectAnswer()); 									// Adds the answer A to the List
+		answers.add(quest.getAnswer2());
+		answers.add(quest.getAnswer3());
+		answers.add(quest.getAnswer4());
 		rightAnswer = answers.get(0);
 		Collections.shuffle(answers); 									// Shuffles the list to make them appear
 		// in different order.
-		question.setText("<html><center>"+questions.get(0)+"</center></html>");
+		question.setText("<html><center>"+quest.getQuestion()+"</center></html>");
 		buttonA.setText(answers.get(0));
 		buttonB.setText(answers.get(1));
 		buttonC.setText(answers.get(2));
@@ -178,10 +178,10 @@ public class GView implements Observer {
 
 	@Override
 	public void update(Observable o, Object arg) {
-		if (o instanceof GModel && arg instanceof ArrayList<?>) {
+		if (o instanceof GModel && arg instanceof SingleQuestion) {
 			@SuppressWarnings("unchecked")
-			ArrayList<String> qList = (ArrayList<String>) arg;
-			askQuestion(qList);
+			SingleQuestion quest = (SingleQuestion) arg;
+			askQuestion(quest);
 		} 
 
 		else if (o instanceof GModel && arg instanceof String) {
