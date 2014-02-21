@@ -14,6 +14,7 @@ import java.util.Observer;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JTextArea;
 import javax.swing.Timer;
 
@@ -21,7 +22,7 @@ public class GView implements Observer {
 	private JFrame gameWindow;
 	private ArrayList<String> answers;
 	private Container contentPane;
-	private JTextArea question;
+	private JLabel question;
 	private Container borderPane;
 	private JButton buttonA;
 	private JButton buttonB;
@@ -42,21 +43,15 @@ public class GView implements Observer {
 		gameWindow = new JFrame("The Quiz Game"); // New JFrame for containing
 													// the whole game
 		gameWindow.pack(); // Repacks the whole window
-		gameWindow.setSize(500, 200); // Sets the size for the window
+		gameWindow.setSize(300, 200); // Sets the size for the window
 		gameWindow.setResizable(false); // makes the window resizable
 		gameWindow.setVisible(true); // makes the window visible
 		gameWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // Closes the
 																	// game on
 																	// exit
 		contentPane = gameWindow.getContentPane();
-		question = new JTextArea();
-		question.setFont(new Font("Arial", Font.BOLD, 20)); // Sets the font for
-															// the question
-		question.setWrapStyleWord(true);
-		question.setLineWrap(true);
-		question.setSize(10, 10);
-		question.setEditable(false);
-		question.setEditable(false);
+		question = new JLabel("",JLabel.CENTER);				//Makes a new label with the question
+		question.setFont(new Font("Arial", Font.BOLD, 20));
 		contentPane.setLayout(new BorderLayout()); // adds a container, this one
 													// for storing the buttons
 													// in the bottom
@@ -100,7 +95,7 @@ public class GView implements Observer {
 		rightAnswer = answers.get(0);
 		Collections.shuffle(answers); // Shuffles the list to make them appear
 										// in different order.
-		question.setText(questions.get(0));
+		question.setText("<html><center>"+questions.get(0)+"</center></html>");
 		buttonA.setText(answers.get(0));
 		buttonB.setText(answers.get(1));
 		buttonC.setText(answers.get(2));

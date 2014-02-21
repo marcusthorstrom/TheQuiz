@@ -34,14 +34,19 @@ public class GUI implements ActionListener{
 	 */
 	public GUI(GameEngine ge) {
 		this.ge = ge;
+		makeGameWindow();
+		sound = new Sounds();											//GUI should probably not be playing the sound.
+	}
+	public void makeGameWindow(){
 		gameWindow = new JFrame("The Quiz Game");						//New JFrame for containing the whole game
 		gameWindow.pack();												//Repacks the whole window
-		gameWindow.setSize(500,200);									//Sets the size for the window
+		gameWindow.setSize(400,200);									//Sets the size for the window
 		gameWindow.setResizable(false);									//makes the window resizable
 		gameWindow.setVisible(true);									//makes the window visible
 		gameWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);		//Closes the game on exit
-		sound = new Sounds();											//GUI should probably not be playing the sound.
 	}
+	
+	
 	/**
 	 * Creates the frame for asking the question
 	 * @param question1	The Question for the quiz
@@ -60,7 +65,7 @@ public class GUI implements ActionListener{
 		answers.add(questions.get(4));
 		Collections.shuffle(answers);									//Shuffles the list to make them appear in different order.
 		contentPane = gameWindow.getContentPane();						//The top content pane
-		question = new JLabel(questions.get(0), JLabel.CENTER);				//Makes a new label with the question
+		question = new JLabel("<html><center>"+questions.get(0)+"</center></html>", JLabel.CENTER);				//Makes a new label with the question
 		question.setFont(new Font("Arial", Font.BOLD, 20));				//Sets the font for the question
 		contentPane.setLayout(new BorderLayout());						//adds a container, this one for storing the buttons in the bottom
 		contentPane.setBackground(Color.WHITE);							//Sets the background of the pane
@@ -143,6 +148,7 @@ public class GUI implements ActionListener{
 			timer.stop();
 			
 		}
+		
 	}
 	public void windowDelay(){
 		timer.restart();
