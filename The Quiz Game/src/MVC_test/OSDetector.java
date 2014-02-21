@@ -13,15 +13,8 @@ public class OSDetector
         isMac = os.contains("mac");
     }
 
-    public static boolean isWindows() {
-    	if(isWindows) {
-    	System.out.println("Windows");
-    	}
-    	return isWindows; 
-    }
+    public static boolean isWindows() {	return isWindows;}
     public static boolean isLinux() { return isLinux; }
-    public static boolean isMac() { 
-    	if(isMac) { System.out.println("Mac");}
-    	return isMac; };
+    public static boolean isMac() { return isMac; };
 
 }

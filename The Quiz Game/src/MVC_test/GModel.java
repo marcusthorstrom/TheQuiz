@@ -25,8 +25,6 @@ public class GModel extends Observable {
 
 	public void changeActiveQuestion() {
 		if (qNumber >= GAME_ROUNDS) {
-			System.out.println("Slutspelat! \n rätt: " + rightCount
-					+ "\n fel: " + wrongCount);
 			int[] a = {rightCount, wrongCount};
 			setChanged();
 			notifyObservers(a);
@@ -34,7 +32,6 @@ public class GModel extends Observable {
 		}
 
 		else {
-			System.out.println("Byter fråga");
 			activeQuestion = qu.get(qNumber);
 			setRight(activeQuestion.get(1));
 			setChanged();
