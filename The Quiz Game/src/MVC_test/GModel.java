@@ -3,6 +3,8 @@ package MVC_test;
 import java.util.ArrayList;
 import java.util.Observable;
 
+import javax.swing.text.View;
+
 public class GModel extends Observable {
 
 	private String rightAnswer;
@@ -15,8 +17,7 @@ public class GModel extends Observable {
 	private static final int GAME_ROUNDS = 5;
 	ArrayList<ArrayList<String>> qu;
 
-	public GModel(GView view) {
-		addObserver(view);
+	public GModel() {
 		Questions q = new Questions();
 		qu = q.getQuestions(GAME_ROUNDS);
 
@@ -26,6 +27,7 @@ public class GModel extends Observable {
 		if (qNumber >= GAME_ROUNDS) {
 			System.out.println("Slutspelat! \n rätt: " + rightCount
 					+ "\n fel: " + wrongCount);
+			
 		}
 
 		else {
