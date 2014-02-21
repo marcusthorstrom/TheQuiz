@@ -113,14 +113,7 @@ public class GView implements Observer {
 		buttonB.setText(answers.get(1));
 		buttonC.setText(answers.get(2));
 		buttonD.setText(answers.get(3));
-		
 		enableButtons();
-
-		/*
-		 * if(questions.size() == 6 && questions.get(5) != null ){ //If there is
-		 * a 6th element in arrayList that isn't empty...
-		 * sound.playSound(questions.get(5)); //Play as sound.
-		 */
 	}
 
 	void addAnswerListner(ActionListener listenForPressedAnswer) {
@@ -144,11 +137,8 @@ public class GView implements Observer {
 	public void showResult(int [] a) {
 		int rightA = a[0];
 		int wrongA = a[1];
-		
 		borderPane.removeAll();
-		
 		question.setText("Du fick: "+rightA+" rätt av totalt "+(wrongA+rightA)+ " frågor");
-		
 	}
 	
 	public void disableButtons() {
@@ -156,38 +146,13 @@ public class GView implements Observer {
 			b.setEnabled(false);
 		}
 	}
-
+	
 	public void enableButtons() {
 		for (JButton b : buttons) {
 			b.setEnabled(true);
 		}
-
 	}
 	
-
-	/*
-	 * public void setRightAnswer(String rightAnswer) 
-	 * { 
-	 * for(JButton b: buttons){ 
-	 * 		if(b.getText().equals(rightAnswer)) { 
-	 * 			b.setBackground(new Color(0, 150, 0)); 
-	 * }
-	 * } 
-	 *		 	timer.start(); 
-	 * } 
-	 * 
-	 * 
-	 * public void setWrongAnswer(String wrongAnswer)
-	 * { 
-	 * for(JButton b: buttons) { 
-	 * 		if(b.getText().equals(wrongAnswer)) {
-	 * 			b.setBackground(new Color(200, 0, 0)); 
-	 * }
-	 * } 
-	 * 			timer.start(); 
-	 * }
-	 */
-
 	public void setColor(String chosenAnswer) {
 		for (JButton b : buttons) {
 			if (b.getText().equals(chosenAnswer)){
@@ -202,8 +167,6 @@ public class GView implements Observer {
 		timer.start();
 	}
 
-	
-	
 	@Override
 	public void update(Observable o, Object arg) {
 		if (o instanceof GModel && arg instanceof ArrayList<?>) {
@@ -219,7 +182,5 @@ public class GView implements Observer {
 		else if(o instanceof GModel && arg instanceof int[]) {
 			showResult((int[]) arg);
 		}
-
 	}
-
 }
