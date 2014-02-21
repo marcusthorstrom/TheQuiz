@@ -181,9 +181,10 @@ public class GView implements Observer {
 				b.setBackground(new Color(0, 150, 0));
 		}
 		timer.start();
-
 	}
 
+	
+	
 	@Override
 	public void update(Observable o, Object arg) {
 		if (o instanceof GModel && arg instanceof ArrayList<?>) {
