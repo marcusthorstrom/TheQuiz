@@ -15,6 +15,7 @@ import java.util.Observer;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JTextArea;
 import javax.swing.Timer;
 
@@ -22,7 +23,7 @@ public class GView implements Observer {
 	private JFrame gameWindow;
 	private ArrayList<String> answers;
 	private Container contentPane;
-	private JTextArea question;
+	private JLabel question;
 	private Container borderPane;
 	private JButton buttonA;
 	private JButton buttonB;
@@ -33,7 +34,6 @@ public class GView implements Observer {
 
 	Timer timer = new Timer(2000, new ActionListener() {
 		public void actionPerformed(ActionEvent e) {
-			resetFrame();
 			timer.stop();
 		}
 	});
@@ -43,21 +43,19 @@ public class GView implements Observer {
 		gameWindow = new JFrame("The Quiz Game"); // New JFrame for containing
 													// the whole game
 		gameWindow.pack(); // Repacks the whole window
+<<<<<<< HEAD
 		gameWindow.setSize(450, 300); // Sets the size for the window
+=======
+		gameWindow.setSize(300, 200); // Sets the size for the window
+>>>>>>> branch 'master' of https://github.com/marcusthorstrom/TheQuiz.git
 		gameWindow.setResizable(false); // makes the window resizable
 		gameWindow.setVisible(true); // makes the window visible
 		gameWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // Closes the
 																	// game on
 																	// exit
 		contentPane = gameWindow.getContentPane();
-		question = new JTextArea();
-		question.setFont(new Font("Arial", Font.BOLD, 20)); // Sets the font for
-															// the question
-		question.setWrapStyleWord(true);
-		question.setLineWrap(true);
-		question.setSize(10, 10);
-		question.setEditable(false);
-		question.setEditable(false);
+		question = new JLabel("",JLabel.CENTER);				//Makes a new label with the question
+		question.setFont(new Font("Arial", Font.BOLD, 20));
 		contentPane.setLayout(new BorderLayout()); // adds a container, this one
 													// for storing the buttons
 													// in the bottom
@@ -99,6 +97,12 @@ public class GView implements Observer {
 	
 
 	public void askQuestion(ArrayList<String> questions) {
+		
+		for( JButton b: buttons)
+			b.setBackground(Color.white);
+		
+		
+		
 		answers = new ArrayList<String>(); // Creates an arrayList to store the
 											// answers in
 		answers.add(questions.get(1)); // Adds the answer A to the List
@@ -108,11 +112,13 @@ public class GView implements Observer {
 		rightAnswer = answers.get(0);
 		Collections.shuffle(answers); // Shuffles the list to make them appear
 										// in different order.
-		question.setText(questions.get(0));
+		question.setText("<html><center>"+questions.get(0)+"</center></html>");
 		buttonA.setText(answers.get(0));
 		buttonB.setText(answers.get(1));
 		buttonC.setText(answers.get(2));
 		buttonD.setText(answers.get(3));
+		
+		enableButtons();
 
 		/*
 		 * if(questions.size() == 6 && questions.get(5) != null ){ //If there is
@@ -132,15 +138,10 @@ public class GView implements Observer {
 	}
 
 	public void resetFrame() {
-		//contentPane.removeAll(); // Removes all the containers in the contenPane !!FUCKAR UPP ALLT!!
+		contentPane.removeAll(); // Removes all the containers in the contenPane !!FUCKAR UPP ALLT!!
 									// to clear the window to get ready for the
-									// next question
-		for( JButton b: buttons)
-			b.setBackground(Color.white);
-		
+									// next question		
 		contentPane.repaint(); // Repaints the content
-		enableButtons();
-		
 		
 	}
 
@@ -183,15 +184,20 @@ public class GView implements Observer {
 
 	public void setColor(String chosenAnswer) {
 		for (JButton b : buttons) {
-			if (b.getText().equals(chosenAnswer))
+			if (b.getText().equals(chosenAnswer)){
 				b.setBackground(new Color(200, 0, 0));
-			if (b.getText().equals(rightAnswer))
+				b.setOpaque(true);
+			}
+			if (b.getText().equals(rightAnswer)){
 				b.setBackground(new Color(0, 150, 0));
+				b.setOpaque(true);
+			}
 		}
 		timer.start();
-
 	}
 
+	
+	
 	@Override
 	public void update(Observable o, Object arg) {
 		if (o instanceof GModel && arg instanceof ArrayList<?>) {
