@@ -44,7 +44,6 @@ public class GView implements Observer {
 													// the whole game
 		gameWindow.pack(); // Repacks the whole window
 		gameWindow.setSize(450, 300); // Sets the size for the window
-		gameWindow.setSize(300, 200); // Sets the size for the window
 		gameWindow.setResizable(false); // makes the window resizable
 		gameWindow.setVisible(true); // makes the window visible
 		gameWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // Closes the
