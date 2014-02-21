@@ -20,11 +20,11 @@ public class SingleQuestion {
 		this.answer3 = questionArray.get(3);
 		this.answer4 = questionArray.get(4);
 		
-		/*if(questionArray.size() >= 5){
+		if(questionArray.size() > 5){
 			
 			containsSound = true;
 			this.sound = questionArray.get(5);
-		}*/
+		}
 	}
 	
 	
