@@ -43,11 +43,8 @@ public class GView implements Observer {
 		gameWindow = new JFrame("The Quiz Game"); // New JFrame for containing
 													// the whole game
 		gameWindow.pack(); // Repacks the whole window
-<<<<<<< HEAD
 		gameWindow.setSize(450, 300); // Sets the size for the window
-=======
 		gameWindow.setSize(300, 200); // Sets the size for the window
->>>>>>> branch 'master' of https://github.com/marcusthorstrom/TheQuiz.git
 		gameWindow.setResizable(false); // makes the window resizable
 		gameWindow.setVisible(true); // makes the window visible
 		gameWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // Closes the
