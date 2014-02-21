@@ -170,10 +170,14 @@ public class GView implements Observer {
 
 	public void setColor(String chosenAnswer) {
 		for (JButton b : buttons) {
-			if (b.getText().equals(chosenAnswer))
+			if (b.getText().equals(chosenAnswer)){
 				b.setBackground(new Color(200, 0, 0));
-			if (b.getText().equals(rightAnswer))
+				b.setOpaque(true);
+			}
+			if (b.getText().equals(rightAnswer)){
 				b.setBackground(new Color(0, 150, 0));
+				b.setOpaque(true);
+			}
 		}
 		timer.start();
 
