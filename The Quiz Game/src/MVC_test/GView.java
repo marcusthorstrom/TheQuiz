@@ -33,7 +33,6 @@ public class GView implements Observer {
 
 	Timer timer = new Timer(2000, new ActionListener() {
 		public void actionPerformed(ActionEvent e) {
-			resetFrame();
 			timer.stop();
 		}
 	});
@@ -86,6 +85,12 @@ public class GView implements Observer {
 	
 
 	public void askQuestion(ArrayList<String> questions) {
+		
+		for( JButton b: buttons)
+			b.setBackground(Color.white);
+		
+		
+		
 		answers = new ArrayList<String>(); // Creates an arrayList to store the
 											// answers in
 		answers.add(questions.get(1)); // Adds the answer A to the List
@@ -100,6 +105,8 @@ public class GView implements Observer {
 		buttonB.setText(answers.get(1));
 		buttonC.setText(answers.get(2));
 		buttonD.setText(answers.get(3));
+		
+		enableButtons();
 
 		/*
 		 * if(questions.size() == 6 && questions.get(5) != null ){ //If there is
@@ -119,15 +126,10 @@ public class GView implements Observer {
 	}
 
 	public void resetFrame() {
-		//contentPane.removeAll(); // Removes all the containers in the contenPane !!FUCKAR UPP ALLT!!
+		contentPane.removeAll(); // Removes all the containers in the contenPane !!FUCKAR UPP ALLT!!
 									// to clear the window to get ready for the
-									// next question
-		for( JButton b: buttons)
-			b.setBackground(Color.white);
-		
+									// next question		
 		contentPane.repaint(); // Repaints the content
-		enableButtons();
-		
 		
 	}
 

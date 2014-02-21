@@ -48,7 +48,6 @@ public class GController {
 			Object objekt = e.getSource();
 			if (objekt instanceof Timer) {
 				Timer timer = (Timer) objekt;
-				view.resetFrame();
 				timer.stop();
 				model.playGame();			//Hämtar nästa fråga.
 			}
