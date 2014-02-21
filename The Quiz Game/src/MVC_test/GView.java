@@ -40,39 +40,33 @@ public class GView implements Observer {
 
 	public GView() {
 
-		gameWindow = new JFrame("The Quiz Game"); // New JFrame for containing
-													// the whole game
-		gameWindow.pack(); // Repacks the whole window
-		gameWindow.setSize(450, 300); // Sets the size for the window
-		gameWindow.setResizable(false); // makes the window resizable
-		gameWindow.setVisible(true); // makes the window visible
-		gameWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // Closes the
-																	// game on
-																	// exit
+		gameWindow = new JFrame("The Quiz Game");						// New JFrame for containing
+																		// the whole game
+		gameWindow.pack(); 												// Repacks the whole window
+		gameWindow.setSize(450, 300); 									// Sets the size for the window
+		gameWindow.setResizable(false); 								// makes the window resizable
+		gameWindow.setVisible(true); 									// makes the window visible
+		gameWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); 		// Closes the game on exit
+																
 		contentPane = gameWindow.getContentPane();
-		question = new JLabel("",JLabel.CENTER);				//Makes a new label with the question
+		question = new JLabel("",JLabel.CENTER);						//Makes a new label with the question
 		question.setFont(new Font("Arial", Font.BOLD, 20));
-		contentPane.setLayout(new BorderLayout()); // adds a container, this one
-													// for storing the buttons
-													// in the bottom
-		contentPane.setBackground(Color.WHITE); // Sets the background of the
-												// pane
-		contentPane.add(question, BorderLayout.CENTER); // Adds the question to the top of the layout
-		
+		contentPane.setLayout(new BorderLayout()); 						// adds a container, this one
+																		// for storing the buttons in the bottom
+		contentPane.setBackground(Color.WHITE); 						// Sets the background of the pane
+		contentPane.add(question, BorderLayout.CENTER); 				// Adds the question to the top of the layout
 		contentPane.add(borderPane = new Container(), BorderLayout.SOUTH);// adds the button layout to the bottom the layout
 		
-		borderPane.setLayout(new GridLayout(2, 2, 5, 5)); // Sets the layout of
-															// the buttons to a
-															// grid 2x2
+		borderPane.setLayout(new GridLayout(2, 2, 5, 5)); 				// Sets the layout of the buttons to a grid 2x2
 		buttons = new ArrayList<JButton>();
-		borderPane.add(buttonA = new JButton("")); // Adding the button to the
-													// pane
-		borderPane.add(buttonB = new JButton("")); // Adding the button to the
-													// pane
-		borderPane.add(buttonC = new JButton("")); // Adding the button to the
-													// pane
-		borderPane.add(buttonD = new JButton("")); // Adding the button to the
-													// pane
+		borderPane.add(buttonA = new JButton("")); 						// Adding the button to the
+																		// pane
+		borderPane.add(buttonB = new JButton("")); 						// Adding the button to the
+																		// pane
+		borderPane.add(buttonC = new JButton("")); 						// Adding the button to the
+																		// pane
+		borderPane.add(buttonD = new JButton("")); 						// Adding the button to the
+																		// pane
 
 		buttons.add(buttonA);
 		buttons.add(buttonB);
@@ -99,15 +93,15 @@ public class GView implements Observer {
 		
 		
 		
-		answers = new ArrayList<String>(); // Creates an arrayList to store the
-											// answers in
-		answers.add(questions.get(1)); // Adds the answer A to the List
+		answers = new ArrayList<String>(); 								// Creates an arrayList to store the
+																		// answers in
+		answers.add(questions.get(1)); 									// Adds the answer A to the List
 		answers.add(questions.get(2));
 		answers.add(questions.get(3));
 		answers.add(questions.get(4));
 		rightAnswer = answers.get(0);
-		Collections.shuffle(answers); // Shuffles the list to make them appear
-										// in different order.
+		Collections.shuffle(answers); 									// Shuffles the list to make them appear
+																		// in different order.
 		question.setText("<html><center>"+questions.get(0)+"</center></html>");
 		buttonA.setText(answers.get(0));
 		buttonB.setText(answers.get(1));
@@ -127,10 +121,10 @@ public class GView implements Observer {
 	}
 
 	public void resetFrame() {
-		contentPane.removeAll(); // Removes all the containers in the contenPane !!FUCKAR UPP ALLT!!
-									// to clear the window to get ready for the
-									// next question		
-		contentPane.repaint(); // Repaints the content
+		contentPane.removeAll(); 										// Removes all the containers in the contenPane !!FUCKAR UPP ALLT!!
+																		// to clear the window to get ready for the
+																		// next question		
+		contentPane.repaint(); 											// Repaints the content
 		
 	}
 
