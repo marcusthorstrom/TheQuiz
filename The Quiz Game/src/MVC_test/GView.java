@@ -3,6 +3,7 @@ package MVC_test;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Container;
+import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
@@ -42,7 +43,7 @@ public class GView implements Observer {
 		gameWindow = new JFrame("The Quiz Game"); // New JFrame for containing
 													// the whole game
 		gameWindow.pack(); // Repacks the whole window
-		gameWindow.setSize(500, 200); // Sets the size for the window
+		gameWindow.setSize(450, 300); // Sets the size for the window
 		gameWindow.setResizable(false); // makes the window resizable
 		gameWindow.setVisible(true); // makes the window visible
 		gameWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // Closes the
@@ -83,10 +84,17 @@ public class GView implements Observer {
 		buttons.add(buttonB);
 		buttons.add(buttonC);
 		buttons.add(buttonD);
-
+		
+		
+		
+		
+		for (JButton b : buttons) {
+			b.setPreferredSize(new Dimension(10, 70));
+			}
+		
 		for (JButton b : buttons) {
 			b.setBackground(Color.white);
-		}
+			}
 	}
 	
 
