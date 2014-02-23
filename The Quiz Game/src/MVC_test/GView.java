@@ -20,7 +20,10 @@ import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JSlider;
+import javax.swing.JSpinner;
 import javax.swing.JTextField;
+import javax.swing.SpinnerNumberModel;
 import javax.swing.Timer;
 
 public class GView implements Observer {
@@ -44,9 +47,10 @@ public class GView implements Observer {
 	private JTextField answerB = new JTextField(qLength);
 	private JTextField answerC = new JTextField(qLength);
 	private JTextField answerD = new JTextField(qLength);
-	private JButton okButton = new JButton("Submit");
-	private JButton cancelButton = new JButton("Cancel");
-
+	private JButton okButtonQuestion = new JButton("Ok");
+	private JButton cancelButtonQuestion = new JButton("Avbryt");
+	private JButton okButtonSetting = new JButton("Spara");
+	private JButton cancelButtonSetting = new JButton("Avbryt");
 
 	Timer timer = new Timer(2000, new ActionListener() {
 		public void actionPerformed(ActionEvent e) {
@@ -63,8 +67,8 @@ public class GView implements Observer {
 		gameWindow.setVisible(true); // makes the window visible
 		gameWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // Closes the game on exit
 		makeQFrame();
-		
-		makeQuestion();
+		settings();
+		//makeQuestion();
 	}
 		public void makeQFrame() {
 		contentPane = gameWindow.getContentPane();
@@ -141,8 +145,11 @@ public class GView implements Observer {
 		}
 	}
 	void addSubmitListner(ActionListener listenForSubmission) {
-		okButton.addActionListener(listenForSubmission);
-		cancelButton.addActionListener(listenForSubmission);
+		okButtonQuestion.addActionListener(listenForSubmission);
+		cancelButtonQuestion.addActionListener(listenForSubmission);
+	}
+	void addSettingsListner(ActionListener listenForSetting) {
+		
 	}
 
 	void addTimerListner(ActionListener listenForTimer) {
@@ -188,8 +195,8 @@ public class GView implements Observer {
 		all.add(answerDpanel);
 		all.add(buttonsPanel);
 		
-		buttonsPanel.add(cancelButton);
-		buttonsPanel.add(okButton);
+		buttonsPanel.add(cancelButtonQuestion);
+		buttonsPanel.add(okButtonQuestion);
 		
 		questionpanel.add(q);
 		questionpanel.add(questionField);
@@ -204,7 +211,8 @@ public class GView implements Observer {
 		answerDpanel.add(answerD);
 		
 		questionWindow.setVisible(true);
-		questionWindow.setSize(dialog);
+		questionWindow.setSize(dialog);	
+		questionWindow.setResizable(false);
 	}
 	public SingleQuestion submitFields() {
 		ArrayList<String> a = new ArrayList<String>();	
@@ -223,6 +231,38 @@ public class GView implements Observer {
 		return q;
 	}
 	
+	public void settings() {
+		JDialog settingsWindow = new JDialog(gameWindow,"Inställningar");
+		JPanel noQuestions = new JPanel();
+		JPanel sounds = new JPanel();
+		JPanel header = new JPanel();
+		JPanel all = new JPanel();
+		JPanel buttonsPanel = new JPanel();
+		all.setLayout(new BoxLayout(all, BoxLayout.Y_AXIS));
+		all.add(header);
+		all.add(noQuestions);
+		all.add(sounds);
+		all.add(buttonsPanel);
+		JLabel installningar = new JLabel("Inställningar");
+		installningar.setFont(new Font("Verdana", Font.CENTER_BASELINE, 25));
+		header.add(installningar);
+		settingsWindow.setLayout(new GridLayout(1,3,10,10));
+		settingsWindow.add(all);
+		noQuestions.setLayout(new BoxLayout(noQuestions, BoxLayout.X_AXIS));
+		noQuestions.add(new JLabel("Antal frågor: "));
+		noQuestions.add(new JSpinner(new SpinnerNumberModel(5,1,10,1)));
+		sounds.setLayout(new BoxLayout(sounds, BoxLayout.X_AXIS));
+		sounds.add(new JLabel("Ställ in ljudnivå: "));
+		sounds.add(new JSlider(0,100,50));
+		buttonsPanel.add(cancelButtonSetting);
+		buttonsPanel.add(okButtonSetting);
+		
+		
+		settingsWindow.setVisible(true);
+		settingsWindow.setSize(dialog);
+		settingsWindow.setResizable(false);
+		
+	}
 
 	public void showResult(int [] a) {
 		int rightA = a[0];

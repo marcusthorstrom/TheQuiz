@@ -49,11 +49,11 @@ public class GController {
 			Object objekt = e.getSource();
 			if (objekt instanceof JButton) {
 				JButton b = (JButton)objekt;
-				if(b.getText().equals("Submit")){
+				if(b.getText().equals("Ok")){
 					SingleQuestion q = view.submitFields();
-					//q.printQ();
+					q.printQ();
 				}
-				else if(b.getText().equals("Cancel")){
+				else if(b.getText().equals("Avbryt")){
 					
 				}
 			}
