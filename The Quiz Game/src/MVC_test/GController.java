@@ -48,13 +48,19 @@ public class GController {
 		public void actionPerformed(ActionEvent e) {
 			Object objekt = e.getSource();
 			if (objekt instanceof JButton) {
-				SingleQuestion q = view.submitFields();
-				System.out.println(q.getQuestion());
+				JButton b = (JButton)objekt;
+				if(b.getText().equals("Submit")){
+					System.out.println("OKButton");
+					SingleQuestion q = view.submitFields();
+					System.out.println(q.getQuestion());
+				}
+				else if(b.getText().equals("Cancel")){
+					System.out.println("CancelButton");
+				}
 			}
 		
 		}
 	}
-	
 	class TimerListener implements ActionListener {
 		@Override
 		public void actionPerformed(ActionEvent e) {
