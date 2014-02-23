@@ -38,6 +38,12 @@ public class GView implements Observer {
 	private String rightAnswer;
 	private Dimension dialog = new Dimension(300,300);
 	private Sounds sound;
+	private JTextField questionField = new JTextField(15);
+	private JTextField answerA = new JTextField(15);
+	private JTextField answerB = new JTextField(15);
+	private JTextField answerC = new JTextField(15);
+	private JTextField answerD = new JTextField(15);
+	private JButton okButton = new JButton("Submit");
 
 
 	Timer timer = new Timer(2000, new ActionListener() {
@@ -54,9 +60,9 @@ public class GView implements Observer {
 		gameWindow.setResizable(false); // makes the window resizable
 		gameWindow.setVisible(true); // makes the window visible
 		gameWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // Closes the game on exit
+		makeQFrame();
 		
-		
-		makeQuestion();
+		//makeQuestion();
 	}
 		public void makeQFrame() {
 		contentPane = gameWindow.getContentPane();
@@ -139,6 +145,9 @@ public class GView implements Observer {
 			b.addActionListener(listenForPressedAnswer);
 		}
 	}
+	void addSubmitListner(ActionListener listenForSubmission) {
+		okButton.addActionListener(listenForSubmission);
+	}
 
 	void addTimerListner(ActionListener listenForTimer) {
 		timer.addActionListener(listenForTimer);
@@ -159,6 +168,7 @@ public class GView implements Observer {
 		JPanel answerBpanel= new JPanel();
 		JPanel answerCpanel = new JPanel();
 		JPanel answerDpanel = new JPanel();
+		JPanel buttonsPanel = new JPanel();
 		JPanel all = new JPanel();
 		questionWindow.setLayout(new FlowLayout());
 		questionWindow.add(all);
@@ -166,17 +176,18 @@ public class GView implements Observer {
 		
 		
 		//The Components
-		JLabel l = new JLabel("<html><center>Skriv in din fråga!</center></html>");
+		JLabel l = new JLabel("Skriv in din fråga!");
 		JLabel q = new JLabel("Frågan:     ");
 		JLabel qa = new JLabel("Rätt svar:");
 		JLabel qb = new JLabel("Svar b:    ");
 		JLabel qc = new JLabel("Svar c:    ");
 		JLabel qd = new JLabel("Svar d:    ");	
-		JTextField question = new JTextField(15);
+		JTextField questionField = new JTextField(15);
 		JTextField answerA = new JTextField(15);
 		JTextField answerB = new JTextField(15);
 		JTextField answerC = new JTextField(15);
 		JTextField answerD = new JTextField(15);
+		JButton cancelButton = new JButton("Cancel");
 		//The Components
 		
 		all.add(l);
@@ -186,9 +197,13 @@ public class GView implements Observer {
 		all.add(answerBpanel);
 		all.add(answerCpanel);
 		all.add(answerDpanel);
+		all.add(buttonsPanel);
+		
+		buttonsPanel.add(cancelButton);
+		buttonsPanel.add(okButton);
 		
 		questionpanel.add(q);
-		questionpanel.add(question);
+		questionpanel.add(questionField);
 		
 		answerApanel.add(qa);
 		answerApanel.add(answerA);
@@ -202,6 +217,18 @@ public class GView implements Observer {
 		questionWindow.setVisible(true);
 		questionWindow.setSize(dialog);
 	}
+	public SingleQuestion submitFields() {
+		ArrayList<String> a = new ArrayList<String>();
+		a.add(questionField.getText());
+		a.add(answerA.getText());
+		a.add(answerB.getText());
+		a.add(answerC.getText());
+		a.add(answerD.getText());
+		SingleQuestion q = new SingleQuestion(a);
+		return q;
+		
+	}
+	
 
 	public void showResult(int [] a) {
 		int rightA = a[0];

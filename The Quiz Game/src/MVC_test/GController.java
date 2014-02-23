@@ -18,6 +18,7 @@ public class GController {
 
 		this.view.addAnswerListner(new AnswerListener());
 		this.view.addTimerListner(new TimerListener());
+		this.view.addSubmitListner(new SubmitListener());
 
 	}
 
@@ -41,7 +42,18 @@ public class GController {
 			view.disableButtons();
 		}
 	}
+	class SubmitListener implements ActionListener {
 
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			Object objekt = e.getSource();
+			if (objekt instanceof JButton) {
+				SingleQuestion q = view.submitFields();
+				System.out.println(q.getQuestion());
+			}
+		
+		}
+	}
 	
 	class TimerListener implements ActionListener {
 		@Override
