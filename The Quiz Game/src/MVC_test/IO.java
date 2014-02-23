@@ -2,7 +2,6 @@ package MVC_test;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
-import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -18,63 +17,66 @@ public class IO {
 	private ArrayList<String> questions;
 	private ArrayList<ArrayList<String>> allQuestions;
 	private BufferedReader br;
-	private BufferedReader bufRdr;
 
 	public IO() {
 	}
 
+	/**
+	 * Method for reading questions from .txt file.
+	 */
 	private void readFile() {
 		questions = new ArrayList<String>();
 		allQuestions = new ArrayList<ArrayList<String>>();
 		try {
-			
-			if (OSDetector.isMac()){
-				//br = new BufferedReader(new FileReader(System.getProperty ("user.home") + "/Desktop/" + STANDARDFRAGOR));
-				//br = new BufferedReader(new FileReader(STANDARDFRAGOR));
-				
-				//File file = new File(STANDARDFRAGOR);
-				
-				
-				br  = new BufferedReader(
-					    new InputStreamReader(new FileInputStream(STANDARDFRAGOR),"ISO-8859-1"));
-			}
-			else if (OSDetector.isWindows())
-			{
+			/*
+			 * Checks what operating system the computer is running, then open
+			 * the file in different ways to get Swedish characters
+			 */
+			if (OSDetector.isMac()) {
+				br = new BufferedReader(new InputStreamReader(
+						new FileInputStream(STANDARDFRAGOR), "ISO-8859-1"));
+			} else if (OSDetector.isWindows()) {
 				br = new BufferedReader(new FileReader(STANDARDFRAGOR));
-			}
-			else if(OSDetector.isLinux()){
-				//br = new BufferedReader(new FileReader(System.getProperty ("user.home") + "/Desktop/" + STANDARDFRAGOR));
-				//File file = new File(System.getProperty ("user.home") + "/Desktop/" + STANDARDFRAGOR);
-				String file = (System.getProperty ("user.home") + "/Desktop/" + STANDARDFRAGOR);
 
-				br  = new BufferedReader(
-				    new InputStreamReader(new FileInputStream(file),"ISO-8859-1"));
-			
+				//
+			} else if (OSDetector.isLinux()) {
+				String file = (System.getProperty("user.home") + "/Desktop/" + STANDARDFRAGOR);
+				br = new BufferedReader(new InputStreamReader(
+						new FileInputStream(file), "ISO-8859-1"));
+
 			}
-			
+			/*
+			 * reads line by line and add them to an ArrayList of strings, if
+			 * new row without signs the ArrayList will be added to a bigger
+			 * ArrrayList
+			 */
 			String line;
-			while((line = br.readLine()) != null) {
-				if(line.equals("")){
+			while ((line = br.readLine()) != null) {
+				if (line.equals("")) {
 					@SuppressWarnings("unchecked")
-					ArrayList<String> tempQuest = ((ArrayList<String>) questions.clone());
+					ArrayList<String> tempQuest = ((ArrayList<String>) questions
+							.clone());
 					allQuestions.add(tempQuest);
 					questions.clear();
-				}
-				else { 
+				} else {
 					questions.add(line);
 				}
 			}
 			br.close();
-		}
-		catch(FileNotFoundException e){
+		} catch (FileNotFoundException e) {
 			System.out.println("File not found!");
 		}
-		
+
 		catch (IOException e) {
 			System.out.println("ERROR! Error occurd when file was read.");
 		}
 	}
 
+	/**
+	 * Method for returning all the questions read from file
+	 * 
+	 * @return
+	 */
 	public ArrayList<ArrayList<String>> getArray() {
 		readFile();
 		return allQuestions;
