@@ -17,12 +17,10 @@ import java.util.Observer;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JDialog;
-import javax.swing.JFormattedTextField;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
-import javax.swing.SwingUtilities;
 import javax.swing.Timer;
 
 public class GView implements Observer {
@@ -39,6 +37,8 @@ public class GView implements Observer {
 	private ArrayList<JButton> buttons;
 	private String rightAnswer;
 	private Dimension dialog = new Dimension(300,300);
+	private Sounds sound;
+
 
 	Timer timer = new Timer(2000, new ActionListener() {
 		public void actionPerformed(ActionEvent e) {
@@ -62,19 +62,19 @@ public class GView implements Observer {
 		contentPane = gameWindow.getContentPane();
 		question = new JLabel("",JLabel.CENTER);				//Makes a new label with the question
 		question.setFont(new Font("Arial", Font.BOLD, 20));
-		contentPane.setLayout(new BorderLayout()); // adds a container, this one
-													// for storing the buttons
-													// in the bottom
-		contentPane.setBackground(Color.WHITE); // Sets the background of the
-												// pane
-		contentPane.add(question, BorderLayout.CENTER); // Adds the question to the top of the layout
+
+		contentPane.setLayout(new BorderLayout()); 				// adds a container, this one for storing the buttons in the bottom
+							 
+		contentPane.setBackground(Color.WHITE); 				// Sets the background of the pane
+
+		contentPane.add(question, BorderLayout.CENTER); 		// Adds the question to the top of the layout
 		
 		contentPane.add(borderPane = new Container(), BorderLayout.SOUTH);// adds the button layout to the bottom the layout
-		
-		borderPane.setLayout(new GridLayout(2, 2, 5, 5)); // Sets the layout of
-															// the buttons to a
-															// grid 2x2
+
+		borderPane.setLayout(new GridLayout(2, 2, 5, 5)); 		// Sets the layout of the buttons to a grid 2x2
+
 		buttons = new ArrayList<JButton>();
+
 		borderPane.add(buttonA = new JButton("")); // Adding the button to the
 													// pane
 		borderPane.add(buttonB = new JButton("")); // Adding the button to the
@@ -83,19 +83,18 @@ public class GView implements Observer {
 													// pane
 		borderPane.add(buttonD = new JButton("")); // Adding the button to the
 													// pane
-
 		buttons.add(buttonA);
 		buttons.add(buttonB);
 		buttons.add(buttonC);
 		buttons.add(buttonD);
-		
-		
-		
-		
+
+
+
+
 		for (JButton b : buttons) {
 			b.setPreferredSize(new Dimension(10, 70));
-			}
-		
+		}
+
 		for (JButton b : buttons) {
 			b.setBackground(Color.white);
 			}
@@ -106,26 +105,33 @@ public class GView implements Observer {
 
 	public void askQuestion(ArrayList<String> questions) {
 		
+		sound = new Sounds();
+	}
+
+
+	public void askQuestion(SingleQuestion quest) {
+
 		for( JButton b: buttons)
 			b.setBackground(Color.white);
-		
-		
-		
-		answers = new ArrayList<String>(); // Creates an arrayList to store the
-											// answers in
-		answers.add(questions.get(1)); // Adds the answer A to the List
-		answers.add(questions.get(2));
-		answers.add(questions.get(3));
-		answers.add(questions.get(4));
+
+		answers = new ArrayList<String>(); 								// Creates an arrayList to store the
+		// answers in
+		answers.add(quest.getCorrectAnswer()); 									// Adds the answer A to the List
+		answers.add(quest.getAnswer2());
+		answers.add(quest.getAnswer3());
+		answers.add(quest.getAnswer4());
 		rightAnswer = answers.get(0);
-		Collections.shuffle(answers); // Shuffles the list to make them appear
-										// in different order.
-		question.setText("<html><center>"+questions.get(0)+"</center></html>");
+		Collections.shuffle(answers); 									// Shuffles the list to make them appear in different order.
+		question.setText("<html><center>"+quest.getQuestion()+"</center></html>");
 		buttonA.setText(answers.get(0));
 		buttonB.setText(answers.get(1));
 		buttonC.setText(answers.get(2));
 		buttonD.setText(answers.get(3));
 		enableButtons();
+		
+		if(quest.hasSound()){
+			sound.playSound(quest.getSound());
+		}
 	}
 
 	void addAnswerListner(ActionListener listenForPressedAnswer) {
@@ -139,11 +145,10 @@ public class GView implements Observer {
 	}
 
 	public void resetFrame() {
-		contentPane.removeAll(); // Removes all the containers in the contenPane !!FUCKAR UPP ALLT!!
-									// to clear the window to get ready for the
-									// next question		
-		contentPane.repaint(); // Repaints the content
-		
+		contentPane.removeAll(); 										// Removes all the containers in the contenPane !!FUCKAR UPP ALLT!!
+		// to clear the window to get ready for the
+		// next question		
+		contentPane.repaint(); 											// Repaints the content
 	}
 	
 	
@@ -204,19 +209,19 @@ public class GView implements Observer {
 		borderPane.removeAll();
 		question.setText("Du fick: "+rightA+" rätt av totalt "+(wrongA+rightA)+ " frågor");
 	}
-	
+
 	public void disableButtons() {
 		for (JButton b : buttons) {
 			b.setEnabled(false);
 		}
 	}
-	
+
 	public void enableButtons() {
 		for (JButton b : buttons) {
 			b.setEnabled(true);
 		}
 	}
-	
+
 	public void setColor(String chosenAnswer) {
 		for (JButton b : buttons) {
 			if (b.getText().equals(chosenAnswer)){
@@ -231,12 +236,23 @@ public class GView implements Observer {
 		timer.start();
 	}
 
+	public void stopSound()
+	{
+		sound.stopSound();
+	}
+
+	public void playSoundFeedback(boolean isCorrect){
+		if(isCorrect == true)
+			sound.playCorrect();
+		else
+			sound.playIncorrect();
+	}
+
 	@Override
 	public void update(Observable o, Object arg) {
-		if (o instanceof GModel && arg instanceof ArrayList<?>) {
-			@SuppressWarnings("unchecked")
-			ArrayList<String> qList = (ArrayList<String>) arg;
-			askQuestion(qList);
+		if (o instanceof GModel && arg instanceof SingleQuestion) {
+			SingleQuestion quest = (SingleQuestion) arg;
+			askQuestion(quest);
 		} 
 
 		else if (o instanceof GModel && arg instanceof String) {
@@ -245,6 +261,12 @@ public class GView implements Observer {
 		}
 		else if(o instanceof GModel && arg instanceof int[]) {
 			showResult((int[]) arg);
+		}
+
+		else if(o instanceof GModel && arg instanceof Boolean){
+			boolean isCorrect = (Boolean)arg;
+			playSoundFeedback(isCorrect);
+
 		}
 	}
 }

@@ -27,6 +27,7 @@ public class GController {
 			Object objekt = e.getSource();
 			if (objekt instanceof JButton) {
 				JButton button = (JButton) objekt;
+				view.stopSound();
 				model.setChosenAnswer(button.getText());
 				model.isRightAnswer();
 
