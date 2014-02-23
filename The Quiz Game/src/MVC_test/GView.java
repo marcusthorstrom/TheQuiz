@@ -167,11 +167,11 @@ public class GView implements Observer {
 		
 		//The Components
 		JLabel l = new JLabel("<html><center>Skriv in din fråga!</center></html>");
-		JLabel q = new JLabel("Frågan: ");
-		JLabel qa = new JLabel("Rätt svar: ");
-		JLabel qb = new JLabel("Svar b: ");
-		JLabel qc = new JLabel("Svar c: ");
-		JLabel qd = new JLabel("Svar d: ");	
+		JLabel q = new JLabel("Frågan:     ");
+		JLabel qa = new JLabel("Rätt svar:");
+		JLabel qb = new JLabel("Svar b:    ");
+		JLabel qc = new JLabel("Svar c:    ");
+		JLabel qd = new JLabel("Svar d:    ");	
 		JTextField question = new JTextField(15);
 		JTextField answerA = new JTextField(15);
 		JTextField answerB = new JTextField(15);
