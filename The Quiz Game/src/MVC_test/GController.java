@@ -50,12 +50,11 @@ public class GController {
 			if (objekt instanceof JButton) {
 				JButton b = (JButton)objekt;
 				if(b.getText().equals("Submit")){
-					System.out.println("OKButton");
 					SingleQuestion q = view.submitFields();
-					System.out.println(q.getQuestion());
+					//q.printQ();
 				}
 				else if(b.getText().equals("Cancel")){
-					System.out.println("CancelButton");
+					
 				}
 			}
 		

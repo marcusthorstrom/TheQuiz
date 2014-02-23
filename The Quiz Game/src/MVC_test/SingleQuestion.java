@@ -63,5 +63,13 @@ public class SingleQuestion {
 	{
 		return containsSound;
 	}
+	//For testing
+	public void printQ() {
+		System.out.println(question);
+		System.out.println(correctAnswer);
+		System.out.println(answer2);
+		System.out.println(answer3);
+		System.out.println(answer4);
+	}
 
 }

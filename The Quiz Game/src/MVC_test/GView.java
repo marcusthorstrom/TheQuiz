@@ -36,7 +36,7 @@ public class GView implements Observer {
 	private JButton buttonD;
 	private ArrayList<JButton> buttons;
 	private String rightAnswer;
-	private Dimension dialog = new Dimension(300,300);
+	private Dimension dialog = new Dimension(300,250);
 	private Sounds sound;
 	private int qLength = 15;
 	private JTextField questionField = new JTextField(qLength);
@@ -158,7 +158,7 @@ public class GView implements Observer {
 	
 	
 	public void makeQuestion() {
-		questionWindow = new JDialog(gameWindow,"Inställningar");
+		questionWindow = new JDialog(gameWindow,"Skapa Fråga");
 		JPanel questionpanel = new JPanel();
 		JPanel answerApanel = new JPanel();
 		JPanel answerBpanel= new JPanel();
@@ -170,7 +170,6 @@ public class GView implements Observer {
 		questionWindow.add(all);
 		all.setLayout(new BoxLayout(all, BoxLayout.Y_AXIS));
 		
-		
 		//The Components
 		JLabel l = new JLabel("Skriv in din fråga!");
 		JLabel q = new JLabel("Frågan:     ");
@@ -178,7 +177,6 @@ public class GView implements Observer {
 		JLabel qb = new JLabel("Svar b:    ");
 		JLabel qc = new JLabel("Svar c:    ");
 		JLabel qd = new JLabel("Svar d:    ");	
-		JTextField questionField = new JTextField(15);
 		//The Components
 		
 		all.add(l);
@@ -209,15 +207,20 @@ public class GView implements Observer {
 		questionWindow.setSize(dialog);
 	}
 	public SingleQuestion submitFields() {
-		ArrayList<String> a = new ArrayList<String>();		
+		ArrayList<String> a = new ArrayList<String>();	
 		a.add(questionField.getText());
 		a.add(answerA.getText());
 		a.add(answerB.getText());
 		a.add(answerC.getText());
 		a.add(answerD.getText());
+		for(int i = 0; i < a.size(); i++) {
+			if(a.get(i).isEmpty()) {
+				System.out.println("Du måste fylla i alla fält");
+				return null;
+			}	
+		}
 		SingleQuestion q = new SingleQuestion(a);
 		return q;
-		
 	}
 	
 
