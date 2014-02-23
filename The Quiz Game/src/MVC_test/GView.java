@@ -57,6 +57,8 @@ public class GView implements Observer {
 			timer.stop();
 		}
 	});
+	private JSpinner spinner = new JSpinner(new SpinnerNumberModel(5,1,10,1));
+	private JSlider slider = new JSlider(0,100,50);
 
 	public GView() {
 		
@@ -149,8 +151,9 @@ public class GView implements Observer {
 		cancelButtonQuestion.addActionListener(listenForSubmission);
 	}
 	void addSettingsListner(ActionListener listenForSetting) {
-		
-	}
+		okButtonSetting.addActionListener(listenForSetting);
+		cancelButtonSetting.addActionListener(listenForSetting);
+		}
 
 	void addTimerListner(ActionListener listenForTimer) {
 		timer.addActionListener(listenForTimer);
@@ -235,33 +238,41 @@ public class GView implements Observer {
 		JDialog settingsWindow = new JDialog(gameWindow,"Inställningar");
 		JPanel noQuestions = new JPanel();
 		JPanel sounds = new JPanel();
+		JPanel soundBar = new JPanel();
 		JPanel header = new JPanel();
 		JPanel all = new JPanel();
 		JPanel buttonsPanel = new JPanel();
-		all.setLayout(new BoxLayout(all, BoxLayout.Y_AXIS));
+		all.setLayout(new GridLayout(5,1,10,10));
 		all.add(header);
 		all.add(noQuestions);
 		all.add(sounds);
+		all.add(soundBar);
 		all.add(buttonsPanel);
 		JLabel installningar = new JLabel("Inställningar");
 		installningar.setFont(new Font("Verdana", Font.CENTER_BASELINE, 25));
 		header.add(installningar);
-		settingsWindow.setLayout(new GridLayout(1,3,10,10));
 		settingsWindow.add(all);
-		noQuestions.setLayout(new BoxLayout(noQuestions, BoxLayout.X_AXIS));
+		noQuestions.setLayout(new FlowLayout());
 		noQuestions.add(new JLabel("Antal frågor: "));
-		noQuestions.add(new JSpinner(new SpinnerNumberModel(5,1,10,1)));
-		sounds.setLayout(new BoxLayout(sounds, BoxLayout.X_AXIS));
-		sounds.add(new JLabel("Ställ in ljudnivå: "));
-		sounds.add(new JSlider(0,100,50));
+		noQuestions.add(spinner);
+		sounds.setLayout(new FlowLayout());
+		sounds.add(new JLabel("Ställ in ljudnivå:"));
+		soundBar.add(slider);
+		soundBar.setLayout(new FlowLayout());
 		buttonsPanel.add(cancelButtonSetting);
 		buttonsPanel.add(okButtonSetting);
-		
 		
 		settingsWindow.setVisible(true);
 		settingsWindow.setSize(dialog);
 		settingsWindow.setResizable(false);
-		
+	}
+	
+	public int[] submitSettings() {
+		int a[] = new int[2];
+		a[0] = (Integer)spinner.getValue();
+		a[1] = (int)slider.getValue();
+		return a;
+			
 	}
 
 	public void showResult(int [] a) {

@@ -19,6 +19,7 @@ public class GController {
 		this.view.addAnswerListner(new AnswerListener());
 		this.view.addTimerListner(new TimerListener());
 		this.view.addSubmitListner(new SubmitListener());
+		this.view.addSettingsListner(new SettingsListener());
 
 	}
 
@@ -60,6 +61,24 @@ public class GController {
 		
 		}
 	}
+	
+	class SettingsListener implements ActionListener {
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			Object objekt = e.getSource();
+			if (objekt instanceof JButton) {
+				JButton b = (JButton)objekt;
+				if(b.getText().equals("Spara")){
+					view.submitSettings();
+				}
+				else if(b.getText().equals("Avbryt")){
+					
+				}
+			}
+		
+		}
+	}
+	
 	class TimerListener implements ActionListener {
 		@Override
 		public void actionPerformed(ActionEvent e) {
