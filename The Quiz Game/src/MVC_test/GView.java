@@ -53,11 +53,11 @@ public class GView implements Observer {
 	private JButton buttonB;
 	private JButton buttonC;
 	private JButton buttonD;
-	private JButton start;
-	private JButton create;
-	private JButton options;
-	private JButton help;
-	private JButton quit;
+	private JButton create = new JButton("Egen Fråga");
+	private JButton options = new JButton("Inställningar");
+	private JButton help = new JButton("Hjälp");
+	private JButton quit = new JButton("Avsluta");
+	private JButton start = new JButton("Start");
 	private JButton okButtonQuestion = new JButton("Ok");
 	private JButton cancelButtonQuestion = new JButton("Avbryt");
 	private JButton okButtonSetting = new JButton("Använd");
@@ -99,9 +99,7 @@ public class GView implements Observer {
 		helpWindow.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 		contentPane = gameWindow.getContentPane();
 		makeMenu();
-		//makeQFrame();
-		//settings();
-		//makeQuestion();
+
 	}
 	public void makeMenu(){
 
@@ -111,23 +109,23 @@ public class GView implements Observer {
 
 		Dimension d = new Dimension(200, 49);
 
-		gridPane.add(start = new JButton("Start"));
+		gridPane.add(start);
 		start.setPreferredSize(d);
 		start.setBackground(Color.white);
 
-		gridPane.add(create = new JButton("Egen Fråga"));
+		gridPane.add(create);
 		create.setPreferredSize(d);
 		create.setBackground(Color.white);	
 
-		gridPane.add(options = new JButton("Inställningar"));
+		gridPane.add(options);
 		options.setPreferredSize(d);
 		options.setBackground(Color.white);	
 
-		gridPane.add(help = new JButton("Hjälp"));
+		gridPane.add(help);
 		help.setPreferredSize(d);
 		help.setBackground(Color.white);
 		
-		gridPane.add(quit = new JButton("Avsluta"));
+		gridPane.add(quit);
 		quit.setPreferredSize(d);
 		quit.setBackground(Color.white);
 		
@@ -228,7 +226,7 @@ public class GView implements Observer {
 	}
 	public void resetFrame() {
 		contentPane.removeAll(); 											// Removes all the containers in the contentPane
-																			// to clear the window to get ready for the next question		
+		contentPane.revalidate();											// to clear the window to get ready for the next question		
 		contentPane.repaint(); 												// Repaints the content
 	}
 

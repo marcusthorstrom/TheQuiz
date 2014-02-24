@@ -100,7 +100,12 @@ public class IO {
 			}
 			bw.write("\n");
 			bw.close();
-
+/*
+			for(String line:question){
+				bw.write(line + "\n");
+			}
+			bw.write("\n");
+*/			
 		} catch (IOException e) {
 			System.out.println("ERROR! Error occurd when write");
 		}

@@ -49,7 +49,11 @@ public class Questions{
 		
 	}
 	
-	
+	public void writeQuestion(SingleQuestion inQuestion) {
+		ArrayList<String> tempQuestions = new ArrayList<String>();
+		tempQuestions = inQuestion.printArrayList(tempQuestions);
+		io.newQuestion(tempQuestions);
+	}
 	
 	public ArrayList<SingleQuestion> getQuestions(int y){
 		

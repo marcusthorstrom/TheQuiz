@@ -64,12 +64,13 @@ public class SingleQuestion {
 		return containsSound;
 	}
 	//For testing
-	public void printQ() {
-		System.out.println(question);
-		System.out.println(correctAnswer);
-		System.out.println(answer2);
-		System.out.println(answer3);
-		System.out.println(answer4);
+	public ArrayList<String> printArrayList(ArrayList<String> inList) {
+		inList.add(0,question);
+		inList.add(1, correctAnswer);
+		inList.add(2, answer2);
+		inList.add(3, answer3);
+		inList.add(4, answer4);
+		return inList;
 	}
 
 }

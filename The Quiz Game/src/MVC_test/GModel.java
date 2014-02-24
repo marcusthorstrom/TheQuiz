@@ -24,8 +24,6 @@ public class GModel extends Observable {
 	
 	public GModel() {
 		q = new Questions();
-		
-
 	}
 
 	public void changeActiveQuestion() {
@@ -33,7 +31,9 @@ public class GModel extends Observable {
 			int[] a = {rightCount, wrongCount};
 			setChanged();
 			notifyObservers(a);
-			
+			qNumber = 0;
+			wrongCount = 0;
+			rightCount = 0;
 		}
 
 		else {
@@ -47,7 +47,6 @@ public class GModel extends Observable {
 	public void playGame(Options options) {
 		this.options = options;
 		qu = q.getQuestions(options.getGameRounds());
-
 		changeActiveQuestion();
 		qNumber++;
 
@@ -91,5 +90,8 @@ public class GModel extends Observable {
 
 	public void setIsFinished(boolean ready) {
 	}
-
+	
+	public void createQuestion(SingleQuestion qu) {
+		q.writeQuestion(qu);
+	}
 }

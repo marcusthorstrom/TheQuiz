@@ -94,7 +94,7 @@ public class GController {
 				JButton b = (JButton)objekt;
 				if(b.getText().equals("Ok")){
 					SingleQuestion q = view.submitFields();
-					q.printQ();
+					model.createQuestion(q);
 					view.closeQWindow();
 				}
 				else if(b.getText().equals("Avbryt")){
