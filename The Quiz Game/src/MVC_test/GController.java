@@ -16,20 +16,17 @@ public class GController {
 		this.view = view;
 		this.model = model;
 
-		
-		this.view.addTimerListner(new TimerListener());
-		this.view.addStartListner(new StartListener());
-		this.view.addSubmitListner(new SubmitListener());
-		this.view.addSettingsListner(new SettingsListener());
-
+		this.view.addTimerListener(new TimerListener());
+		this.view.addMenuListener(new MenuListener());
+		this.view.addSubmitListener(new SubmitListener());
+		this.view.addSettingsListener(new SettingsListener());
 	}
-	
+
 	public void startGame(){
-		this.view.addAnswerListner(new AnswerListener());
+		this.view.addAnswerListener(new AnswerListener());
 	}
 
-	
-	class StartListener implements ActionListener {
+	class MenuListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
 			Object objekt = e.getSource();
 			if (objekt instanceof JButton) {
@@ -39,13 +36,26 @@ public class GController {
 					view.makeQFrame();
 					startGame();
 					model.playGame();
-					
+				}
+				else if(button.getText().equals("Egen Fråga")) {
+					view.makeQuestion();
+				}
+				else if(button.getText().equals("Inställningar")) {
+					view.options();
+				}
+				else if(button.getText().equals("Hjälp")) {
+					//view.makeHelp();
+				}
+				else if(button.getText().equals("Avsluta")) {
+					view.closeWindow();
 				}
 			}
 		}
-		
+
 	}
-	
+
+
+
 	class AnswerListener implements ActionListener {
 		@Override
 		public void actionPerformed(ActionEvent e) {
@@ -81,10 +91,10 @@ public class GController {
 					view.closeQWindow();
 				}
 			}
-		
+
 		}
 	}
-	
+
 	class SettingsListener implements ActionListener {
 		@Override
 		public void actionPerformed(ActionEvent e) {
@@ -98,10 +108,10 @@ public class GController {
 					view.closeSWindow();
 				}
 			}
-		
+
 		}
 	}
-	
+
 	class TimerListener implements ActionListener {
 		@Override
 		public void actionPerformed(ActionEvent e) {
@@ -112,7 +122,7 @@ public class GController {
 				model.playGame();			//H�mtar n�sta fr�ga.
 			}
 		}
-
 	}
-
 }
+
+
