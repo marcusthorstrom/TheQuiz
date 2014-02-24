@@ -31,6 +31,7 @@ public class GView implements Observer {
 	private JFrame gameWindow;
 	private JDialog questionWindow = new JDialog(gameWindow,"Skapa Frï¿½ga");
 	private JDialog settingsWindow = new JDialog(gameWindow,"Instï¿½llningar");
+	private JDialog helpWindow = new JDialog(gameWindow,"Hjälp");
 
 	private ArrayList<String> answers;
 	private Container contentPane;
@@ -54,6 +55,7 @@ public class GView implements Observer {
 	private JButton cancelButtonQuestion = new JButton("Avbryt");
 	private JButton okButtonSetting = new JButton("Spara");
 	private JButton cancelButtonSetting = new JButton("Avbryt");
+	private JButton okButtonHelp = new JButton("ok");
 	private Timer timer = new Timer(2000, new ActionListener() {
 		public void actionPerformed(ActionEvent e) {
 			timer.stop();
@@ -67,7 +69,7 @@ public class GView implements Observer {
 	private JButton options;
 	private Component help;
 	private JButton quit;
-	
+
 	public GView() {
 
 
@@ -83,7 +85,7 @@ public class GView implements Observer {
 		//makeQuestion();
 	}
 	public void makeMenu(){
-		
+
 		contentPane.add(borderPane = new JPanel(), BorderLayout.CENTER);
 		borderPane.add(gridPane = new JPanel());
 		gridPane.setLayout(new GridLayout(5, 1, 5, 5));
@@ -112,7 +114,7 @@ public class GView implements Observer {
 	}
 
 	public void makeQFrame() {
-		
+
 		question = new JLabel("",JLabel.CENTER);								//Makes a new label with the question
 		question.setFont(new Font("Arial", Font.BOLD, 20));
 
@@ -190,18 +192,16 @@ public class GView implements Observer {
 		okButtonSetting.addActionListener(listenForSetting);
 		cancelButtonSetting.addActionListener(listenForSetting);
 	}
-
 	void addTimerListner(ActionListener listenForTimer) {
 		timer.addActionListener(listenForTimer);
 	}
-
 	void addStartListner(ActionListener listenForStart) {
 		start.addActionListener(listenForStart);
 	}
 	public void resetFrame() {
 		contentPane.removeAll(); 											// Removes all the containers in the contenPane !!FUCKAR UPP ALLT!!
-																			// to clear the window to get ready for the
-																			// next question		
+		// to clear the window to get ready for the
+		// next question		
 		contentPane.repaint(); 												// Repaints the content
 	}
 
@@ -256,6 +256,27 @@ public class GView implements Observer {
 		questionWindow.setSize(dialog);	
 		questionWindow.setResizable(false);
 	}
+
+	public void makeHelp(){
+		JPanel textpanel = new JPanel();
+		questionWindow.setLayout(new FlowLayout());
+		questionWindow.add(textpanel);
+		textpanel.setLayout(new BoxLayout(textpanel, BoxLayout.Y_AXIS));
+
+		//The Components
+		JLabel helptext = new JLabel("Hjälp Hjälp hjälp hjälp");
+		
+		//The Components
+
+		textpanel.add(helptext);
+		textpanel.add(okButtonHelp);
+
+		questionWindow.setVisible(true);
+		questionWindow.setSize(dialog);	
+		questionWindow.setResizable(false);
+	}
+
+
 	public SingleQuestion submitFields() {
 		ArrayList<String> a = new ArrayList<String>();	
 		a.add(questionField.getText());
