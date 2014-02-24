@@ -28,9 +28,9 @@ import javax.swing.Timer;
 
 public class GView implements Observer {
 	private JFrame gameWindow;
-	private JDialog questionWindow = new JDialog(gameWindow,"Skapa Frï¿½ga");
-	private JDialog settingsWindow = new JDialog(gameWindow,"Instï¿½llningar");
-	private JDialog helpWindow = new JDialog(gameWindow,"Hjï¿½lp");
+	private JDialog questionWindow = new JDialog(gameWindow,"Skapa Fråga");
+	private JDialog settingsWindow = new JDialog(gameWindow,"Inställningar");
+	private JDialog helpWindow = new JDialog(gameWindow,"Hjälp");
 
 	private ArrayList<String> answers;
 	private ArrayList<JButton> buttons;
@@ -102,15 +102,15 @@ public class GView implements Observer {
 		start.setPreferredSize(d);
 		start.setBackground(Color.white);
 
-		gridPane.add(create = new JButton("Egen FrÃ¥ga"));
+		gridPane.add(create = new JButton("Egen Fråga"));
 		create.setPreferredSize(d);
 		create.setBackground(Color.white);	
 
-		gridPane.add(options = new JButton("InstÃ¤llningar"));
+		gridPane.add(options = new JButton("Inställningar"));
 		options.setPreferredSize(d);
 		options.setBackground(Color.white);	
 
-		gridPane.add(help = new JButton("HjÃ¤lp"));
+		gridPane.add(help = new JButton("Hjälp"));
 		help.setPreferredSize(d);
 		help.setBackground(Color.white);
 		
@@ -229,8 +229,8 @@ public class GView implements Observer {
 
 		//The Components
 		JLabel l = new JLabel("Skriv in din frï¿½ga!");
-		JLabel q = new JLabel("Frï¿½gan:     ");
-		JLabel qa = new JLabel("Rï¿½tt svar:");
+		JLabel q = new JLabel("Frågan:     ");
+		JLabel qa = new JLabel("Rätt svar:");
 		JLabel qb = new JLabel("Svar b:    ");
 		JLabel qc = new JLabel("Svar c:    ");
 		JLabel qd = new JLabel("Svar d:    ");	
@@ -309,7 +309,7 @@ public class GView implements Observer {
 		a.add(answerD.getText());
 		for(int i = 0; i < a.size(); i++) {
 			if(a.get(i).isEmpty()) {
-				System.out.println("Du mï¿½ste fylla i alla fï¿½lt");
+				System.out.println("Du måste fylla i alla fält");
 				return null;
 			}	
 		}
@@ -343,17 +343,17 @@ public class GView implements Observer {
 		all.add(soundBar);
 		all.add(buttonsPanel);
 		
-		JLabel installningar = new JLabel("Instï¿½llningar");
+		JLabel installningar = new JLabel("Inställningar");
 		installningar.setFont(new Font("Verdana", Font.CENTER_BASELINE, 25));
 		header.add(installningar);
 		settingsWindow.add(all);
 		
 		noQuestions.setLayout(new FlowLayout());
-		noQuestions.add(new JLabel("Antal frï¿½gor: "));
+		noQuestions.add(new JLabel("Antal frågor: "));
 		noQuestions.add(spinner);
 		
 		sounds.setLayout(new FlowLayout());
-		sounds.add(new JLabel("Stï¿½ll in ljudnivï¿½:"));
+		sounds.add(new JLabel("Ställ in ljudnivån:"));
 		soundBar.add(slider);
 		soundBar.setLayout(new FlowLayout());
 		
@@ -376,7 +376,7 @@ public class GView implements Observer {
 		int rightA = a[0];
 		int wrongA = a[1];
 		borderPane.removeAll();
-		question.setText("Du fick: "+rightA+" rï¿½tt av totalt "+(wrongA+rightA)+ " frï¿½gor");
+		question.setText("Du fick: "+rightA+" rätt av totalt "+(wrongA+rightA)+ " frågor");
 	}
 
 	public void disableButtons() {

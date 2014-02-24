@@ -38,13 +38,13 @@ public class GController {
 					startGame();
 					model.playGame(options);
 				}
-				else if(button.getText().equals("Egen Fr√•ga")) {
+				else if(button.getText().equals("Egen FrÂga")) {
 					view.makeQuestion();
 				}
-				else if(button.getText().equals("Inst√§llningar")) {
+				else if(button.getText().equals("Inst‰llningar")) {
 					view.options();
 				}
-				else if(button.getText().equals("Hj√§lp")) {
+				else if(button.getText().equals("Hj‰lp")) {
 					view.makeHelp();
 				}
 				else if(button.getText().equals("Avsluta")) {
