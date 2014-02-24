@@ -62,6 +62,8 @@ public class GView implements Observer {
 	private JButton cancelButtonQuestion = new JButton("Avbryt");
 	private JButton okButtonSetting = new JButton("Använd");
 	private JButton resetButtonSetting = new JButton("Återställ");
+	private JButton backToMenu = new JButton("Återgå till meny");
+	private JButton resultquit = new JButton("Avsluta");
 
 	private JButton okButtonHelp = new JButton("ok");
 	
@@ -130,7 +132,6 @@ public class GView implements Observer {
 		quit.setBackground(Color.white);
 		
 	}
-
 	public void makeQFrame() {
 
 		question = new JLabel("",JLabel.CENTER);								//Makes a new label with the question
@@ -164,7 +165,6 @@ public class GView implements Observer {
 			b.setBackground(Color.white);
 		}
 	}
-
 	public void askQuestion(SingleQuestion quest) {
 
 		for(JButton b: buttons)
@@ -222,13 +222,15 @@ public class GView implements Observer {
 		okButtonHelp.addActionListener(helpListener);
 		
 	}
-	
+	void addResultListener(ActionListener listenForResult) {
+		backToMenu.addActionListener(listenForResult);
+		resultquit.addActionListener(listenForResult);
+	}
 	public void resetFrame() {
 		contentPane.removeAll(); 											// Removes all the containers in the contentPane
 																			// to clear the window to get ready for the next question		
 		contentPane.repaint(); 												// Repaints the content
 	}
-
 
 	public void makeQuestion() {
 		
@@ -309,8 +311,6 @@ public class GView implements Observer {
 		helpWindow.setSize(dialog);	
 		helpWindow.setResizable(false);
 	}
-
-
 	public SingleQuestion submitFields() {
 		ArrayList<String> a = new ArrayList<String>();	
 		a.add(questionField.getText());
@@ -397,11 +397,13 @@ public class GView implements Observer {
 		spinner.setValue(5);
 	}
 
-	public void showResult(int [] a) {
+	public void showResultRestart(int [] a) {
 		int rightA = a[0];
 		int wrongA = a[1];
 		borderPane.removeAll();
 		question.setText("Du fick: "+rightA+" rätt av totalt "+(wrongA+rightA)+ " frågor");
+		borderPane.add(backToMenu);
+		borderPane.add(resultquit);
 	}
 
 	public void disableButtons() {
@@ -454,7 +456,7 @@ public class GView implements Observer {
 			setColor(ans);
 		}
 		else if(o instanceof GModel && arg instanceof int[]) {
-			showResult((int[]) arg);
+			showResultRestart((int[]) arg);
 		}
 
 		else if(o instanceof GModel && arg instanceof Boolean){
@@ -463,5 +465,4 @@ public class GView implements Observer {
 
 		}
 	}
-	
 }

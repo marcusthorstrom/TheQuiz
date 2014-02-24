@@ -2,7 +2,6 @@ package MVC_test;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
 
 import javax.swing.JButton;
 import javax.swing.Timer;
@@ -22,6 +21,7 @@ public class GController {
 		this.view.addSubmitListener(new SubmitListener());
 		this.view.addSettingsListener(new SettingsListener());
 		this.view.addHelpListener(new HelpListener());
+		this.view.addResultListener(new ResultListener());
 	}
 
 	public void startGame(){
@@ -103,7 +103,6 @@ public class GController {
 			}
 		}
 	}
-
 	class SettingsListener implements ActionListener {
 		@Override
 		public void actionPerformed(ActionEvent e) {
@@ -120,6 +119,22 @@ public class GController {
 					options = view.submitOptions(options);
 					options.resetValue();
 					view.closeSWindow();
+				}
+			}
+		}
+	}
+	class ResultListener implements ActionListener {
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			Object objekt = e.getSource();
+			if (objekt instanceof JButton) {
+				JButton b = (JButton)objekt;
+				if(b.getText().equals("Återgå till meny")){			
+					view.resetFrame();
+					view.makeMenu();								//Vill tillbaka till menyn men det går inte
+				}
+				else if(b.getText().equals("Avsluta")) {
+					view.closeWindow();
 				}
 			}
 		}
