@@ -28,7 +28,9 @@ import javax.swing.Timer;
 
 public class GView implements Observer {
 	private JFrame gameWindow;
-	private JDialog questionWindow;
+	private JDialog questionWindow = new JDialog(gameWindow,"Skapa Fråga");
+	private JDialog settingsWindow = new JDialog(gameWindow,"Inställningar");
+	
 	private ArrayList<String> answers;
 	private Container contentPane;
 	private JLabel question;
@@ -51,8 +53,7 @@ public class GView implements Observer {
 	private JButton cancelButtonQuestion = new JButton("Avbryt");
 	private JButton okButtonSetting = new JButton("Spara");
 	private JButton cancelButtonSetting = new JButton("Avbryt");
-
-	Timer timer = new Timer(2000, new ActionListener() {
+	private Timer timer = new Timer(2000, new ActionListener() {
 		public void actionPerformed(ActionEvent e) {
 			timer.stop();
 		}
@@ -69,7 +70,7 @@ public class GView implements Observer {
 		gameWindow.setVisible(true); // makes the window visible
 		gameWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // Closes the game on exit
 		makeQFrame();
-		settings();
+		//settings();
 		//makeQuestion();
 	}
 		public void makeQFrame() {
@@ -168,7 +169,7 @@ public class GView implements Observer {
 	
 	
 	public void makeQuestion() {
-		questionWindow = new JDialog(gameWindow,"Skapa Fråga");
+		
 		JPanel questionpanel = new JPanel();
 		JPanel answerApanel = new JPanel();
 		JPanel answerBpanel= new JPanel();
@@ -233,9 +234,14 @@ public class GView implements Observer {
 		SingleQuestion q = new SingleQuestion(a);
 		return q;
 	}
+	public void closeQWindow() {
+		questionWindow.dispose();
+	}
+	public void closeSWindow() {
+		settingsWindow.dispose();
+	}
 	
 	public void settings() {
-		JDialog settingsWindow = new JDialog(gameWindow,"Inställningar");
 		JPanel noQuestions = new JPanel();
 		JPanel sounds = new JPanel();
 		JPanel soundBar = new JPanel();

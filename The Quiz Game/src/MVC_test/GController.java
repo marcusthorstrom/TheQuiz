@@ -55,7 +55,7 @@ public class GController {
 					q.printQ();
 				}
 				else if(b.getText().equals("Avbryt")){
-					
+					view.closeQWindow();
 				}
 			}
 		
@@ -72,7 +72,7 @@ public class GController {
 					view.submitSettings();
 				}
 				else if(b.getText().equals("Avbryt")){
-					
+					view.closeSWindow();
 				}
 			}
 		
