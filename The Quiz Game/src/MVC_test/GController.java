@@ -21,12 +21,24 @@ public class GController {
 		this.view.addMenuListener(new MenuListener());
 		this.view.addSubmitListener(new SubmitListener());
 		this.view.addSettingsListener(new SettingsListener());
+		this.view.addHelpListener(new HelpListener());
 	}
 
 	public void startGame(){
 		this.view.addAnswerListener(new AnswerListener());
 	}
 
+	class HelpListener implements ActionListener {
+		public void actionPerformed(ActionEvent e) {
+			Object objekt = e.getSource();
+			if (objekt instanceof JButton) {
+				JButton button = (JButton)objekt;
+				if(button.getText().equals("ok")) {
+					view.closeHWindow();					
+				}
+			}
+		}
+	}
 	class MenuListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
 			Object objekt = e.getSource();
@@ -83,6 +95,7 @@ public class GController {
 				if(b.getText().equals("Ok")){
 					SingleQuestion q = view.submitFields();
 					q.printQ();
+					view.closeQWindow();
 				}
 				else if(b.getText().equals("Avbryt")){
 					view.closeQWindow();
@@ -100,6 +113,13 @@ public class GController {
 				if(b.getText().equals("Använd")){
 					options = view.submitOptions(options);
 					view.closeSWindow();
+					view.validateH();	
+				}
+				else if(b.getText().equals("Återställ")) {
+					view.resetOptions();
+					options = view.submitOptions(options);
+					options.resetValue();
+					view.closeSWindow();
 				}
 			}
 		}
@@ -116,5 +136,6 @@ public class GController {
 		}
 	}
 }
+
 
 

@@ -32,6 +32,13 @@ public class GView implements Observer {
 	private JDialog settingsWindow = new JDialog(gameWindow,"Inställningar");
 	private JDialog helpWindow = new JDialog(gameWindow,"Hjälp");
 
+	private JLabel l = new JLabel("Skriv in din fråga!");
+	private JLabel q = new JLabel("Frågan:     ");
+	private JLabel qa = new JLabel("Rätt svar:");
+	private JLabel qb = new JLabel("Svar b:    ");
+	private JLabel qc = new JLabel("Svar c:    ");
+	private JLabel qd = new JLabel("Svar d:    ");	
+	
 	private ArrayList<String> answers;
 	private ArrayList<JButton> buttons;
 	
@@ -54,6 +61,8 @@ public class GView implements Observer {
 	private JButton okButtonQuestion = new JButton("Ok");
 	private JButton cancelButtonQuestion = new JButton("Avbryt");
 	private JButton okButtonSetting = new JButton("Använd");
+	private JButton resetButtonSetting = new JButton("Återställ");
+
 	private JButton okButtonHelp = new JButton("ok");
 	
 	private String rightAnswer;
@@ -78,11 +87,14 @@ public class GView implements Observer {
 
 	public GView() {
 
-		gameWindow = new JFrame("The Quiz Game"); 									// New JFrame for containing the whole game
-		gameWindow.setSize(450, 300); 												// Sets the size for the window
-		gameWindow.setResizable(false); 											// makes the window resizable
-		gameWindow.setVisible(true); 												// makes the window visible
-		gameWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); 					// Closes the game on exit
+		gameWindow = new JFrame("The Quiz Game"); 						// New JFrame for containing the whole game
+		gameWindow.setSize(450, 300); 									// Sets the size for the window
+		gameWindow.setResizable(false); 								// makes the window resizable
+		gameWindow.setVisible(true); 									// makes the window visible
+		gameWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); 		// Closes the game on exit
+		questionWindow.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+		settingsWindow.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+		helpWindow.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 		contentPane = gameWindow.getContentPane();
 		makeMenu();
 		//makeQFrame();
@@ -197,12 +209,18 @@ public class GView implements Observer {
 	}
 	void addSettingsListener(ActionListener listenForSetting) {
 		okButtonSetting.addActionListener(listenForSetting);
+		resetButtonSetting.addActionListener(listenForSetting);
+
 	}
 	void addTimerListener(ActionListener listenForTimer) {
 		timer.addActionListener(listenForTimer);
 	}
 	void addStartListener(ActionListener listenForStart) {
 		start.addActionListener(listenForStart);
+	}
+	public void addHelpListener(ActionListener helpListener) {
+		okButtonHelp.addActionListener(helpListener);
+		
 	}
 	
 	public void resetFrame() {
@@ -213,7 +231,7 @@ public class GView implements Observer {
 
 
 	public void makeQuestion() {
-
+		
 		JPanel questionpanel = new JPanel();
 		JPanel answerApanel = new JPanel();
 		JPanel answerBpanel= new JPanel();
@@ -226,12 +244,7 @@ public class GView implements Observer {
 		all.setLayout(new BoxLayout(all, BoxLayout.Y_AXIS));
 
 		//The Components
-		JLabel l = new JLabel("Skriv in din fråga!");
-		JLabel q = new JLabel("Frågan:     ");
-		JLabel qa = new JLabel("Rätt svar:");
-		JLabel qb = new JLabel("Svar b:    ");
-		JLabel qc = new JLabel("Svar c:    ");
-		JLabel qd = new JLabel("Svar d:    ");	
+		//Are now in the constructor to prohibit multiple creations
 		//The Components
 
 		all.add(l);
@@ -323,8 +336,13 @@ public class GView implements Observer {
 	public void closeSWindow() {
 		settingsWindow.dispose();
 	}
-	
+	public void closeHWindow() {
+		helpWindow.dispose();
+	}
+	public void validateH () {
 
+	}
+	
 	public void options() {
 		
 		JPanel noQuestions = new JPanel();
@@ -351,15 +369,20 @@ public class GView implements Observer {
 		noQuestions.add(spinner);
 		
 		sounds.setLayout(new FlowLayout());
-		sounds.add(new JLabel("Ställ in ljudnivån:"));
+
+		sounds.add(new JLabel("Ställ in ljudnivå:"));
+
 		soundBar.add(slider);
 		soundBar.setLayout(new FlowLayout());
 		
+		buttonsPanel.add(resetButtonSetting);
 		buttonsPanel.add(okButtonSetting);
 
 		settingsWindow.setVisible(true);
 		settingsWindow.setSize(dialog);
 		settingsWindow.setResizable(false);
+		settingsWindow.validate();
+		settingsWindow.repaint();
 	}
 
 	public Options submitOptions(Options option) {
@@ -367,6 +390,11 @@ public class GView implements Observer {
 		 option.setVolume((int)slider.getValue());
 		return option;
 
+	}
+	
+	public void resetOptions() {
+		slider.setValue(50);
+		spinner.setValue(5);
 	}
 
 	public void showResult(int [] a) {
@@ -435,4 +463,5 @@ public class GView implements Observer {
 
 		}
 	}
+	
 }
