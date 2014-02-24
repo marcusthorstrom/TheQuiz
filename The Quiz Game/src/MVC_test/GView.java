@@ -79,11 +79,11 @@ public class GView implements Observer {
 
 	public GView() {
 
-		gameWindow = new JFrame("The Quiz Game"); 						// New JFrame for containing the whole game
-		gameWindow.setSize(450, 300); 									// Sets the size for the window
-		gameWindow.setResizable(false); 								// makes the window resizable
-		gameWindow.setVisible(true); 									// makes the window visible
-		gameWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); 		// Closes the game on exit
+		gameWindow = new JFrame("The Quiz Game"); 									// New JFrame for containing the whole game
+		gameWindow.setSize(450, 300); 												// Sets the size for the window
+		gameWindow.setResizable(false); 											// makes the window resizable
+		gameWindow.setVisible(true); 												// makes the window visible
+		gameWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); 					// Closes the game on exit
 		contentPane = gameWindow.getContentPane();
 		makeMenu();
 		//makeQFrame();
@@ -228,7 +228,7 @@ public class GView implements Observer {
 		all.setLayout(new BoxLayout(all, BoxLayout.Y_AXIS));
 
 		//The Components
-		JLabel l = new JLabel("Skriv in din frï¿½ga!");
+		JLabel l = new JLabel("Skriv in din fråga!");
 		JLabel q = new JLabel("Frågan:     ");
 		JLabel qa = new JLabel("Rätt svar:");
 		JLabel qb = new JLabel("Svar b:    ");
