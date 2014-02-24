@@ -53,8 +53,7 @@ public class GView implements Observer {
 	private JButton quit;
 	private JButton okButtonQuestion = new JButton("Ok");
 	private JButton cancelButtonQuestion = new JButton("Avbryt");
-	private JButton okButtonSetting = new JButton("Spara");
-	private JButton cancelButtonSetting = new JButton("Avbryt");
+	private JButton okButtonSetting = new JButton("Använd");
 	private JButton okButtonHelp = new JButton("ok");
 	
 	private String rightAnswer;
@@ -198,7 +197,6 @@ public class GView implements Observer {
 	}
 	void addSettingsListener(ActionListener listenForSetting) {
 		okButtonSetting.addActionListener(listenForSetting);
-		cancelButtonSetting.addActionListener(listenForSetting);
 	}
 		void addTimerListener(ActionListener listenForTimer) {
 		timer.addActionListener(listenForTimer);
@@ -357,7 +355,6 @@ public class GView implements Observer {
 		soundBar.add(slider);
 		soundBar.setLayout(new FlowLayout());
 		
-		buttonsPanel.add(cancelButtonSetting);
 		buttonsPanel.add(okButtonSetting);
 
 		settingsWindow.setVisible(true);
