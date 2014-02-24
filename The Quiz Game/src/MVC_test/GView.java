@@ -61,15 +61,15 @@ public class GView implements Observer {
 			timer.stop();
 		}
 	});
+
 	private JSpinner spinner = new JSpinner(new SpinnerNumberModel(5,1,10,1));
 	private JSlider slider = new JSlider(0,100,50);
 	private JPanel gridPane;
 	private JButton start;
 	private JButton create;
 	private JButton options;
-	private Component help;
+	private JButton help;
 	private JButton quit;
-
 	public GView() {
 
 
@@ -99,18 +99,22 @@ public class GView implements Observer {
 		gridPane.add(create = new JButton("Egen Fråga"));
 		create.setPreferredSize(d);
 		create.setBackground(Color.white);
+		
 
 		gridPane.add(options = new JButton("Inställningar"));
 		options.setPreferredSize(d);
 		options.setBackground(Color.white);
+		
 
 		gridPane.add(help = new JButton("Hjälp"));
 		help.setPreferredSize(d);
 		help.setBackground(Color.white);
-
+		
+		
 		gridPane.add(quit = new JButton("Avsluta"));
 		quit.setPreferredSize(d);
 		quit.setBackground(Color.white);
+		
 	}
 
 	public void makeQFrame() {
@@ -130,14 +134,15 @@ public class GView implements Observer {
 
 		buttons = new ArrayList<JButton>();
 
-		borderPane.add(buttonA = new JButton("")); 								// Adding the button to the
-		// pane
-		borderPane.add(buttonB = new JButton(""));								// Adding the button to the
-		// pane
-		borderPane.add(buttonC = new JButton("")); 								// Adding the button to the
-		// pane
-		borderPane.add(buttonD = new JButton("")); 								// Adding the button to the
-		// pane
+		borderPane.add(buttonA = new JButton("")); // Adding the button to the pane
+		
+		borderPane.add(buttonB = new JButton("")); // Adding the button to the pane
+		
+		borderPane.add(buttonC = new JButton("")); // Adding the button to the pane
+		
+		borderPane.add(buttonD = new JButton("")); // Adding the button to the pane
+		 
+
 		buttons.add(buttonA);
 		buttons.add(buttonB);
 		buttons.add(buttonC);
@@ -178,26 +183,34 @@ public class GView implements Observer {
 			sound.playSound(quest.getSound());
 		}
 	}
+	void addMenuListener(ActionListener listenForMenu) {
+		start.addActionListener(listenForMenu);
+		create.addActionListener(listenForMenu);
+		options.addActionListener(listenForMenu);
+		help.addActionListener(listenForMenu);
+		quit.addActionListener(listenForMenu);
+	}
 
-	void addAnswerListner(ActionListener listenForPressedAnswer) {
+	void addAnswerListener(ActionListener listenForPressedAnswer) {
 		for (JButton b : buttons) {
 			b.addActionListener(listenForPressedAnswer);
 		}
 	}
-	void addSubmitListner(ActionListener listenForSubmission) {
+	void addSubmitListener(ActionListener listenForSubmission) {
 		okButtonQuestion.addActionListener(listenForSubmission);
 		cancelButtonQuestion.addActionListener(listenForSubmission);
 	}
-	void addSettingsListner(ActionListener listenForSetting) {
+	void addSettingsListener(ActionListener listenForSetting) {
 		okButtonSetting.addActionListener(listenForSetting);
 		cancelButtonSetting.addActionListener(listenForSetting);
 	}
-	void addTimerListner(ActionListener listenForTimer) {
+		void addTimerListener(ActionListener listenForTimer) {
 		timer.addActionListener(listenForTimer);
 	}
-	void addStartListner(ActionListener listenForStart) {
+	void addStartListener(ActionListener listenForStart) {
 		start.addActionListener(listenForStart);
 	}
+	
 	public void resetFrame() {
 		contentPane.removeAll(); 											// Removes all the containers in the contenPane !!FUCKAR UPP ALLT!!
 		// to clear the window to get ready for the
@@ -293,14 +306,18 @@ public class GView implements Observer {
 		SingleQuestion q = new SingleQuestion(a);
 		return q;
 	}
+	public void closeWindow() {
+		gameWindow.dispose();
+	}
 	public void closeQWindow() {
 		questionWindow.dispose();
 	}
 	public void closeSWindow() {
 		settingsWindow.dispose();
 	}
+	
 
-	public void settings() {
+	public void options() {
 		JPanel noQuestions = new JPanel();
 		JPanel sounds = new JPanel();
 		JPanel soundBar = new JPanel();
