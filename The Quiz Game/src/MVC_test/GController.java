@@ -39,12 +39,11 @@ public class GController {
 					view.makeQFrame();
 					startGame();
 					model.playGame();
-					
 				}
 			}
 		}
-		
 	}
+	
 	
 	class AnswerListener implements ActionListener {
 		@Override
@@ -81,7 +80,6 @@ public class GController {
 					view.closeQWindow();
 				}
 			}
-		
 		}
 	}
 	
@@ -98,7 +96,6 @@ public class GController {
 					view.closeSWindow();
 				}
 			}
-		
 		}
 	}
 	
@@ -109,10 +106,8 @@ public class GController {
 			if (objekt instanceof Timer) {
 				Timer timer = (Timer) objekt;
 				timer.stop();
-				model.playGame();			//H�mtar n�sta fr�ga.
+				model.playGame();							//H�mtar n�sta fr�ga.
 			}
 		}
-
 	}
-
 }
