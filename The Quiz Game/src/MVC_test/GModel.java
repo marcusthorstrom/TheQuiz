@@ -9,6 +9,7 @@ import javax.swing.text.View;
 
 public class GModel extends Observable {
 
+	private Options options;
 	private String rightAnswer;
 	private String chosenAnswer;
 	private boolean isReady;
@@ -16,19 +17,19 @@ public class GModel extends Observable {
 	private int rightCount = 0;
 	private int wrongCount = 0;
 	private int qNumber = 0;
-	private static final int GAME_ROUNDS = 5;
 	private ArrayList<SingleQuestion> qu;
 	private boolean isCorrect = false;
+	private Questions q;
 
 	
 	public GModel() {
-		Questions q = new Questions();
-		qu = q.getQuestions(GAME_ROUNDS);
+		q = new Questions();
+		
 
 	}
 
 	public void changeActiveQuestion() {
-		if (qNumber >= GAME_ROUNDS) {
+		if (qNumber >= options.getGameRounds()) {
 			int[] a = {rightCount, wrongCount};
 			setChanged();
 			notifyObservers(a);
@@ -43,7 +44,9 @@ public class GModel extends Observable {
 		}
 	}
 
-	public void playGame() {
+	public void playGame(Options options) {
+		this.options = options;
+		qu = q.getQuestions(options.getGameRounds());
 
 		changeActiveQuestion();
 		qNumber++;

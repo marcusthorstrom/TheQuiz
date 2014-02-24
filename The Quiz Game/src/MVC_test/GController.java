@@ -11,11 +11,12 @@ public class GController {
 
 	private GView view;
 	private GModel model;
+	private Options options = new Options();
 
 	public GController(GView view, GModel model) {
 		this.view = view;
 		this.model = model;
-
+		
 		this.view.addTimerListener(new TimerListener());
 		this.view.addMenuListener(new MenuListener());
 		this.view.addSubmitListener(new SubmitListener());
@@ -35,7 +36,7 @@ public class GController {
 					view.resetFrame();
 					view.makeQFrame();
 					startGame();
-					model.playGame();
+					model.playGame(options);
 				}
 				else if(button.getText().equals("Egen Fråga")) {
 					view.makeQuestion();
@@ -97,7 +98,7 @@ public class GController {
 			if (objekt instanceof JButton) {
 				JButton b = (JButton)objekt;
 				if(b.getText().equals("Spara")){
-					view.submitSettings();
+					options = view.submitOptions(options);
 				}
 				else if(b.getText().equals("Avbryt")){
 					view.closeSWindow();
@@ -113,7 +114,7 @@ public class GController {
 			if (objekt instanceof Timer) {
 				Timer timer = (Timer) objekt;
 				timer.stop();
-				model.playGame();							//H�mtar n�sta fr�ga.
+				model.playGame(options);							//H�mtar n�sta fr�ga.
 			}
 		}
 	}

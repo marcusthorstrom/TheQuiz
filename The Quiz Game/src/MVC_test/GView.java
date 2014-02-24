@@ -2,7 +2,6 @@ package MVC_test;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.Component;
 import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
@@ -31,47 +30,54 @@ public class GView implements Observer {
 	private JFrame gameWindow;
 	private JDialog questionWindow = new JDialog(gameWindow,"Skapa Frï¿½ga");
 	private JDialog settingsWindow = new JDialog(gameWindow,"Instï¿½llningar");
-	private JDialog helpWindow = new JDialog(gameWindow,"Hjälp");
+	private JDialog helpWindow = new JDialog(gameWindow,"Hjï¿½lp");
 
 	private ArrayList<String> answers;
+	private ArrayList<JButton> buttons;
+	
 	private Container contentPane;
-	private JLabel question;
 	private Container borderPane;
+	
+	private JLabel question;
+	
+	private JPanel gridPane;
+	
 	private JButton buttonA;
 	private JButton buttonB;
 	private JButton buttonC;
 	private JButton buttonD;
-	private ArrayList<JButton> buttons;
+	private JButton start;
+	private JButton create;
+	private JButton options;
+	private JButton help;
+	private JButton quit;
+	private JButton okButtonQuestion = new JButton("Ok");
+	private JButton cancelButtonQuestion = new JButton("Avbryt");
+	private JButton okButtonSetting = new JButton("Spara");
+	private JButton cancelButtonSetting = new JButton("Avbryt");
+	private JButton okButtonHelp = new JButton("ok");
+	
 	private String rightAnswer;
 	private Dimension dialog = new Dimension(300,250);
 	private Sounds sound;
+	
 	private int qLength = 15;
 	private JTextField questionField = new JTextField(qLength);
 	private JTextField answerA = new JTextField(qLength);
 	private JTextField answerB = new JTextField(qLength);
 	private JTextField answerC = new JTextField(qLength);
 	private JTextField answerD = new JTextField(qLength);
-	private JButton okButtonQuestion = new JButton("Ok");
-	private JButton cancelButtonQuestion = new JButton("Avbryt");
-	private JButton okButtonSetting = new JButton("Spara");
-	private JButton cancelButtonSetting = new JButton("Avbryt");
-	private JButton okButtonHelp = new JButton("ok");
+	
+	private JSpinner spinner = new JSpinner(new SpinnerNumberModel(5,1,10,1));
+	private JSlider slider = new JSlider(0,100,50);
+	
 	private Timer timer = new Timer(2000, new ActionListener() {
 		public void actionPerformed(ActionEvent e) {
 			timer.stop();
 		}
 	});
 
-	private JSpinner spinner = new JSpinner(new SpinnerNumberModel(5,1,10,1));
-	private JSlider slider = new JSlider(0,100,50);
-	private JPanel gridPane;
-	private JButton start;
-	private JButton create;
-	private JButton options;
-	private JButton help;
-	private JButton quit;
 	public GView() {
-
 
 		gameWindow = new JFrame("The Quiz Game"); 						// New JFrame for containing the whole game
 		gameWindow.setSize(450, 300); 									// Sets the size for the window
@@ -98,18 +104,15 @@ public class GView implements Observer {
 
 		gridPane.add(create = new JButton("Egen FrÃ¥ga"));
 		create.setPreferredSize(d);
-		create.setBackground(Color.white);
-		
+		create.setBackground(Color.white);	
 
 		gridPane.add(options = new JButton("InstÃ¤llningar"));
 		options.setPreferredSize(d);
-		options.setBackground(Color.white);
-		
+		options.setBackground(Color.white);	
 
 		gridPane.add(help = new JButton("HjÃ¤lp"));
 		help.setPreferredSize(d);
 		help.setBackground(Color.white);
-		
 		
 		gridPane.add(quit = new JButton("Avsluta"));
 		quit.setPreferredSize(d);
@@ -123,24 +126,18 @@ public class GView implements Observer {
 		question.setFont(new Font("Arial", Font.BOLD, 20));
 
 		contentPane.setLayout(new BorderLayout()); 								// adds a container, this one for storing the buttons in the bottom
-
 		contentPane.setBackground(Color.WHITE); 								// Sets the background of the pane
-
 		contentPane.add(question, BorderLayout.CENTER); 						// Adds the question to the top of the layout
-
 		contentPane.add(borderPane = new Container(), BorderLayout.SOUTH);		// adds the button layout to the bottom the layout
 
 		borderPane.setLayout(new GridLayout(2, 2, 5, 5)); 						// Sets the layout of the buttons to a grid 2x2
 
 		buttons = new ArrayList<JButton>();
 
-		borderPane.add(buttonA = new JButton("")); // Adding the button to the pane
-		
-		borderPane.add(buttonB = new JButton("")); // Adding the button to the pane
-		
-		borderPane.add(buttonC = new JButton("")); // Adding the button to the pane
-		
-		borderPane.add(buttonD = new JButton("")); // Adding the button to the pane
+		borderPane.add(buttonA = new JButton("")); // Adding the buttons to the pane
+		borderPane.add(buttonB = new JButton("")); 
+		borderPane.add(buttonC = new JButton("")); 
+		borderPane.add(buttonD = new JButton("")); 
 		 
 
 		buttons.add(buttonA);
@@ -157,19 +154,19 @@ public class GView implements Observer {
 		}
 	}
 
-
-
 	public void askQuestion(SingleQuestion quest) {
 
 		for(JButton b: buttons)
 			b.setBackground(Color.white);
+		
 		sound = new Sounds();
+		
 		answers = new ArrayList<String>(); 										// Creates an arrayList to store the
-		// answers in
 		answers.add(quest.getCorrectAnswer()); 									// Adds the answer A to the List
 		answers.add(quest.getAnswer2());
 		answers.add(quest.getAnswer3());
 		answers.add(quest.getAnswer4());
+		
 		rightAnswer = answers.get(0);
 		Collections.shuffle(answers); 											// Shuffles the list to make them appear in different order.
 		question.setText("<html><center>"+quest.getQuestion()+"</center></html>");
@@ -190,7 +187,6 @@ public class GView implements Observer {
 		help.addActionListener(listenForMenu);
 		quit.addActionListener(listenForMenu);
 	}
-
 	void addAnswerListener(ActionListener listenForPressedAnswer) {
 		for (JButton b : buttons) {
 			b.addActionListener(listenForPressedAnswer);
@@ -212,9 +208,8 @@ public class GView implements Observer {
 	}
 	
 	public void resetFrame() {
-		contentPane.removeAll(); 											// Removes all the containers in the contenPane !!FUCKAR UPP ALLT!!
-		// to clear the window to get ready for the
-		// next question		
+		contentPane.removeAll(); 											// Removes all the containers in the contentPane
+																			// to clear the window to get ready for the next question		
 		contentPane.repaint(); 												// Repaints the content
 	}
 
@@ -282,9 +277,6 @@ public class GView implements Observer {
 		textpanel.setLayout(new BorderLayout());
 		header.setLayout(new BorderLayout());
 		buttonpanel.setLayout(new BorderLayout());
-
-		
-		
 		
 		//The Components
 		JLabel headertext = new JLabel("HJÄLP", BoxLayout.X_AXIS);
@@ -336,29 +328,35 @@ public class GView implements Observer {
 	
 
 	public void options() {
+		
 		JPanel noQuestions = new JPanel();
 		JPanel sounds = new JPanel();
 		JPanel soundBar = new JPanel();
 		JPanel header = new JPanel();
 		JPanel all = new JPanel();
 		JPanel buttonsPanel = new JPanel();
+		
 		all.setLayout(new GridLayout(5,1,10,10));
 		all.add(header);
 		all.add(noQuestions);
 		all.add(sounds);
 		all.add(soundBar);
 		all.add(buttonsPanel);
+		
 		JLabel installningar = new JLabel("Instï¿½llningar");
 		installningar.setFont(new Font("Verdana", Font.CENTER_BASELINE, 25));
 		header.add(installningar);
 		settingsWindow.add(all);
+		
 		noQuestions.setLayout(new FlowLayout());
 		noQuestions.add(new JLabel("Antal frï¿½gor: "));
 		noQuestions.add(spinner);
+		
 		sounds.setLayout(new FlowLayout());
 		sounds.add(new JLabel("Stï¿½ll in ljudnivï¿½:"));
 		soundBar.add(slider);
 		soundBar.setLayout(new FlowLayout());
+		
 		buttonsPanel.add(cancelButtonSetting);
 		buttonsPanel.add(okButtonSetting);
 
@@ -367,11 +365,10 @@ public class GView implements Observer {
 		settingsWindow.setResizable(false);
 	}
 
-	public int[] submitSettings() {
-		int a[] = new int[2];
-		a[0] = (Integer)spinner.getValue();
-		a[1] = (int)slider.getValue();
-		return a;
+	public Options submitOptions(Options option) {
+		 option.setGameRounds((int)spinner.getValue());
+		 option.setVolume((int)slider.getValue());
+		return option;
 
 	}
 
