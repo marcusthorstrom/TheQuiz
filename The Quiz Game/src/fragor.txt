@@ -183,3 +183,16 @@ En text
 Ett tal
 Ett flyttal
 Ett program
+
+På vilket språk sägs frasen: "$$$$....$$$$...." ?
+Japanska
+Engelska
+Kinesiska
+Mongolska
+dolla.wav
+
+Från vilken tv-serie kommer introt?
+Breaking Bad
+Two and a Half Men
+Star Trek
+House of Cards

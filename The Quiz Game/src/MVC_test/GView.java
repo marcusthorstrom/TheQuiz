@@ -198,7 +198,7 @@ public class GView implements Observer {
 	void addSettingsListener(ActionListener listenForSetting) {
 		okButtonSetting.addActionListener(listenForSetting);
 	}
-		void addTimerListener(ActionListener listenForTimer) {
+	void addTimerListener(ActionListener listenForTimer) {
 		timer.addActionListener(listenForTimer);
 	}
 	void addStartListener(ActionListener listenForStart) {

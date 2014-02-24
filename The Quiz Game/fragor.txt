@@ -184,26 +184,15 @@ Ett tal
 Ett flyttal
 Ett program
 
-Hur många spelare finns det i varje lag på en fotbollsmatch?
-11
-10
-7
-9
+På vilket språk sägs frasen: "$$$$....$$$$...." ?
+Japanska
+Engelska
+Kinesiska
+Mongolska
+dolla.wav
 
-Vad är världsrekordet på 100m?
-9.58 sekunder
-9.80 sekunder
-8.99 sekunder
-9.45 sekunder
-
-Vilket land har varit med i flest antal fotbolls VM?
-Brasilien
-Argentina
-Italien
-Spanien
-
-Vilket lag i Allsvenskan har vunnit flest SM-guld?
-Malmö FF
-AIK
-IFK Göteborg
-IFK Norrköping
+Från vilken tv-serie kommer introt?
+Breaking Bad
+Two and a Half Men
+Star Trek
+House of Cards

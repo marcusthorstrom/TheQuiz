@@ -16,7 +16,7 @@ public class GController {
 	public GController(GView view, GModel model) {
 		this.view = view;
 		this.model = model;
-		
+
 		this.view.addTimerListener(new TimerListener());
 		this.view.addMenuListener(new MenuListener());
 		this.view.addSubmitListener(new SubmitListener());
@@ -97,16 +97,13 @@ public class GController {
 			Object objekt = e.getSource();
 			if (objekt instanceof JButton) {
 				JButton b = (JButton)objekt;
-				if(b.getText().equals("Spara")){
+				if(b.getText().equals("Använd")){
 					options = view.submitOptions(options);
-				}
-				else if(b.getText().equals("Avbryt")){
 					view.closeSWindow();
 				}
 			}
 		}
 	}
-
 	class TimerListener implements ActionListener {
 		@Override
 		public void actionPerformed(ActionEvent e) {
@@ -114,7 +111,7 @@ public class GController {
 			if (objekt instanceof Timer) {
 				Timer timer = (Timer) objekt;
 				timer.stop();
-				model.playGame(options);							//Hï¿½mtar nï¿½sta frï¿½ga.
+				model.playGame(options);							//Hämtar nästa fråga.
 			}
 		}
 	}
