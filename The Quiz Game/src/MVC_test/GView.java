@@ -28,10 +28,17 @@ import javax.swing.Timer;
 
 public class GView implements Observer {
 	private JFrame gameWindow;
-	private JDialog questionWindow = new JDialog(gameWindow,"Skapa Frï¿½ga");
-	private JDialog settingsWindow = new JDialog(gameWindow,"Instï¿½llningar");
-	private JDialog helpWindow = new JDialog(gameWindow,"Hjï¿½lp");
+	private JDialog questionWindow = new JDialog(gameWindow,"Skapa Fråga");
+	private JDialog settingsWindow = new JDialog(gameWindow,"Inställningar");
+	private JDialog helpWindow = new JDialog(gameWindow,"Hjälp");
 
+	private JLabel l = new JLabel("Skriv in din fråga!");
+	private JLabel q = new JLabel("Frågan:     ");
+	private JLabel qa = new JLabel("Rätt svar:");
+	private JLabel qb = new JLabel("Svar b:    ");
+	private JLabel qc = new JLabel("Svar c:    ");
+	private JLabel qd = new JLabel("Svar d:    ");	
+	
 	private ArrayList<String> answers;
 	private ArrayList<JButton> buttons;
 	
@@ -55,6 +62,7 @@ public class GView implements Observer {
 	private JButton cancelButtonQuestion = new JButton("Avbryt");
 	private JButton okButtonSetting = new JButton("Spara");
 	private JButton cancelButtonSetting = new JButton("Avbryt");
+	private JButton resetButtonSetting = new JButton("Återställ");
 	private JButton okButtonHelp = new JButton("ok");
 	
 	private String rightAnswer;
@@ -84,6 +92,9 @@ public class GView implements Observer {
 		gameWindow.setResizable(false); 								// makes the window resizable
 		gameWindow.setVisible(true); 									// makes the window visible
 		gameWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); 		// Closes the game on exit
+		questionWindow.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+		settingsWindow.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+		helpWindow.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 		contentPane = gameWindow.getContentPane();
 		makeMenu();
 		//makeQFrame();
@@ -102,15 +113,15 @@ public class GView implements Observer {
 		start.setPreferredSize(d);
 		start.setBackground(Color.white);
 
-		gridPane.add(create = new JButton("Egen FrÃ¥ga"));
+		gridPane.add(create = new JButton("Egen Fråga"));
 		create.setPreferredSize(d);
 		create.setBackground(Color.white);	
 
-		gridPane.add(options = new JButton("InstÃ¤llningar"));
+		gridPane.add(options = new JButton("Inställningar"));
 		options.setPreferredSize(d);
 		options.setBackground(Color.white);	
 
-		gridPane.add(help = new JButton("HjÃ¤lp"));
+		gridPane.add(help = new JButton("Hjälp"));
 		help.setPreferredSize(d);
 		help.setBackground(Color.white);
 		
@@ -199,12 +210,17 @@ public class GView implements Observer {
 	void addSettingsListener(ActionListener listenForSetting) {
 		okButtonSetting.addActionListener(listenForSetting);
 		cancelButtonSetting.addActionListener(listenForSetting);
+		resetButtonSetting.addActionListener(listenForSetting);
 	}
 		void addTimerListener(ActionListener listenForTimer) {
 		timer.addActionListener(listenForTimer);
 	}
 	void addStartListener(ActionListener listenForStart) {
 		start.addActionListener(listenForStart);
+	}
+	public void addHelpListener(ActionListener helpListener) {
+		okButtonHelp.addActionListener(helpListener);
+		
 	}
 	
 	public void resetFrame() {
@@ -215,7 +231,7 @@ public class GView implements Observer {
 
 
 	public void makeQuestion() {
-
+		
 		JPanel questionpanel = new JPanel();
 		JPanel answerApanel = new JPanel();
 		JPanel answerBpanel= new JPanel();
@@ -228,12 +244,7 @@ public class GView implements Observer {
 		all.setLayout(new BoxLayout(all, BoxLayout.Y_AXIS));
 
 		//The Components
-		JLabel l = new JLabel("Skriv in din frï¿½ga!");
-		JLabel q = new JLabel("Frï¿½gan:     ");
-		JLabel qa = new JLabel("Rï¿½tt svar:");
-		JLabel qb = new JLabel("Svar b:    ");
-		JLabel qc = new JLabel("Svar c:    ");
-		JLabel qd = new JLabel("Svar d:    ");	
+		//Are now in the constructor to prohibit multiple creations
 		//The Components
 
 		all.add(l);
@@ -309,7 +320,7 @@ public class GView implements Observer {
 		a.add(answerD.getText());
 		for(int i = 0; i < a.size(); i++) {
 			if(a.get(i).isEmpty()) {
-				System.out.println("Du mï¿½ste fylla i alla fï¿½lt");
+				System.out.println("Du måste fylla i alla fält");
 				return null;
 			}	
 		}
@@ -325,8 +336,13 @@ public class GView implements Observer {
 	public void closeSWindow() {
 		settingsWindow.dispose();
 	}
-	
+	public void closeHWindow() {
+		helpWindow.dispose();
+	}
+	public void validateH () {
 
+	}
+	
 	public void options() {
 		
 		JPanel noQuestions = new JPanel();
@@ -343,26 +359,29 @@ public class GView implements Observer {
 		all.add(soundBar);
 		all.add(buttonsPanel);
 		
-		JLabel installningar = new JLabel("Instï¿½llningar");
+		JLabel installningar = new JLabel("Inställningar");
 		installningar.setFont(new Font("Verdana", Font.CENTER_BASELINE, 25));
 		header.add(installningar);
 		settingsWindow.add(all);
 		
 		noQuestions.setLayout(new FlowLayout());
-		noQuestions.add(new JLabel("Antal frï¿½gor: "));
+		noQuestions.add(new JLabel("Antal frågor: "));
 		noQuestions.add(spinner);
 		
 		sounds.setLayout(new FlowLayout());
-		sounds.add(new JLabel("Stï¿½ll in ljudnivï¿½:"));
+		sounds.add(new JLabel("Ställ in ljudnivå:"));
 		soundBar.add(slider);
 		soundBar.setLayout(new FlowLayout());
 		
 		buttonsPanel.add(cancelButtonSetting);
+		buttonsPanel.add(resetButtonSetting);
 		buttonsPanel.add(okButtonSetting);
 
 		settingsWindow.setVisible(true);
 		settingsWindow.setSize(dialog);
 		settingsWindow.setResizable(false);
+		settingsWindow.validate();
+		settingsWindow.repaint();
 	}
 
 	public Options submitOptions(Options option) {
@@ -371,12 +390,17 @@ public class GView implements Observer {
 		return option;
 
 	}
+	
+	public void resetOptions() {
+		slider.setValue(50);
+		spinner.setValue(5);
+	}
 
 	public void showResult(int [] a) {
 		int rightA = a[0];
 		int wrongA = a[1];
 		borderPane.removeAll();
-		question.setText("Du fick: "+rightA+" rï¿½tt av totalt "+(wrongA+rightA)+ " frï¿½gor");
+		question.setText("Du fick: "+rightA+" rätt av totalt "+(wrongA+rightA)+ " frågor");
 	}
 
 	public void disableButtons() {
@@ -438,4 +462,5 @@ public class GView implements Observer {
 
 		}
 	}
+	
 }

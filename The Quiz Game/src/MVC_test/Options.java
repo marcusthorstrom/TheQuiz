@@ -23,4 +23,8 @@ final public class Options {
 	public void setGameRounds(int value) {
 		gamerounds = value;
 	}
+	public void resetValue() {
+		volume = 50;
+		gamerounds = 5;
+	}
 }

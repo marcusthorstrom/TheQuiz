@@ -16,17 +16,29 @@ public class GController {
 	public GController(GView view, GModel model) {
 		this.view = view;
 		this.model = model;
-		
+
 		this.view.addTimerListener(new TimerListener());
 		this.view.addMenuListener(new MenuListener());
 		this.view.addSubmitListener(new SubmitListener());
 		this.view.addSettingsListener(new SettingsListener());
+		this.view.addHelpListener(new HelpListener());
 	}
 
 	public void startGame(){
 		this.view.addAnswerListener(new AnswerListener());
 	}
 
+	class HelpListener implements ActionListener {
+		public void actionPerformed(ActionEvent e) {
+			Object objekt = e.getSource();
+			if (objekt instanceof JButton) {
+				JButton button = (JButton)objekt;
+				if(button.getText().equals("ok")) {
+					view.closeHWindow();					
+				}
+			}
+		}
+	}
 	class MenuListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
 			Object objekt = e.getSource();
@@ -38,13 +50,13 @@ public class GController {
 					startGame();
 					model.playGame(options);
 				}
-				else if(button.getText().equals("Egen Fr√•ga")) {
+				else if(button.getText().equals("Egen FrÂga")) {
 					view.makeQuestion();
 				}
-				else if(button.getText().equals("Inst√§llningar")) {
+				else if(button.getText().equals("Inst‰llningar")) {
 					view.options();
 				}
-				else if(button.getText().equals("Hj√§lp")) {
+				else if(button.getText().equals("Hj‰lp")) {
 					view.makeHelp();
 				}
 				else if(button.getText().equals("Avsluta")) {
@@ -83,6 +95,7 @@ public class GController {
 				if(b.getText().equals("Ok")){
 					SingleQuestion q = view.submitFields();
 					q.printQ();
+					view.closeQWindow();
 				}
 				else if(b.getText().equals("Avbryt")){
 					view.closeQWindow();
@@ -99,8 +112,18 @@ public class GController {
 				JButton b = (JButton)objekt;
 				if(b.getText().equals("Spara")){
 					options = view.submitOptions(options);
+					view.closeSWindow();
+					view.validateH();
+					
 				}
 				else if(b.getText().equals("Avbryt")){
+					view.closeSWindow();
+					view.validateH();
+				}
+				else if(b.getText().equals("≈terst‰ll")) {
+					view.resetOptions();
+					options = view.submitOptions(options);
+					options.resetValue();
 					view.closeSWindow();
 				}
 			}
@@ -119,5 +142,6 @@ public class GController {
 		}
 	}
 }
+
 
 
