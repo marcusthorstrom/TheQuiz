@@ -271,22 +271,40 @@ public class GView implements Observer {
 	}
 
 	public void makeHelp(){
+		JPanel header = new JPanel();
 		JPanel textpanel = new JPanel();
-		questionWindow.setLayout(new FlowLayout());
-		questionWindow.add(textpanel);
-		textpanel.setLayout(new BoxLayout(textpanel, BoxLayout.Y_AXIS));
+		JPanel buttonpanel = new JPanel();
+		
+		JPanel all = new JPanel();
+		
+		all.setLayout(new BorderLayout());
+				
+		textpanel.setLayout(new BorderLayout());
+		header.setLayout(new BorderLayout());
+		buttonpanel.setLayout(new BorderLayout());
 
-		//The Components
-		JLabel helptext = new JLabel("Hjälp Hjälp hjälp hjälp");
+		
+		
 		
 		//The Components
-
+		JLabel headertext = new JLabel("HJÄLP", BoxLayout.X_AXIS);
+		header.add(headertext);
+		JLabel helptext = new JLabel("<html><center>"+"Spelet The Quiz Game går ut"
+				+ " på att svara rätt på frågorna man får. Svarar gör man genom att "
+				+ "trycka på svaret som man tror är rätt. I slutet av spelet får du reda på antal rätt av "
+				+ "antalet frågor som man svarat på. Lycka till!"+"<html><center>", BoxLayout.X_AXIS);
 		textpanel.add(helptext);
-		textpanel.add(okButtonHelp);
-
-		questionWindow.setVisible(true);
-		questionWindow.setSize(dialog);	
-		questionWindow.setResizable(false);
+		buttonpanel.add(okButtonHelp, BorderLayout.CENTER);
+		
+		all.add(header, BorderLayout.NORTH);
+		all.add(textpanel, BorderLayout.CENTER);
+		all.add(buttonpanel, BorderLayout.SOUTH);
+		
+		helpWindow.add(all);
+		
+		helpWindow.setVisible(true);
+		helpWindow.setSize(dialog);	
+		helpWindow.setResizable(false);
 	}
 
 
