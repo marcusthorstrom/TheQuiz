@@ -7,6 +7,5 @@ public class GMain {
 		GModel model = new GModel();
 		model.addObserver(view);
 		GController controller = new GController(view, model);
-		model.playGame();
 	}
 }

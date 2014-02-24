@@ -2,6 +2,7 @@ package MVC_test;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
@@ -28,9 +29,9 @@ import javax.swing.Timer;
 
 public class GView implements Observer {
 	private JFrame gameWindow;
-	private JDialog questionWindow = new JDialog(gameWindow,"Skapa Fråga");
-	private JDialog settingsWindow = new JDialog(gameWindow,"Inställningar");
-	
+	private JDialog questionWindow = new JDialog(gameWindow,"Skapa Frï¿½ga");
+	private JDialog settingsWindow = new JDialog(gameWindow,"Instï¿½llningar");
+
 	private ArrayList<String> answers;
 	private Container contentPane;
 	private JLabel question;
@@ -60,30 +61,67 @@ public class GView implements Observer {
 	});
 	private JSpinner spinner = new JSpinner(new SpinnerNumberModel(5,1,10,1));
 	private JSlider slider = new JSlider(0,100,50);
-
+	private JPanel gridPane;
+	private JButton start;
+	private JButton create;
+	private JButton options;
+	private Component help;
+	private JButton quit;
+	
 	public GView() {
-		
+
 
 		gameWindow = new JFrame("The Quiz Game"); // New JFrame for containing the whole game
 		gameWindow.setSize(450, 300); // Sets the size for the window
 		gameWindow.setResizable(false); // makes the window resizable
 		gameWindow.setVisible(true); // makes the window visible
 		gameWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // Closes the game on exit
-		makeQFrame();
+		contentPane = gameWindow.getContentPane();
+		makeMenu();
+		//makeQFrame();
 		//settings();
 		//makeQuestion();
 	}
-		public void makeQFrame() {
-		contentPane = gameWindow.getContentPane();
+	public void makeMenu(){
+		
+		contentPane.add(borderPane = new JPanel(), BorderLayout.CENTER);
+		borderPane.add(gridPane = new JPanel());
+		gridPane.setLayout(new GridLayout(5, 1, 5, 5));
+
+		Dimension d = new Dimension(200, 49);
+
+		gridPane.add(start = new JButton("Start"));
+		start.setPreferredSize(d);
+		start.setBackground(Color.white);
+
+		gridPane.add(create = new JButton("Egen FrÃ¥ga"));
+		create.setPreferredSize(d);
+		create.setBackground(Color.white);
+
+		gridPane.add(options = new JButton("InstÃ¤llningar"));
+		options.setPreferredSize(d);
+		options.setBackground(Color.white);
+
+		gridPane.add(help = new JButton("HjÃ¤lp"));
+		help.setPreferredSize(d);
+		help.setBackground(Color.white);
+
+		gridPane.add(quit = new JButton("Avsluta"));
+		quit.setPreferredSize(d);
+		quit.setBackground(Color.white);
+	}
+
+	public void makeQFrame() {
+		
 		question = new JLabel("",JLabel.CENTER);				//Makes a new label with the question
 		question.setFont(new Font("Arial", Font.BOLD, 20));
 
 		contentPane.setLayout(new BorderLayout()); 				// adds a container, this one for storing the buttons in the bottom
-							 
+
 		contentPane.setBackground(Color.WHITE); 				// Sets the background of the pane
 
 		contentPane.add(question, BorderLayout.CENTER); 		// Adds the question to the top of the layout
-		
+
 		contentPane.add(borderPane = new Container(), BorderLayout.SOUTH);// adds the button layout to the bottom the layout
 
 		borderPane.setLayout(new GridLayout(2, 2, 5, 5)); 		// Sets the layout of the buttons to a grid 2x2
@@ -91,20 +129,17 @@ public class GView implements Observer {
 		buttons = new ArrayList<JButton>();
 
 		borderPane.add(buttonA = new JButton("")); // Adding the button to the
-													// pane
+		// pane
 		borderPane.add(buttonB = new JButton("")); // Adding the button to the
-													// pane
+		// pane
 		borderPane.add(buttonC = new JButton("")); // Adding the button to the
-													// pane
+		// pane
 		borderPane.add(buttonD = new JButton("")); // Adding the button to the
-													// pane
+		// pane
 		buttons.add(buttonA);
 		buttons.add(buttonB);
 		buttons.add(buttonC);
 		buttons.add(buttonD);
-
-
-
 
 		for (JButton b : buttons) {
 			b.setPreferredSize(new Dimension(10, 70));
@@ -112,14 +147,14 @@ public class GView implements Observer {
 
 		for (JButton b : buttons) {
 			b.setBackground(Color.white);
-			}
+		}
 	}
-	
-	
-	
+
+
+
 	public void askQuestion(SingleQuestion quest) {
 
-		for( JButton b: buttons)
+		for(JButton b: buttons)
 			b.setBackground(Color.white);
 		sound = new Sounds();
 		answers = new ArrayList<String>(); 								// Creates an arrayList to store the
@@ -136,7 +171,7 @@ public class GView implements Observer {
 		buttonC.setText(answers.get(2));
 		buttonD.setText(answers.get(3));
 		enableButtons();
-		
+
 		if(quest.hasSound()){
 			sound.playSound(quest.getSound());
 		}
@@ -154,22 +189,25 @@ public class GView implements Observer {
 	void addSettingsListner(ActionListener listenForSetting) {
 		okButtonSetting.addActionListener(listenForSetting);
 		cancelButtonSetting.addActionListener(listenForSetting);
-		}
+	}
 
 	void addTimerListner(ActionListener listenForTimer) {
 		timer.addActionListener(listenForTimer);
 	}
 
+	void addStartListner(ActionListener listenForStart) {
+		start.addActionListener(listenForStart);
+	}
 	public void resetFrame() {
 		contentPane.removeAll(); 										// Removes all the containers in the contenPane !!FUCKAR UPP ALLT!!
 		// to clear the window to get ready for the
 		// next question		
 		contentPane.repaint(); 											// Repaints the content
 	}
-	
-	
+
+
 	public void makeQuestion() {
-		
+
 		JPanel questionpanel = new JPanel();
 		JPanel answerApanel = new JPanel();
 		JPanel answerBpanel= new JPanel();
@@ -180,31 +218,31 @@ public class GView implements Observer {
 		questionWindow.setLayout(new FlowLayout());
 		questionWindow.add(all);
 		all.setLayout(new BoxLayout(all, BoxLayout.Y_AXIS));
-		
+
 		//The Components
-		JLabel l = new JLabel("Skriv in din fråga!");
-		JLabel q = new JLabel("Frågan:     ");
-		JLabel qa = new JLabel("Rätt svar:");
+		JLabel l = new JLabel("Skriv in din frï¿½ga!");
+		JLabel q = new JLabel("Frï¿½gan:     ");
+		JLabel qa = new JLabel("Rï¿½tt svar:");
 		JLabel qb = new JLabel("Svar b:    ");
 		JLabel qc = new JLabel("Svar c:    ");
 		JLabel qd = new JLabel("Svar d:    ");	
 		//The Components
-		
+
 		all.add(l);
-		
+
 		all.add(questionpanel);
 		all.add(answerApanel);
 		all.add(answerBpanel);
 		all.add(answerCpanel);
 		all.add(answerDpanel);
 		all.add(buttonsPanel);
-		
+
 		buttonsPanel.add(cancelButtonQuestion);
 		buttonsPanel.add(okButtonQuestion);
-		
+
 		questionpanel.add(q);
 		questionpanel.add(questionField);
-		
+
 		answerApanel.add(qa);
 		answerApanel.add(answerA);
 		answerBpanel.add(qb);
@@ -213,7 +251,7 @@ public class GView implements Observer {
 		answerCpanel.add(answerC);
 		answerDpanel.add(qd);
 		answerDpanel.add(answerD);
-		
+
 		questionWindow.setVisible(true);
 		questionWindow.setSize(dialog);	
 		questionWindow.setResizable(false);
@@ -227,7 +265,7 @@ public class GView implements Observer {
 		a.add(answerD.getText());
 		for(int i = 0; i < a.size(); i++) {
 			if(a.get(i).isEmpty()) {
-				System.out.println("Du måste fylla i alla fält");
+				System.out.println("Du mï¿½ste fylla i alla fï¿½lt");
 				return null;
 			}	
 		}
@@ -240,7 +278,7 @@ public class GView implements Observer {
 	public void closeSWindow() {
 		settingsWindow.dispose();
 	}
-	
+
 	public void settings() {
 		JPanel noQuestions = new JPanel();
 		JPanel sounds = new JPanel();
@@ -254,38 +292,38 @@ public class GView implements Observer {
 		all.add(sounds);
 		all.add(soundBar);
 		all.add(buttonsPanel);
-		JLabel installningar = new JLabel("Inställningar");
+		JLabel installningar = new JLabel("Instï¿½llningar");
 		installningar.setFont(new Font("Verdana", Font.CENTER_BASELINE, 25));
 		header.add(installningar);
 		settingsWindow.add(all);
 		noQuestions.setLayout(new FlowLayout());
-		noQuestions.add(new JLabel("Antal frågor: "));
+		noQuestions.add(new JLabel("Antal frï¿½gor: "));
 		noQuestions.add(spinner);
 		sounds.setLayout(new FlowLayout());
-		sounds.add(new JLabel("Ställ in ljudnivå:"));
+		sounds.add(new JLabel("Stï¿½ll in ljudnivï¿½:"));
 		soundBar.add(slider);
 		soundBar.setLayout(new FlowLayout());
 		buttonsPanel.add(cancelButtonSetting);
 		buttonsPanel.add(okButtonSetting);
-		
+
 		settingsWindow.setVisible(true);
 		settingsWindow.setSize(dialog);
 		settingsWindow.setResizable(false);
 	}
-	
+
 	public int[] submitSettings() {
 		int a[] = new int[2];
 		a[0] = (Integer)spinner.getValue();
 		a[1] = (int)slider.getValue();
 		return a;
-			
+
 	}
 
 	public void showResult(int [] a) {
 		int rightA = a[0];
 		int wrongA = a[1];
 		borderPane.removeAll();
-		question.setText("Du fick: "+rightA+" rätt av totalt "+(wrongA+rightA)+ " frågor");
+		question.setText("Du fick: "+rightA+" rï¿½tt av totalt "+(wrongA+rightA)+ " frï¿½gor");
 	}
 
 	public void disableButtons() {

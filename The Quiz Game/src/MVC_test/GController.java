@@ -16,13 +16,36 @@ public class GController {
 		this.view = view;
 		this.model = model;
 
-		this.view.addAnswerListner(new AnswerListener());
+		
 		this.view.addTimerListner(new TimerListener());
+		this.view.addStartListner(new StartListener());
 		this.view.addSubmitListner(new SubmitListener());
 		this.view.addSettingsListner(new SettingsListener());
 
 	}
+	
+	public void startGame(){
+		this.view.addAnswerListner(new AnswerListener());
+	}
 
+	
+	class StartListener implements ActionListener {
+		public void actionPerformed(ActionEvent e) {
+			Object objekt = e.getSource();
+			if (objekt instanceof JButton) {
+				JButton button = (JButton)objekt;
+				if(button.getText().equals("Start")) {
+					view.resetFrame();
+					view.makeQFrame();
+					startGame();
+					model.playGame();
+					
+				}
+			}
+		}
+		
+	}
+	
 	class AnswerListener implements ActionListener {
 		@Override
 		public void actionPerformed(ActionEvent e) {
@@ -86,7 +109,7 @@ public class GController {
 			if (objekt instanceof Timer) {
 				Timer timer = (Timer) objekt;
 				timer.stop();
-				model.playGame();			//Hämtar nästa fråga.
+				model.playGame();			//Hï¿½mtar nï¿½sta frï¿½ga.
 			}
 		}
 
