@@ -387,6 +387,7 @@ public class GView implements Observer {
 		okButtonSetting.setPreferredSize(new Dimension(100, 47));
 		buttonsPanel.add(resetButtonSetting);
 		buttonsPanel.add(okButtonSetting);
+		buttonsPanel.setLayout(new FlowLayout());
 
 		settingsWindow.setVisible(true);
 		settingsWindow.setSize(dialog);
