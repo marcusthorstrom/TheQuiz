@@ -3,6 +3,7 @@ package MVC_test;
 import java.util.ArrayList;
 import java.util.Observable;
 
+
 public class GModel extends Observable {
 
 	private Options options;
