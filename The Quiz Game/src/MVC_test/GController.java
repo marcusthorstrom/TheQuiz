@@ -33,7 +33,7 @@ public class GController {
 			Object objekt = e.getSource();
 			if (objekt instanceof JButton) {
 				JButton button = (JButton)objekt;
-				if(button.getText().equals("ok")) {
+				if(button.getText().equals("Ok")) {
 					view.closeHWindow();					
 				}
 			}
@@ -131,7 +131,7 @@ public class GController {
 				JButton b = (JButton)objekt;
 				if(b.getText().equals("Återgå till meny")){			
 					view.resetFrame();
-					view.makeMenu();								//Vill tillbaka till menyn men det går inte
+					view.makeMenu();								//Återskapar menyn
 				}
 				else if(b.getText().equals("Avsluta")) {
 					view.closeWindow();
