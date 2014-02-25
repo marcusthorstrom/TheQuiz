@@ -2,6 +2,7 @@ package MVC_test;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
@@ -19,6 +20,7 @@ import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JSlider;
 import javax.swing.JSpinner;
@@ -32,12 +34,12 @@ public class GView implements Observer {
 	private JDialog settingsWindow = new JDialog(gameWindow,"Inställningar");
 	private JDialog helpWindow = new JDialog(gameWindow,"Hjälp");
 
-	private JLabel l = new JLabel("Skriv in din fråga!");
-	private JLabel q = new JLabel("Frågan:     ");
-	private JLabel qa = new JLabel("Rätt svar:");
-	private JLabel qb = new JLabel("Svar b:    ");
-	private JLabel qc = new JLabel("Svar c:    ");
-	private JLabel qd = new JLabel("Svar d:    ");	
+	private JLabel l = new JLabel("Skriv in din fråga!	 ");
+	private JLabel q = new JLabel("Fråga:");
+	private JLabel qa = new JLabel("Svar:");
+	private JLabel qb = new JLabel("Alt 1:");
+	private JLabel qc = new JLabel("Alt 2:");
+	private JLabel qd = new JLabel("Alt 3:");	
 	
 	private ArrayList<String> answers;
 	private ArrayList<JButton> buttons;
@@ -214,7 +216,7 @@ public class GView implements Observer {
 	void addStartListener(ActionListener listenForStart) {
 		start.addActionListener(listenForStart);
 	}
-	public void addHelpListener(ActionListener helpListener) {
+	void addHelpListener(ActionListener helpListener) {
 		okButtonHelp.addActionListener(helpListener);
 		
 	}
@@ -272,6 +274,7 @@ public class GView implements Observer {
 		questionWindow.setVisible(true);
 		questionWindow.setSize(dialog);	
 		questionWindow.setResizable(false);
+		
 	}
 
 	public void makeHelp(){
@@ -316,7 +319,9 @@ public class GView implements Observer {
 		a.add(answerD.getText());
 		for(int i = 0; i < a.size(); i++) {
 			if(a.get(i).isEmpty()) {
-				System.out.println("Du måste fylla i alla fält");
+				Component errFrame = null;
+				//System.out.println("Du måste fylla i alla fält");
+				JOptionPane.showMessageDialog(errFrame, "Du måste fylla i alla fält.");
 				return null;
 			}	
 		}
