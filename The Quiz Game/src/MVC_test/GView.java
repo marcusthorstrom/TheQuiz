@@ -258,7 +258,12 @@ public class GView implements Observer {
 		all.add(answerCpanel);
 		all.add(answerDpanel);
 		all.add(buttonsPanel);
-
+		
+		okButtonQuestion.setBackground(Color.WHITE);
+		okButtonQuestion.setPreferredSize(new Dimension(70, 49));
+		cancelButtonQuestion.setBackground(Color.WHITE);
+		cancelButtonQuestion.setPreferredSize(new Dimension(70, 49));
+		
 		buttonsPanel.add(cancelButtonQuestion);
 		buttonsPanel.add(okButtonQuestion);
 
@@ -355,19 +360,14 @@ public class GView implements Observer {
 		JPanel noQuestions = new JPanel();
 		JPanel sounds = new JPanel();
 		JPanel soundBar = new JPanel();
-		JPanel header = new JPanel();
 		JPanel all = new JPanel();
 		JPanel buttonsPanel = new JPanel();
 		all.setLayout(new GridLayout(5,1,10,10));
-		all.add(header);
 		all.add(noQuestions);
 		all.add(sounds);
 		all.add(soundBar);
 		all.add(buttonsPanel);
 			
-		JLabel installningar = new JLabel("Inställningar");
-		installningar.setFont(new Font("Verdana", Font.CENTER_BASELINE, 25));
-		header.add(installningar);
 		settingsWindow.add(all);
 		
 		noQuestions.setLayout(new FlowLayout());
@@ -381,6 +381,10 @@ public class GView implements Observer {
 		soundBar.add(slider);
 		soundBar.setLayout(new FlowLayout());
 		
+		resetButtonSetting.setBackground(Color.WHITE);
+		resetButtonSetting.setPreferredSize(new Dimension(100, 49));
+		okButtonSetting.setBackground(Color.WHITE);
+		okButtonSetting.setPreferredSize(new Dimension(100, 49));
 		buttonsPanel.add(resetButtonSetting);
 		buttonsPanel.add(okButtonSetting);
 
