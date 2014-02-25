@@ -48,8 +48,6 @@ public class GModel extends Observable {
 		this.options = options;
 		qu = q.getQuestions(options.getGameRounds());
 		changeActiveQuestion();
-		qNumber++;
-
 	}
 
 	public void setChosenAnswer(String chosenAnswer) {
@@ -74,6 +72,7 @@ public class GModel extends Observable {
 			isCorrect = false;
 			// return false;
 		}
+		qNumber++;
 		setChanged();
 		notifyObservers(chosenAnswer);
 		setChanged();
