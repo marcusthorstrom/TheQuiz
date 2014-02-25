@@ -356,6 +356,7 @@ public class GView implements Observer {
 	}
 	
 	public void options() {
+		spinner.removeAll();
 		settingsWindow.revalidate();
 		JPanel noQuestions = new JPanel();
 		JPanel sounds = new JPanel();
@@ -367,7 +368,8 @@ public class GView implements Observer {
 		all.add(sounds);
 		all.add(soundBar);
 		all.add(buttonsPanel);
-			
+		noQuestions.repaint();
+		
 		settingsWindow.add(all);
 		
 		noQuestions.setLayout(new FlowLayout());
