@@ -47,7 +47,6 @@ public class GModel extends Observable {
 	public void playGame(Options options) {
 		this.options = options;
 		qu = q.getQuestions(options.getGameRounds());
-		changeActiveQuestion();
 	}
 
 	public void setChosenAnswer(String chosenAnswer) {
@@ -77,17 +76,6 @@ public class GModel extends Observable {
 		notifyObservers(chosenAnswer);
 		setChanged();
 		notifyObservers(isCorrect);
-	}
-
-	public void setIsReady(boolean ready) {
-		isReady = ready;
-	}
-
-	public boolean getIsReady() {
-		return isReady;
-	}
-
-	public void setIsFinished(boolean ready) {
 	}
 	
 	public void createQuestion(SingleQuestion qu) {

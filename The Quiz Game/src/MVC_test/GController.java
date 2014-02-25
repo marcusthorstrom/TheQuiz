@@ -49,6 +49,7 @@ public class GController {
 					view.makeQFrame();
 					startGame();
 					model.playGame(options);
+					model.changeActiveQuestion();
 				}
 				else if(button.getText().equals("Egen Fråga")) {
 					view.makeQuestion();
@@ -146,7 +147,7 @@ public class GController {
 			if (objekt instanceof Timer) {
 				Timer timer = (Timer) objekt;
 				timer.stop();
-				model.playGame(options);							//Hämtar nästa fråga.
+				model.changeActiveQuestion();							//Hämtar nästa fråga.
 			}
 		}
 	}
