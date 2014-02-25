@@ -46,7 +46,6 @@ public class GView implements Observer {
 	private Container borderPane;
 	
 	private JLabel question;
-	
 	private JPanel gridPane;
 	
 	private JButton buttonA;
@@ -64,7 +63,6 @@ public class GView implements Observer {
 	private JButton resetButtonSetting = new JButton("Återställ");
 	private JButton backToMenu = new JButton("Återgå till meny");
 	private JButton resultquit = new JButton("Avsluta");
-
 	private JButton okButtonHelp = new JButton("ok");
 	
 	private String rightAnswer;
@@ -231,7 +229,7 @@ public class GView implements Observer {
 	}
 
 	public void makeQuestion() {
-		
+		questionWindow.revalidate();
 		JPanel questionpanel = new JPanel();
 		JPanel answerApanel = new JPanel();
 		JPanel answerBpanel= new JPanel();
@@ -342,21 +340,20 @@ public class GView implements Observer {
 	}
 	
 	public void options() {
-		
+		settingsWindow.revalidate();
 		JPanel noQuestions = new JPanel();
 		JPanel sounds = new JPanel();
 		JPanel soundBar = new JPanel();
 		JPanel header = new JPanel();
 		JPanel all = new JPanel();
 		JPanel buttonsPanel = new JPanel();
-		
 		all.setLayout(new GridLayout(5,1,10,10));
 		all.add(header);
 		all.add(noQuestions);
 		all.add(sounds);
 		all.add(soundBar);
 		all.add(buttonsPanel);
-		
+			
 		JLabel installningar = new JLabel("Inställningar");
 		installningar.setFont(new Font("Verdana", Font.CENTER_BASELINE, 25));
 		header.add(installningar);
@@ -367,7 +364,7 @@ public class GView implements Observer {
 		noQuestions.add(spinner);
 		
 		sounds.setLayout(new FlowLayout());
-
+	
 		sounds.add(new JLabel("Ställ in ljudnivå:"));
 
 		soundBar.add(slider);
