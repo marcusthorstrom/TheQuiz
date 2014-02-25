@@ -10,6 +10,7 @@ import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Observable;
@@ -65,7 +66,7 @@ public class GView implements Observer {
 	private JButton resetButtonSetting = new JButton("Återställ");
 	private JButton backToMenu = new JButton("Återgå till meny");
 	private JButton resultquit = new JButton("Avsluta");
-	private JButton okButtonHelp = new JButton("ok");
+	private JButton okButtonHelp = new JButton("Ok");
 	
 	private String rightAnswer;
 	private Dimension dialog = new Dimension(300,250);
@@ -231,7 +232,9 @@ public class GView implements Observer {
 	}
 
 	public void makeQuestion() {
+		
 		questionWindow.revalidate();
+		
 		JPanel questionpanel = new JPanel();
 		JPanel answerApanel = new JPanel();
 		JPanel answerBpanel= new JPanel();
@@ -281,9 +284,10 @@ public class GView implements Observer {
 		JPanel header = new JPanel();
 		JPanel textpanel = new JPanel();
 		JPanel buttonpanel = new JPanel();
-		
 		JPanel all = new JPanel();
 		
+		okButtonHelp.setBackground(Color.WHITE);
+		okButtonHelp.setPreferredSize(new Dimension(10, 49));
 		all.setLayout(new BorderLayout());
 				
 		textpanel.setLayout(new BorderLayout());
@@ -291,7 +295,7 @@ public class GView implements Observer {
 		buttonpanel.setLayout(new BorderLayout());
 		
 		//The Components
-		JLabel headertext = new JLabel("HJÄLP", BoxLayout.X_AXIS);
+		JLabel headertext = new JLabel("", BoxLayout.X_AXIS);
 		header.add(headertext);
 		JLabel helptext = new JLabel("<html><center>"+"Spelet The Quiz Game går ut"
 				+ " på att svara rätt på frågorna man får. Svarar gör man genom att "
@@ -302,6 +306,8 @@ public class GView implements Observer {
 		
 		all.add(header, BorderLayout.NORTH);
 		all.add(textpanel, BorderLayout.CENTER);
+		
+		
 		all.add(buttonpanel, BorderLayout.SOUTH);
 		
 		helpWindow.add(all);
@@ -402,6 +408,10 @@ public class GView implements Observer {
 		int wrongA = a[1];
 		borderPane.removeAll();
 		question.setText("Du fick: "+rightA+" rätt av totalt "+(wrongA+rightA)+ " frågor");
+		backToMenu.setBackground(Color.WHITE);
+		resultquit.setBackground(Color.WHITE);
+		backToMenu.setPreferredSize(new Dimension(10, 60));
+		resultquit.setPreferredSize(new Dimension(10, 60));
 		borderPane.add(backToMenu);
 		borderPane.add(resultquit);
 	}
