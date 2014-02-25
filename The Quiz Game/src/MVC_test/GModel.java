@@ -3,9 +3,6 @@ package MVC_test;
 import java.util.ArrayList;
 import java.util.Observable;
 
-import javax.swing.JProgressBar;
-import javax.swing.Timer;
-import javax.swing.text.View;
 
 public class GModel extends Observable {
 
