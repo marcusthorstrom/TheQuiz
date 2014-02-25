@@ -362,7 +362,7 @@ public class GView implements Observer {
 		JPanel soundBar = new JPanel();
 		JPanel all = new JPanel();
 		JPanel buttonsPanel = new JPanel();
-		all.setLayout(new GridLayout(5,1,10,10));
+		all.setLayout(new GridLayout(4,1,10,10));
 		all.add(noQuestions);
 		all.add(sounds);
 		all.add(soundBar);
@@ -387,6 +387,7 @@ public class GView implements Observer {
 		okButtonSetting.setPreferredSize(new Dimension(100, 49));
 		buttonsPanel.add(resetButtonSetting);
 		buttonsPanel.add(okButtonSetting);
+		buttonsPanel.setLayout(new FlowLayout());
 
 		settingsWindow.setVisible(true);
 		settingsWindow.setSize(dialog);
