@@ -16,8 +16,12 @@ public class Questions{
 	public Questions()
 	{
 	    io = new IO();	//Creates a new instance of IO.
-	    objectList = new ArrayList<SingleQuestion>();
-	    createQuestions();
+	    objectList = new ArrayList<SingleQuestion>();				//List for storing questionClasses
+		originalList = io.getArray();								//Copies the original list from the IO class to a local list
+		for(int i = 0; i < originalList.size(); i++)				//Loopes through the list to create a new list of Objects instead of ArrayList<String> which is returned from the IO class
+		{
+			objectList.add(new SingleQuestion(originalList.get(i)));	
+		}
 	}
 	
 	
@@ -37,17 +41,6 @@ public class Questions{
 		return newList;
 		
 	}*/
-	
-	public void createQuestions(){
-		
-		originalList = io.getArray();
-		
-		for(int i = 0; i < originalList.size(); i++)
-		{
-			objectList.add(new SingleQuestion(originalList.get(i)));
-		}
-		
-	}
 	
 	public void writeQuestion(SingleQuestion inQuestion) {
 		ArrayList<String> tempQuestions = new ArrayList<String>();
