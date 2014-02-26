@@ -16,7 +16,7 @@ public class Sounds {
 	private String incorrect = "incorrect.wav";
 	private Clip clip;
 	private FloatControl volume;
-	private int gain;
+	private float gain;
 
 	public Sounds()
 	{
@@ -80,14 +80,17 @@ public class Sounds {
 	}
 	
 
-	public void changeVolume(int gain){
+	public void changeVolume(float gain){
 		volume = (FloatControl)clip.getControl(FloatControl.Type.MASTER_GAIN);
 		float dB = (float) (Math.log(gain) / Math.log(10.0) * 20.0);
+		//fload dB = 10
+		
+		
 		volume.setValue(dB);
 }
 	
 	
 	public void setVolume(int volumeFactor) {
-		this.gain = (volumeFactor/10);
+		this.gain = volumeFactor/10;
 	}
 }

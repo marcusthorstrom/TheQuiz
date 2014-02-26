@@ -74,8 +74,9 @@ public class GView implements Observer {
 	private JTextField answerD = new JTextField(qLength);
 
 	private JSpinner spinner = new JSpinner(new SpinnerNumberModel(5,1,10,1));
-	private JSlider slider = new JSlider(0,1,1);
 
+	private JSlider slider = new JSlider(0,1,1);
+	
 	private Timer timer = new Timer(2000, new ActionListener() {
 		public void actionPerformed(ActionEvent e) {
 			timer.stop();
@@ -87,7 +88,6 @@ public class GView implements Observer {
 	private Sounds sound;
 
 	public GView() {
-
 
 		sound = new Sounds();
 
