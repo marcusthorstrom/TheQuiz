@@ -35,17 +35,17 @@ public class GView implements Observer {
 	private JDialog questionWindow = new JDialog(gameWindow,"Skapa Fråga");
 	private JDialog settingsWindow = new JDialog(gameWindow,"Inställningar");
 	private JDialog helpWindow = new JDialog(gameWindow,"Hjälp");
-	
+
 	private ArrayList<String> answers;
 	private ArrayList<JButton> buttons;
 	private ArrayList<JButton> menuButtons = new ArrayList<JButton>();
-	
+
 	private Container contentPane;
 	private Container borderPane;
-	
+
 	private JLabel question;
 	private JPanel gridPane;
-	
+
 	private JButton buttonA;
 	private JButton buttonB;
 	private JButton buttonC;
@@ -62,20 +62,20 @@ public class GView implements Observer {
 	private JButton backToMenu = new JButton("Återgå till meny");
 	private JButton resultquit = new JButton("Avsluta");
 	private JButton okButtonHelp = new JButton("Ok");
-	
+
 	private String rightAnswer;
 	private Dimension dialog = new Dimension(300,250);
-	
+
 	private int qLength = 15;
 	private JTextField questionField = new JTextField(qLength);
 	private JTextField answerA = new JTextField(qLength);
 	private JTextField answerB = new JTextField(qLength);
 	private JTextField answerC = new JTextField(qLength);
 	private JTextField answerD = new JTextField(qLength);
-	
+
 	private JSpinner spinner = new JSpinner(new SpinnerNumberModel(5,1,10,1));
-	private JSlider slider = new JSlider(0,10,5);
-	
+	private JSlider slider = new JSlider(0,1,1);
+
 	private Timer timer = new Timer(2000, new ActionListener() {
 		public void actionPerformed(ActionEvent e) {
 			timer.stop();
@@ -87,8 +87,8 @@ public class GView implements Observer {
 	private Sounds sound;
 
 	public GView() {
-		
-		
+
+
 		sound = new Sounds();
 
 		gameWindow = new JFrame("The Quiz Game"); 						// New JFrame for containing the whole game
@@ -101,7 +101,7 @@ public class GView implements Observer {
 		helpWindow.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 		contentPane = gameWindow.getContentPane();
 		makeMenu();
-		
+
 		settingsWindow.addWindowListener(new WindowListener() {
 			public void windowOpened(WindowEvent arg0) {setMenuFrameState(false);}
 			public void windowActivated(WindowEvent arg0) {setMenuFrameState(false);}
@@ -111,7 +111,7 @@ public class GView implements Observer {
 			public void windowDeiconified(WindowEvent arg0) {}
 			public void windowIconified(WindowEvent arg0) {}
 		});
-		
+
 		questionWindow.addWindowListener(new WindowListener() {
 			public void windowOpened(WindowEvent arg0) {setMenuFrameState(false);}
 			public void windowActivated(WindowEvent arg0) {setMenuFrameState(false);}
@@ -158,12 +158,12 @@ public class GView implements Observer {
 		help.setPreferredSize(d);
 		help.setBackground(Color.white);
 		menuButtons.add(help);
-		
+
 		gridPane.add(quit);
 		quit.setPreferredSize(d);
 		quit.setBackground(Color.white);
 		menuButtons.add(quit);
-		
+
 	}
 	public void makeQFrame() {
 
@@ -183,7 +183,7 @@ public class GView implements Observer {
 		borderPane.add(buttonB = new JButton("")); 
 		borderPane.add(buttonC = new JButton("")); 
 		borderPane.add(buttonD = new JButton("")); 
-		 
+
 
 		buttons.add(buttonA);
 		buttons.add(buttonB);
@@ -202,13 +202,13 @@ public class GView implements Observer {
 
 		for(JButton b: buttons)
 			b.setBackground(Color.white);
-				
+
 		answers = new ArrayList<String>(); 										// Creates an arrayList to store the
 		answers.add(quest.getCorrectAnswer()); 									// Adds the answer A to the List
 		answers.add(quest.getAnswer2());
 		answers.add(quest.getAnswer3());
 		answers.add(quest.getAnswer4());
-		
+
 		rightAnswer = answers.get(0);
 		Collections.shuffle(answers); 											// Shuffles the list to make them appear in different order.
 		question.setText("<html><center>"+quest.getQuestion()+"</center></html>");
@@ -250,7 +250,6 @@ public class GView implements Observer {
 	}
 	void addHelpListener(ActionListener helpListener) {
 		okButtonHelp.addActionListener(helpListener);
-		
 	}
 	void addResultListener(ActionListener listenForResult) {
 		backToMenu.addActionListener(listenForResult);
@@ -267,13 +266,13 @@ public class GView implements Observer {
 			questionWindow.setVisible(true);
 		}
 		else {
-			
+
 			isQBuild = true;
 			JPanel buttonsPanel = new JPanel();
 			JPanel all = new JPanel();
 			questionWindow.setLayout(new BorderLayout());
 			all.setLayout(new GridLayout(5,2));
-			
+
 			//The Components
 			JLabel l = new JLabel("Skriv in din fråga!", JLabel.CENTER);
 			JLabel q = new JLabel("Fråga:", JLabel.CENTER);
@@ -282,7 +281,7 @@ public class GView implements Observer {
 			JLabel qc = new JLabel("Alt 2:", JLabel.CENTER);
 			JLabel qd = new JLabel("Alt 3:", JLabel.CENTER);
 			//The Components
-		
+
 			all.add(q);
 			all.add(questionField);
 			all.add(qa);
@@ -293,20 +292,20 @@ public class GView implements Observer {
 			all.add(answerC);
 			all.add(qd);
 			all.add(answerD);
-			
+
 			okButtonQuestion.setBackground(Color.WHITE);
 			okButtonQuestion.setPreferredSize(new Dimension(70, 47));
 			cancelButtonQuestion.setBackground(Color.WHITE);
 			cancelButtonQuestion.setPreferredSize(new Dimension(70, 47));
-			
+
 			questionWindow.add(l, BorderLayout.NORTH);
 			questionWindow.add(all,BorderLayout.CENTER);
 			questionWindow.add(buttonsPanel,BorderLayout.SOUTH);
-			
+
 			buttonsPanel.add(cancelButtonQuestion);
 			buttonsPanel.add(okButtonQuestion);
-			
-						
+
+
 			questionWindow.setVisible(true);
 			questionWindow.setSize(dialog);	
 			questionWindow.setResizable(false);
@@ -385,10 +384,7 @@ public class GView implements Observer {
 	public void closeHWindow() {
 		helpWindow.dispose();
 	}
-	public void validateH () {
 
-	}
-	
 	public void options() {
 		if(isSBuild){
 			settingsWindow.setVisible(true);					//If this is not done this way, we have to reDraw the entire window every time
@@ -407,22 +403,22 @@ public class GView implements Observer {
 			all.add(soundBar);
 			all.add(buttonsPanel);
 			noQuestions.repaint();
-					
+
 			settingsWindow.add(all);
-			
+
 			noQuestions.setLayout(new FlowLayout());
 			noQuestions.add(new JLabel("Antal frågor: "));
 			noQuestions.add(spinner);
 			noQuestions.revalidate();
-			
+
 			sounds.setLayout(new FlowLayout());
-		
+
 			sounds.add(new JLabel("Ställ in ljudnivå:"));
-	
+
 			soundBar.add(slider);
 			soundBar.setLayout(new FlowLayout());
 			soundBar.revalidate();
-			
+
 			resetButtonSetting.setBackground(Color.WHITE);
 			resetButtonSetting.setPreferredSize(new Dimension(100, 47));
 			okButtonSetting.setBackground(Color.WHITE);
@@ -431,25 +427,32 @@ public class GView implements Observer {
 			buttonsPanel.add(okButtonSetting);
 			buttonsPanel.setLayout(new FlowLayout());
 			buttonsPanel.revalidate();
-	
+
 			settingsWindow.setVisible(true);
 			settingsWindow.setSize(dialog);
 			settingsWindow.setResizable(false);
 			settingsWindow.validate();
 			settingsWindow.repaint();
-	}
+		}
 	}
 
 	public Options submitOptions(Options option) {
-		 option.setGameRounds((int)spinner.getValue());
-		 option.setVolume((int)slider.getValue());
+		boolean volume = option.getVolume();
+		option.setGameRounds((int)spinner.getValue());
+		if((int)slider.getValue() == 0) {
+			volume = false;
+		}
+		else if((int)slider.getValue() == 1) {
+			volume = true;
+		}
+ 		option.setVolume(volume);
 		return option;
 
 	}
-	
-	public void resetOptions() {
-		slider.setValue(50);
-		spinner.setValue(5);
+
+	public void resetOptions(Options option) {
+		slider.setValue(1);
+		spinner.setValue(option.resetGamerounds());
 	}
 
 	public void showResultRestart(int [] a) {
@@ -512,7 +515,7 @@ public class GView implements Observer {
 	}
 	public void stopSound() {
 		sound.stopSound();
-		
+
 	}
-	
+
 }

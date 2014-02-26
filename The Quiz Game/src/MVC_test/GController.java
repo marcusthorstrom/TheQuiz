@@ -112,13 +112,13 @@ public class GController {
 				JButton b = (JButton)objekt;
 				if(b.getText().equals("Använd")){
 					options = view.submitOptions(options);
-					view.closeSWindow();
-					view.validateH();	
+					view.closeSWindow();	
 				}
 				else if(b.getText().equals("Återställ")) {
-					view.resetOptions();
+					view.resetOptions(options);
 					options = view.submitOptions(options);
-					options.resetValue();
+					options.resetGamerounds();
+					options.resetVolume();
 				}
 			}
 		}
