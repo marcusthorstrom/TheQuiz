@@ -16,12 +16,12 @@ public class Sounds {
 	private String incorrect = "incorrect.wav";
 	private Clip clip;
 	private FloatControl volume;
+	private int gain;
 
-	public Sounds()
+	/*public Sounds()
 	{
-		volume = (FloatControl)clip.getControl(FloatControl.Type.MASTER_GAIN);
 		
-	}
+	}*/
 	
 	/*
 	 * Method which plays a sound when called upon. 
@@ -34,6 +34,7 @@ public class Sounds {
 					AudioSystem.getAudioInputStream(new File(filePath));
 			clip = AudioSystem.getClip();
 			clip.open(aIS);	//Opens the AudioInputStream.
+			changeVolume(gain);
 			clip.start();	//Plays the sound once. (Might need closing?)
 		}
 		
@@ -79,8 +80,17 @@ public class Sounds {
 		playSound(incorrect);
 	}
 	
-	public void changeVolume(int factor){
-		volume.setValue(factor * -10.0f);
+	
+	public void changeVolume(int gain){
+		volume = (FloatControl)clip.getControl(FloatControl.Type.MASTER_GAIN);
+		float dB = (float) (Math.log(gain) / Math.log(10.0) * 20.0);
+		volume.setValue(dB);
+	}
+	
+	
+	public void setVolume(int volumeFactor)
+	{
+		this.gain = (volumeFactor/10);
 	}
 	
 }
