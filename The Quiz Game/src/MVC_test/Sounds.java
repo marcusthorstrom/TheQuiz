@@ -17,6 +17,11 @@ public class Sounds {
 	private Clip clip;
 	private FloatControl volume;
 	private int gain;
+
+	public Sounds()
+	{
+		
+	}
 	
 	/*
 	 * Method which plays a sound when called upon. 
@@ -74,12 +79,12 @@ public class Sounds {
 		playSound(incorrect);
 	}
 	
-	
+
 	public void changeVolume(int gain){
 		volume = (FloatControl)clip.getControl(FloatControl.Type.MASTER_GAIN);
 		float dB = (float) (Math.log(gain) / Math.log(10.0) * 20.0);
 		volume.setValue(dB);
-	}
+}
 	
 	
 	public void setVolume(int volumeFactor) {
