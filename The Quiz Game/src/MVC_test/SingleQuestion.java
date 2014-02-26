@@ -13,7 +13,6 @@ public class SingleQuestion {
 	public boolean containsSound = false;
 	
 	public SingleQuestion(ArrayList<String> questionArray){
-
 		this.question = questionArray.get(0);
 		this.correctAnswer = questionArray.get(1);
 		this.answer2 = questionArray.get(2);
@@ -71,6 +70,11 @@ public class SingleQuestion {
 		inList.add(3, answer3);
 		inList.add(4, answer4);
 		return inList;
+	}
+	public boolean isEmpty() {
+		if(question.equals(null)||correctAnswer.equals(null)||answer2.equals(null)||answer3.equals(null)||answer4.equals(null)) {return true;}
+		else {return false;}
+		
 	}
 
 }

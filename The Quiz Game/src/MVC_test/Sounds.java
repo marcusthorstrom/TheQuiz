@@ -14,7 +14,7 @@ public class Sounds {
 	private String incorrect = "incorrect.wav";
 	private Clip clip;
 
-	public Sounds()
+	//public Sounds()
 	{
 		
 	}

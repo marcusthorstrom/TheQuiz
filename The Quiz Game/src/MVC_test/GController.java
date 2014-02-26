@@ -119,7 +119,6 @@ public class GController {
 					view.resetOptions();
 					options = view.submitOptions(options);
 					options.resetValue();
-					view.closeSWindow();
 				}
 			}
 		}

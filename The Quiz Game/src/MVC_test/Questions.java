@@ -43,9 +43,20 @@ public class Questions{
 	}*/
 	
 	public void writeQuestion(SingleQuestion inQuestion) {
-		ArrayList<String> tempQuestions = new ArrayList<String>();
-		tempQuestions = inQuestion.printArrayList(tempQuestions);
-		io.newQuestion(tempQuestions);
+		try {													//If the array is = null then this catches it
+		if(!inQuestion.isEmpty()) {								//Testing if the array is partially empty
+			ArrayList<String> tempQuestions = new ArrayList<String>();
+			tempQuestions = inQuestion.printArrayList(tempQuestions);
+			io.newQuestion(tempQuestions);
+		}
+		else {
+			//System.out.println("Did not write");
+		}
+		}
+		catch(NullPointerException e) {
+			//System.out.println("Did not write, catched error");
+		}
+		
 	}
 	
 	public ArrayList<SingleQuestion> getQuestions(int y){
