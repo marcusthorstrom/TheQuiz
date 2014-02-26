@@ -37,13 +37,6 @@ public class GView implements Observer {
 	private JDialog questionWindow = new JDialog(gameWindow,"Skapa Fråga");
 	private JDialog settingsWindow = new JDialog(gameWindow,"Inställningar");
 	private JDialog helpWindow = new JDialog(gameWindow,"Hjälp");
-
-	private JLabel l = new JLabel("Skriv in din fråga!");
-	private JLabel q = new JLabel("Fråga:");
-	private JLabel qa = new JLabel("Svar:");
-	private JLabel qb = new JLabel("Alt 1:");
-	private JLabel qc = new JLabel("Alt 2:");
-	private JLabel qd = new JLabel("Alt 3:");	
 	
 	private ArrayList<String> answers;
 	private ArrayList<JButton> buttons;
@@ -74,7 +67,6 @@ public class GView implements Observer {
 	
 	private String rightAnswer;
 	private Dimension dialog = new Dimension(300,250);
-	private Sounds sound;
 	
 	private int qLength = 15;
 	private JTextField questionField = new JTextField(qLength);
@@ -84,7 +76,7 @@ public class GView implements Observer {
 	private JTextField answerD = new JTextField(qLength);
 	
 	private JSpinner spinner = new JSpinner(new SpinnerNumberModel(5,1,10,1));
-	private JSlider slider = new JSlider(0,100,50);
+	private JSlider slider = new JSlider(0,10,5);
 	
 	private Timer timer = new Timer(2000, new ActionListener() {
 		public void actionPerformed(ActionEvent e) {
@@ -94,8 +86,11 @@ public class GView implements Observer {
 	private boolean isSBuild = false;		//If the SettingsWindow is build
 	private boolean isQBuild = false;		//If the QuestionWindow is build
 	private boolean isHBuild = false;		//If the HelpWindoe is build
+	private Sounds sound;
 
 	public GView() {
+		
+		sound = new Sounds();
 
 		gameWindow = new JFrame("The Quiz Game"); 						// New JFrame for containing the whole game
 		gameWindow.setSize(450, 300); 									// Sets the size for the window
@@ -208,9 +203,7 @@ public class GView implements Observer {
 
 		for(JButton b: buttons)
 			b.setBackground(Color.white);
-		
-		sound = new Sounds();
-		
+				
 		answers = new ArrayList<String>(); 										// Creates an arrayList to store the
 		answers.add(quest.getCorrectAnswer()); 									// Adds the answer A to the List
 		answers.add(quest.getAnswer2());
@@ -249,7 +242,6 @@ public class GView implements Observer {
 	void addSettingsListener(ActionListener listenForSetting) {
 		okButtonSetting.addActionListener(listenForSetting);
 		resetButtonSetting.addActionListener(listenForSetting);
-
 	}
 	void addTimerListener(ActionListener listenForTimer) {
 		timer.addActionListener(listenForTimer);
@@ -276,6 +268,7 @@ public class GView implements Observer {
 			questionWindow.setVisible(true);
 		}
 		else {
+			
 			isQBuild = true;
 			JPanel questionpanel = new JPanel();
 			JPanel answerApanel = new JPanel();
@@ -287,24 +280,31 @@ public class GView implements Observer {
 			questionWindow.setLayout(new FlowLayout());
 			questionWindow.add(all);
 			all.setLayout(new BoxLayout(all, BoxLayout.Y_AXIS));
-
-			//The Components
-			//Are now in the constructor to prohibit multiple creations
-			//The Components
-
-			all.add(l);
 			
+			
+			
+			
+			//The Components
+			JLabel l = new JLabel("Skriv in din fråga!");
+			JLabel q = new JLabel("Fråga:", JLabel.TRAILING);
+			JLabel qa = new JLabel("Svar:", JLabel.TRAILING);
+			JLabel qb = new JLabel("Alt 1:", JLabel.TRAILING);
+			JLabel qc = new JLabel("Alt 2:", JLabel.TRAILING);
+			JLabel qd = new JLabel("Alt 3:", JLabel.TRAILING);
+			//The Components
+		
+			okButtonQuestion.setBackground(Color.WHITE);
+			okButtonQuestion.setPreferredSize(new Dimension(70, 47));
+			cancelButtonQuestion.setBackground(Color.WHITE);
+			cancelButtonQuestion.setPreferredSize(new Dimension(70, 47));
+			
+			all.add(l);
 			all.add(questionpanel);
 			all.add(answerApanel);
 			all.add(answerBpanel);
 			all.add(answerCpanel);
 			all.add(answerDpanel);
 			all.add(buttonsPanel);
-		
-			okButtonQuestion.setBackground(Color.WHITE);
-			okButtonQuestion.setPreferredSize(new Dimension(70, 47));
-			cancelButtonQuestion.setBackground(Color.WHITE);
-			cancelButtonQuestion.setPreferredSize(new Dimension(70, 47));
 			
 			buttonsPanel.add(cancelButtonQuestion);
 			buttonsPanel.add(okButtonQuestion);
@@ -320,7 +320,7 @@ public class GView implements Observer {
 			answerCpanel.add(answerC);
 			answerDpanel.add(qd);
 			answerDpanel.add(answerD);
-			
+						
 			questionWindow.setVisible(true);
 			questionWindow.setSize(dialog);	
 			questionWindow.setResizable(false);
@@ -505,18 +505,6 @@ public class GView implements Observer {
 		timer.start();
 	}
 
-	public void stopSound()
-	{
-		sound.stopSound();
-	}
-
-	public void playSoundFeedback(boolean isCorrect){
-		if(isCorrect == true)
-			sound.playCorrect();
-		else
-			sound.playIncorrect();
-	}
-
 	@Override
 	public void update(Observable o, Object arg) {
 		if (o instanceof GModel && arg instanceof SingleQuestion) {
@@ -531,16 +519,14 @@ public class GView implements Observer {
 		else if(o instanceof GModel && arg instanceof int[]) {
 			showResultRestart((int[]) arg);
 		}
-
-		else if(o instanceof GModel && arg instanceof Boolean){
-			boolean isCorrect = (Boolean)arg;
-			playSoundFeedback(isCorrect);
-
-		}
 	}
 	public void setMenuFrameState(boolean state) {
 		for(JButton b:menuButtons)
 			b.setEnabled(state);
+	}
+	public void stopSound() {
+		sound.stopSound();
+		
 	}
 	
 }

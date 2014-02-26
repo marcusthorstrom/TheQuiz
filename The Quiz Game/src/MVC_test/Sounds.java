@@ -16,13 +16,12 @@ public class Sounds {
 	private String incorrect = "incorrect.wav";
 	private Clip clip;
 	private FloatControl volume;
+	private int factor;
 
 	public Sounds()
 	{
 		volume = (FloatControl)clip.getControl(FloatControl.Type.MASTER_GAIN);
-		
 	}
-	
 	/*
 	 * Method which plays a sound when called upon. 
 	 * Path to file must be specified as parameter.
@@ -34,6 +33,7 @@ public class Sounds {
 					AudioSystem.getAudioInputStream(new File(filePath));
 			clip = AudioSystem.getClip();
 			clip.open(aIS);	//Opens the AudioInputStream.
+			changeVolume(factor);
 			clip.start();	//Plays the sound once. (Might need closing?)
 		}
 		
@@ -42,7 +42,6 @@ public class Sounds {
 		}
 		catch (LineUnavailableException e) {
 			System.out.println("File seem to be busy.");
-			
 		}
 		catch(IOException e){
 			System.out.println("Cannot find " + filePath);
@@ -79,8 +78,10 @@ public class Sounds {
 		playSound(incorrect);
 	}
 	
-	public void changeVolume(int factor){
-		volume.setValue(factor * -10.0f);
+	public void changeVolume(int factor){			//Gets a number between 1 and 10
+		volume.setValue((float)(factor*10.0));
 	}
-	
+	public void setVolume(int volumeFactor) {
+		this.factor = volumeFactor;
+	}
 }
