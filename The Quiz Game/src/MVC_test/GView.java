@@ -90,7 +90,7 @@ public class GView implements Observer {
 
 	public GView() {
 		
-		sound = new Sounds();
+		//sound = new Sounds();
 
 		gameWindow = new JFrame("The Quiz Game"); 						// New JFrame for containing the whole game
 		gameWindow.setSize(450, 300); 									// Sets the size for the window
@@ -270,56 +270,43 @@ public class GView implements Observer {
 		else {
 			
 			isQBuild = true;
-			JPanel questionpanel = new JPanel();
-			JPanel answerApanel = new JPanel();
-			JPanel answerBpanel= new JPanel();
-			JPanel answerCpanel = new JPanel();
-			JPanel answerDpanel = new JPanel();
 			JPanel buttonsPanel = new JPanel();
 			JPanel all = new JPanel();
-			questionWindow.setLayout(new FlowLayout());
-			questionWindow.add(all);
-			all.setLayout(new BoxLayout(all, BoxLayout.Y_AXIS));
-			
-			
-			
+			questionWindow.setLayout(new BorderLayout());
+			all.setLayout(new GridLayout(5,2));
 			
 			//The Components
-			JLabel l = new JLabel("Skriv in din fråga!");
-			JLabel q = new JLabel("Fråga:", JLabel.TRAILING);
-			JLabel qa = new JLabel("Svar:", JLabel.TRAILING);
-			JLabel qb = new JLabel("Alt 1:", JLabel.TRAILING);
-			JLabel qc = new JLabel("Alt 2:", JLabel.TRAILING);
-			JLabel qd = new JLabel("Alt 3:", JLabel.TRAILING);
+			JLabel l = new JLabel("Skriv in din fråga!", JLabel.CENTER);
+			JLabel q = new JLabel("Fråga:", JLabel.CENTER);
+			JLabel qa = new JLabel("Svar:", JLabel.CENTER);
+			JLabel qb = new JLabel("Alt 1:", JLabel.CENTER);
+			JLabel qc = new JLabel("Alt 2:", JLabel.CENTER);
+			JLabel qd = new JLabel("Alt 3:", JLabel.CENTER);
 			//The Components
 		
+			all.add(q);
+			all.add(questionField);
+			all.add(qa);
+			all.add(answerA);
+			all.add(qb);
+			all.add(answerB);
+			all.add(qc);
+			all.add(answerC);
+			all.add(qd);
+			all.add(answerD);
+			
 			okButtonQuestion.setBackground(Color.WHITE);
 			okButtonQuestion.setPreferredSize(new Dimension(70, 47));
 			cancelButtonQuestion.setBackground(Color.WHITE);
 			cancelButtonQuestion.setPreferredSize(new Dimension(70, 47));
 			
-			all.add(l);
-			all.add(questionpanel);
-			all.add(answerApanel);
-			all.add(answerBpanel);
-			all.add(answerCpanel);
-			all.add(answerDpanel);
-			all.add(buttonsPanel);
+			questionWindow.add(l, BorderLayout.NORTH);
+			questionWindow.add(all,BorderLayout.CENTER);
+			questionWindow.add(buttonsPanel,BorderLayout.SOUTH);
 			
 			buttonsPanel.add(cancelButtonQuestion);
 			buttonsPanel.add(okButtonQuestion);
 			
-			questionpanel.add(q);
-			questionpanel.add(questionField);
-
-			answerApanel.add(qa);
-			answerApanel.add(answerA);
-			answerBpanel.add(qb);
-			answerBpanel.add(answerB);
-			answerCpanel.add(qc);
-			answerCpanel.add(answerC);
-			answerDpanel.add(qd);
-			answerDpanel.add(answerD);
 						
 			questionWindow.setVisible(true);
 			questionWindow.setSize(dialog);	
