@@ -31,5 +31,4 @@ final public class Options {
 		gamerounds = 5;
 		return gamerounds;
 	}
-	
 }

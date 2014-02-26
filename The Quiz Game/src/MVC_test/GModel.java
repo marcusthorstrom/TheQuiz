@@ -16,10 +16,12 @@ public class GModel extends Observable {
 	private ArrayList<SingleQuestion> qu;
 	private boolean isCorrect = false;
 	private Questions q;
+	private Sounds sounds;
 
 	
 	public GModel() {
 		q = new Questions();
+		sounds = new Sounds();
 	}
 
 	public void changeActiveQuestion() {
@@ -43,6 +45,8 @@ public class GModel extends Observable {
 	public void playGame(Options options) {
 		this.options = options;
 		qu = q.getQuestions(options.getGameRounds());
+		sounds.onOff(options.getVolume());
+		
 	}
 
 	public void setChosenAnswer(String chosenAnswer) {
@@ -59,11 +63,14 @@ public class GModel extends Observable {
 
 	public void isRightAnswer() {
 		if (rightAnswer.equals(chosenAnswer)) {
+			sounds.playCorrect();
 			rightCount++;
 			isCorrect = true;
 			// return true;
-		} else {
+		} 
+		else {
 			wrongCount++;
+			sounds.playIncorrect();
 			isCorrect = false;
 			// return false;
 		}
