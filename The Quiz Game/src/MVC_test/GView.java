@@ -28,8 +28,6 @@ import javax.swing.JSlider;
 import javax.swing.JSpinner;
 import javax.swing.JTextField;
 import javax.swing.SpinnerNumberModel;
-import javax.swing.SpringLayout;
-import javax.swing.SwingUtilities;
 import javax.swing.Timer;
 
 public class GView implements Observer {
@@ -90,7 +88,8 @@ public class GView implements Observer {
 
 	public GView() {
 		
-		//sound = new Sounds();
+		
+		sound = new Sounds();
 
 		gameWindow = new JFrame("The Quiz Game"); 						// New JFrame for containing the whole game
 		gameWindow.setSize(450, 300); 									// Sets the size for the window
