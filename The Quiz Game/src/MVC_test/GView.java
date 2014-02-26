@@ -525,7 +525,4 @@ public class GView implements Observer {
 		for(JButton b:menuButtons)
 			b.setEnabled(state);
 	}
-	public void stopSound() {
-		sound.stopSound();
-	}
 }
