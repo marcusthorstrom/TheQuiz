@@ -82,16 +82,15 @@ public class Sounds {
 
 	public void changeVolume(float gain){
 		volume = (FloatControl)clip.getControl(FloatControl.Type.MASTER_GAIN);
-		//float dB = (float) (Math.log(gain) / Math.log(10.0) * 20.0);
+		float dB = (float) (Math.log(gain) / Math.log(10.0) * 20.0);
 		//fload dB = 10
 		
 		
-		volume.setValue(gain);
+		volume.setValue(dB);
 }
 	
 	
 	public void setVolume(int volumeFactor) {
-		this.gain = volumeFactor;
-		gain = gain*0.6f;
+		this.gain = volumeFactor/10;
 	}
 }
