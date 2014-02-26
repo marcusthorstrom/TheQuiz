@@ -12,7 +12,6 @@ import javax.swing.Timer;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.Timer;
 
 public class GUI implements ActionListener{
 	/**
