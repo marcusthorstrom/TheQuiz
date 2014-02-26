@@ -28,8 +28,6 @@ import javax.swing.JSlider;
 import javax.swing.JSpinner;
 import javax.swing.JTextField;
 import javax.swing.SpinnerNumberModel;
-import javax.swing.SpringLayout;
-import javax.swing.SwingUtilities;
 import javax.swing.Timer;
 
 public class GView implements Observer {
@@ -76,7 +74,7 @@ public class GView implements Observer {
 	private JTextField answerD = new JTextField(qLength);
 	
 	private JSpinner spinner = new JSpinner(new SpinnerNumberModel(5,1,10,1));
-	private JSlider slider = new JSlider(0,10,5);
+	private JSlider slider = new JSlider(0,10,10);
 	
 	private Timer timer = new Timer(2000, new ActionListener() {
 		public void actionPerformed(ActionEvent e) {
