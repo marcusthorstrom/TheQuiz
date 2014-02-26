@@ -1,9 +1,11 @@
 package MVC_test;
 import java.io.File;
 import java.io.IOException;
+
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
+import javax.sound.sampled.FloatControl;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 
@@ -13,9 +15,11 @@ public class Sounds {
 	private String correct = "correct.wav";	
 	private String incorrect = "incorrect.wav";
 	private Clip clip;
+	private FloatControl volume;
 
-	//public Sounds()
+	public Sounds()
 	{
+		volume = (FloatControl)clip.getControl(FloatControl.Type.MASTER_GAIN);
 		
 	}
 	
@@ -74,4 +78,9 @@ public class Sounds {
 	{
 		playSound(incorrect);
 	}
+	
+	public void changeVolume(int factor){
+		volume.setValue(factor * -10.0f);
+	}
+	
 }
