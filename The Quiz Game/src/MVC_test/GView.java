@@ -90,7 +90,7 @@ public class GView implements Observer {
 
 	public GView() {
 		
-		//sound = new Sounds();
+		sound = new Sounds();
 
 		gameWindow = new JFrame("The Quiz Game"); 						// New JFrame for containing the whole game
 		gameWindow.setSize(450, 300); 									// Sets the size for the window

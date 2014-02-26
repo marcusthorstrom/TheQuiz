@@ -51,7 +51,6 @@ public class SingleQuestion {
 	{
 		return answer4;
 	}
-	
 
 	public String getSound()
 	{
