@@ -20,7 +20,7 @@ public class Sounds {
 
 	public Sounds()
 	{
-		volume = (FloatControl)clip.getControl(FloatControl.Type.MASTER_GAIN);
+		
 	}
 	/*
 	 * Method which plays a sound when called upon. 
@@ -33,6 +33,7 @@ public class Sounds {
 					AudioSystem.getAudioInputStream(new File(filePath));
 			clip = AudioSystem.getClip();
 			clip.open(aIS);	//Opens the AudioInputStream.
+			volume = (FloatControl)clip.getControl(FloatControl.Type.MASTER_GAIN);
 			changeVolume(factor);
 			clip.start();	//Plays the sound once. (Might need closing?)
 		}
@@ -79,7 +80,7 @@ public class Sounds {
 	}
 	
 	public void changeVolume(int factor){			//Gets a number between 1 and 10
-		volume.setValue((float)(factor*10.0));
+		volume.setValue((float)(factor));
 	}
 	public void setVolume(int volumeFactor) {
 		this.factor = volumeFactor;
