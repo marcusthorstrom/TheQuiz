@@ -82,23 +82,24 @@ public class GView implements Observer {
 			timer.stop();
 		}
 	});
-	private boolean isSBuild = false;		//If the SettingsWindow is build
-	private boolean isQBuild = false;		//If the QuestionWindow is build
-	private boolean isHBuild = false;		//If the HelpWindoe is build
+	private boolean isSBuild = false;
+	private boolean isQBuild = false;		
+	private boolean isHBuild = false;		
 	private Sounds sound;
-
+/**
+ *The constructor for the GView, this is responsible 
+ *for setting up the JFrame and its conditions
+ *adding listeners to the windows. 
+ */
 	public GView() {
-
-		sound = new Sounds();
-
-		gameWindow = new JFrame("The Quiz Game"); 						// New JFrame for containing the whole game
-		gameWindow.setSize(450, 300); 									// Sets the size for the window
-		gameWindow.setResizable(false); 								// makes the window resizable
-		gameWindow.setVisible(true); 									// makes the window visible
-		gameWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); 		// Closes the game on exit
-		questionWindow.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
-		settingsWindow.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
-		helpWindow.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+		gameWindow = new JFrame("The Quiz Game"); 	
+		gameWindow.setSize(450, 300); 										
+		gameWindow.setResizable(false); 									
+		gameWindow.setVisible(true); 										
+		gameWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); 			
+		questionWindow.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE); 	
+		settingsWindow.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);	
+		helpWindow.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);		
 		contentPane = gameWindow.getContentPane();
 		makeMenu();
 
@@ -131,6 +132,10 @@ public class GView implements Observer {
 			public void windowIconified(WindowEvent arg0) {}
 		});
 	}
+	/**
+	 * Makes the menu
+	 * Draws the main window, with all buttons
+	 */
 	public void makeMenu(){
 
 		contentPane.add(borderPane = new JPanel(), BorderLayout.CENTER);
@@ -263,6 +268,12 @@ public class GView implements Observer {
 
 	public void makeQuestion() {
 		if(isQBuild) {
+			questionField.setText(null);
+			answerA.setText(null);
+			answerB.setText(null);
+			answerC.setText(null);
+			answerD.setText(null);
+			
 			questionWindow.setVisible(true);
 		}
 		else {
@@ -414,7 +425,7 @@ public class GView implements Observer {
 
 			sounds.setLayout(new FlowLayout());
 
-			sounds.add(new JLabel("Ställ in ljudnivå:"));
+			sounds.add(new JLabel("Ställ in ljud On/Off"));
 
 			soundBar.add(slider);
 			soundBar.setLayout(new FlowLayout());
@@ -516,7 +527,5 @@ public class GView implements Observer {
 	}
 	public void stopSound() {
 		sound.stopSound();
-
 	}
-
 }
