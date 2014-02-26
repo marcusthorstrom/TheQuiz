@@ -21,7 +21,7 @@ public class GModel extends Observable {
 	
 	public GModel() {
 		q = new Questions();
-		//sound = new Sounds();
+		sound = new Sounds();
 	}
 
 	public void changeActiveQuestion() {
