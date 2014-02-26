@@ -17,11 +17,6 @@ public class Sounds {
 	private Clip clip;
 	private FloatControl volume;
 	private int gain;
-
-	/*public Sounds()
-	{
-		
-	}*/
 	
 	/*
 	 * Method which plays a sound when called upon. 
@@ -43,7 +38,6 @@ public class Sounds {
 		}
 		catch (LineUnavailableException e) {
 			System.out.println("File seem to be busy.");
-			
 		}
 		catch(IOException e){
 			System.out.println("Cannot find " + filePath);
@@ -88,9 +82,7 @@ public class Sounds {
 	}
 	
 	
-	public void setVolume(int volumeFactor)
-	{
+	public void setVolume(int volumeFactor) {
 		this.gain = (volumeFactor/10);
 	}
-	
 }

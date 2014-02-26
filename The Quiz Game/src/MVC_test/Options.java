@@ -8,7 +8,7 @@ final public class Options {
 	private int gamerounds;
 	
 	public Options(){
-		volume = 50;
+		volume = 5;
 		gamerounds = 5;
 	}
 	public int getVolume(){
