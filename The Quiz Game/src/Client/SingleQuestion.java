@@ -2,7 +2,7 @@ package Client;
 
 import java.util.ArrayList;
 
-public class SingleQuestion {
+public class SingleQuestion implements java.io.Serializable {
 
 	private String question;
 	private String correctAnswer;
