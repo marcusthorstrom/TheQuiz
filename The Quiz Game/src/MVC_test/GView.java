@@ -256,7 +256,7 @@ public class GView implements Observer {
 		resultquit.addActionListener(listenForResult);
 	}
 	public void resetFrame() {
-		contentPane.removeAll();											// Removes all the containers in the contentPane
+		contentPane.removeAll(); 											// Removes all the containers in the contentPane
 		contentPane.revalidate();											// to clear the window to get ready for the next question		
 		contentPane.repaint(); 												// Repaints the content
 	}
@@ -402,8 +402,9 @@ public class GView implements Observer {
 			all.add(sounds);
 			all.add(soundBar);
 			all.add(buttonsPanel);
-			noQuestions.repaint();
-
+			
+			
+			
 			settingsWindow.add(all);
 
 			noQuestions.setLayout(new FlowLayout());
