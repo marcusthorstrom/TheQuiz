@@ -42,6 +42,7 @@ public class ActiveObj implements Runnable{
 				return;
 			}
 		    try {
+		    	System.out.println(s.getLocalAddress()+" vill hämta "+noQuestions+" st frågor");
 		    	ArrayList<ArrayList<String>> qList = q.getQuestions(noQuestions);
 				outStream.writeObject(qList);
 			} catch (IOException e) {
