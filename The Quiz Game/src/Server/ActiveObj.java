@@ -18,6 +18,7 @@ public class ActiveObj implements Runnable{
 
 	@Override
 	public void run() {
+		System.out.println(s.getLocalAddress()+" har anslutit till servern");
 		q = new QuestionsServer();
 		try {
 			inStream = new ObjectInputStream(s.getInputStream());
