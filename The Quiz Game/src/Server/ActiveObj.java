@@ -53,8 +53,8 @@ public class ActiveObj implements Runnable{
 						q.writeQuestion(question);
 						System.out.println("Fråga skriven.");						
 					}
-					inStream.close();
 					System.out.println(s.getLocalAddress()+" has disconected.");
+					inStream.close();
 					s.close();
 					break;
 				} catch (Exception e) {

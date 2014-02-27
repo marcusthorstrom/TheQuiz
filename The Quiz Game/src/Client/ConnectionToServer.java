@@ -16,7 +16,7 @@ public class ConnectionToServer {
 
 	public ConnectionToServer() throws IOException {
 		InetAddress ip = null;
-		ip = InetAddress.getByName("localHost");
+		ip = InetAddress.getByName("46.239.112.126");
 		socket = new Socket(ip, 13337);
 
 		out = new ObjectOutputStream(socket.getOutputStream());
