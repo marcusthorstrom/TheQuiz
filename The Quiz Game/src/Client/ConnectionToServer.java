@@ -8,7 +8,6 @@ import java.net.Socket;
 import java.net.SocketException;
 import java.util.ArrayList;
 
-
 public class ConnectionToServer {
 	private static Socket socket;
 	private InetAddress ip;
@@ -22,59 +21,65 @@ public class ConnectionToServer {
 
 		out = new ObjectOutputStream(socket.getOutputStream());
 		in = new ObjectInputStream(socket.getInputStream());
-
 	}
 
-	/*
-	 * public void writeQuestion(SingleQuestion qu) { try {
-	 * 
-	 * out.write(serialize(qu)); } cat(SingleQuestion) o.readObject()ch
-	 * (IOException e) { System.out.println("Not able to serialize the object");
-	 * e.printStackTrace(); }
-	 * 
-	 * }
-	 */
+	public void writeQuestion(SingleQuestion qu) {
+
+		try {
+			if (!qu.isEmpty()) {
+				ArrayList<String> tempQuestions = new ArrayList<String>();
+				tempQuestions = qu.printArrayList(tempQuestions);
+
+				out.writeObject(tempQuestions);
+			} else {
+				System.out.println("Did not write");
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
 
 	/**
-	 * Asks for questions from server
-	 * Returns questions from sever to GModel
+	 * Asks for questions from server Returns questions from sever to GModel
+	 * 
 	 * @param gameRounds
 	 * @return
-	 * @throws IOException 
+	 * @throws IOException
 	 */
-	public ArrayList<SingleQuestion> getQuestions(int gameRounds) throws IOException{
+	public ArrayList<SingleQuestion> getQuestions(int gameRounds)
+			throws IOException {
 		ArrayList<SingleQuestion> sqList = new ArrayList<SingleQuestion>();
 		ArrayList<ArrayList<String>> aal = new ArrayList<ArrayList<String>>();
-		
+
 		/**
 		 * Tries to ask server for x numbers of questions
 		 */
-		try{
+		try {
 			out.writeObject(gameRounds);
 			/**
 			 * If succeeded, tires to read from server
 			 */
-			try{
-				aal=(ArrayList<ArrayList<String>>)in.readObject();
-				
+			try {
+				aal = (ArrayList<ArrayList<String>>) in.readObject();
+
 				/**
-				 * trims all Null elements out of ArrayLists 
+				 * trims all Null elements out of ArrayLists
 				 */
 				aal.trimToSize();
-				for(ArrayList<String> q : aal){
+				for (ArrayList<String> q : aal) {
 					q.trimToSize();
 					sqList.add(new SingleQuestion(q));
 				}
-				
-			}catch(ClassNotFoundException e){
+
+			} catch (ClassNotFoundException e) {
 				e.printStackTrace();
 			}
-		}catch(SocketException e){
+		} catch (SocketException e) {
 			System.out.println(e.toString());
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		
+
 		socket.close();
 		return sqList;
 	}

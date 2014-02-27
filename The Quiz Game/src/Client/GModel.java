@@ -90,6 +90,13 @@ public class GModel extends Observable {
 
 	public void createQuestion(SingleQuestion qu) {
 
-		q.writeQuestion(qu);
+		try {
+			ConnectionToServer c = new ConnectionToServer();
+			
+			c.writeQuestion(qu);
+
+		} catch (IOException e) {
+			q.writeQuestion(qu);
+		}
 	} 
 }
