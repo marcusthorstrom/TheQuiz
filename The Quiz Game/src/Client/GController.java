@@ -6,8 +6,6 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.Timer;
 
-import Server.SingleQuestion;
-
 public class GController {
 
 	private GView view;

@@ -30,7 +30,6 @@ import javax.swing.JTextField;
 import javax.swing.SpinnerNumberModel;
 import javax.swing.Timer;
 
-import Server.SingleQuestion;
 
 public class GView implements Observer {
 	private JFrame gameWindow;

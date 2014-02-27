@@ -4,8 +4,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Observable;
 
-import Server.Questions;
-import Server.SingleQuestion;
 
 public class GModel extends Observable {
 

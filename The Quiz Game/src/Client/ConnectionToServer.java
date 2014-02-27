@@ -8,7 +8,6 @@ import java.net.Socket;
 import java.net.SocketException;
 import java.util.ArrayList;
 
-import Server.SingleQuestion;
 
 public class ConnectionToServer {
 	private static Socket socket;
