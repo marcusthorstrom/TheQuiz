@@ -29,7 +29,13 @@ import javax.swing.JSpinner;
 import javax.swing.JTextField;
 import javax.swing.SpinnerNumberModel;
 import javax.swing.Timer;
-
+/**
+ * the Whole Graphical User Interface
+ * in one class, this class is responsible for
+ * all viewing in the program
+ * @author Marcus
+ *
+ */
 
 public class GView implements Observer {
 	private JFrame gameWindow;
@@ -171,6 +177,9 @@ public class GView implements Observer {
 		menuButtons.add(quit);
 
 	}
+	/**
+	 * Makes the frame for asking the questions
+	 */
 	public void makeQFrame() {
 
 		question = new JLabel("",JLabel.CENTER);								//Makes a new label with the question
@@ -203,6 +212,11 @@ public class GView implements Observer {
 			b.setBackground(Color.white);
 		}
 	}
+	/**
+	 * Asks the question by naming all
+	 * components from makeQFrame
+	 * @param quest
+	 */
 	public void askQuestion(SingleQuestionClient quest) {
 
 		for(JButton b: buttons)
@@ -227,6 +241,7 @@ public class GView implements Observer {
 			sound.playSound(quest.getSound());
 		}
 	}
+	
 	void addMenuListener(ActionListener listenForMenu) {
 		start.addActionListener(listenForMenu);
 		create.addActionListener(listenForMenu);
@@ -265,7 +280,10 @@ public class GView implements Observer {
 		contentPane.revalidate();											// to clear the window to get ready for the next question		
 		contentPane.repaint(); 												// Repaints the content
 	}
-
+	/**
+	 * Creates the pop-up for creating
+	 * your own question
+	 */
 	public void makeQuestion() {
 		if(isQBuild) {
 			questionField.setText(null);
@@ -320,7 +338,9 @@ public class GView implements Observer {
 			questionWindow.setResizable(false);
 		}
 	}
-
+	/**
+	 * Creates the pop-up help
+	 */
 	public void makeHelp(){
 		if(isHBuild) {
 			helpWindow.setVisible(true);
@@ -362,6 +382,11 @@ public class GView implements Observer {
 			helpWindow.setResizable(false);
 		}
 	}
+	/**
+	 * This is for getting the values in the "Create your own question"
+	 * fields and sent them to the GModel class, via the GController
+	 * @return
+	 */
 	public SingleQuestionClient submitFields() {
 		ArrayList<String> a = new ArrayList<String>();	
 		a.add(questionField.getText());
@@ -392,7 +417,9 @@ public class GView implements Observer {
 	public void closeHWindow() {
 		helpWindow.dispose();
 	}
-
+/**
+ * The options pop-up window
+ */
 	public void options() {
 		if(isSBuild){
 			settingsWindow.setVisible(true);					//If this is not done this way, we have to reDraw the entire window every time
@@ -442,7 +469,12 @@ public class GView implements Observer {
 			settingsWindow.repaint();
 		}
 	}
-
+	/**
+	 * This is for submitting the options the user set
+	 * and being able to get those values
+	 * @param option
+	 * @return
+	 */
 	public Options submitOptions(Options option) {
 		boolean volume = option.getVolume();
 		option.setGameRounds((int)spinner.getValue());
@@ -455,12 +487,18 @@ public class GView implements Observer {
  		option.setVolume(volume);
 		return option;
 	}
-
+	/**
+	 * Resets the options to default
+	 * @param option
+	 */
 	public void resetOptions(Options option) {
 		slider.setValue(1);
 		spinner.setValue(option.resetGamerounds());
 	}
-
+	/**
+	 * This frame is for showing the result in the end of a game round
+	 * @param a
+	 */
 	public void showResultRestart(int [] a) {
 		int rightA = a[0];
 		int wrongA = a[1];
@@ -473,19 +511,31 @@ public class GView implements Observer {
 		borderPane.add(backToMenu);
 		borderPane.add(resultquit);
 	}
-
+	/**
+	 * Disable the question answers
+	 * so the user cannot press 
+	 * multiple answers
+	 */
 	public void disableButtons() {
 		for (JButton b : buttons) {
 			b.setEnabled(false);
 		}
 	}
-
+/**
+ * Enables the question answers
+ * in the next question
+ */
 	public void enableButtons() {
 		for (JButton b : buttons) {
 			b.setEnabled(true);
 		}
 	}
-
+/**
+ * Sets the color of the pressed
+ *  button, depending on wether
+ *  the answer is right or wrong
+ * @param chosenAnswer
+ */
 	public void setColor(String chosenAnswer) {
 		for (JButton b : buttons) {
 			if (b.getText().equals(chosenAnswer)){
@@ -499,12 +549,22 @@ public class GView implements Observer {
 		}
 		timer.start();
 	}
-	
+	/**
+	 * Sets the state of the menu 
+	 * buttons whenever a pop-up is opened
+	 * @param state
+	 */
 	public void setMenuFrameState(boolean state) {
 		for(JButton b:menuButtons)
 			b.setEnabled(state);
 	}
-
+	/**
+	 * The update method from the observable class
+	 * This is used for:
+	 * -Asking the question
+	 * -Telling which answer to be set correct
+	 * -Sending ErrorCodes from the model to be displayed
+	 */
 	@Override
 	public void update(Observable o, Object arg) {
 		if (o instanceof GModel && arg instanceof SingleQuestionClient) {

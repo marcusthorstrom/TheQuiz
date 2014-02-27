@@ -5,7 +5,13 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
 import java.util.ArrayList;
-
+	/**
+	 * This Class is the servers runnable
+	 *  object, and creates a new every time
+	 *  a client has connected to the server
+	 * @author Marcus
+	 *
+	 */
 public class ActiveObj implements Runnable{
 	private Socket s;
 	private ObjectInputStream inStream;
@@ -30,12 +36,12 @@ public class ActiveObj implements Runnable{
 	}
 
 	private void requestQuestion() {
-		Object incoming;
+		Object incoming;					//The incoming Object
 		while (true) {
 			try {
 				incoming = inStream.readObject();
 				try {
-					if(incoming instanceof Integer) {
+					if(incoming instanceof Integer) {		//If the incoming object is a Integer that means the client has ordered questions
 						int noQuestions = (int)incoming;  
 						try {
 							ArrayList<ArrayList<String>> qList = q.getQuestions(noQuestions);
@@ -46,14 +52,14 @@ public class ActiveObj implements Runnable{
 							e.printStackTrace();
 						}
 					}
-					else if(incoming instanceof ArrayList<?>) {
+					else if(incoming instanceof ArrayList<?>) {		//If the incoming object is a ArrayList then the client wants to write a question
 						ArrayList<String> question = new ArrayList<String>();
 						question = (ArrayList<String>) incoming;
 						question.trimToSize();
 						q.writeQuestion(question);
 						System.out.println("Fråga skriven.");						
 					}
-					System.out.println(s.getLocalAddress()+" has disconected.");
+					System.out.println(s.getLocalAddress()+" has disconected.");	//Closing the connection after delivering
 					inStream.close();
 					s.close();
 					break;

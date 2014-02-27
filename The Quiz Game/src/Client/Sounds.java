@@ -11,7 +11,10 @@ import javax.sound.sampled.UnsupportedAudioFileException;
 
 
 public class Sounds {
-
+/**
+ * This class is for managing the sounds that appear when a button is pressed
+ * 
+ */
 	private String correct = "correct.wav";	
 	private String incorrect = "incorrect.wav";
 	private Clip clip;

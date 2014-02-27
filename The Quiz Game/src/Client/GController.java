@@ -11,6 +11,11 @@ public class GController {
 	private GView view;
 	private GModel model;
 	private Options options = new Options();
+	/**
+	 * The controller, managing both the View and Model
+	 * @param view
+	 * @param model
+	 */
 
 	public GController(GView view, GModel model) {
 		this.view = view;
@@ -23,11 +28,15 @@ public class GController {
 		this.view.addHelpListener(new HelpListener());
 		this.view.addResultListener(new ResultListener());
 	}
-
+	
 	public void startGame(){
 		this.view.addAnswerListener(new AnswerListener());
 	}
-
+	/**
+	 * A Class for listen on the helpWindow in view
+	 * @author Marcus
+	 *
+	 */
 	class HelpListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
 			Object objekt = e.getSource();
@@ -39,6 +48,9 @@ public class GController {
 			}
 		}
 	}
+	/**
+	 * A Class for listen on the Main Menu
+	 */
 	class MenuListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
 			Object objekt = e.getSource();
@@ -66,6 +78,11 @@ public class GController {
 			}
 		}
 	}
+	/**
+	 * A Class for listen on the answer pressed when the game is played
+	 * this class passes the pressed answer to the GModel class for
+	 * comparing if it was the right answer
+	 */ 
 	class AnswerListener implements ActionListener {
 		@Override
 		public void actionPerformed(ActionEvent e) {
@@ -78,6 +95,10 @@ public class GController {
 			view.disableButtons();
 		}
 	}
+	/**
+	 * A Class used for listen on the submission of
+	 * creating your own question
+	 */
 	class SubmitListener implements ActionListener {
 
 		@Override
@@ -96,6 +117,9 @@ public class GController {
 			}
 		}
 	}
+	/**
+	 * A class for listen to the settings enterd by the user
+	 */
 	class SettingsListener implements ActionListener {
 		@Override
 		public void actionPerformed(ActionEvent e) {
@@ -115,6 +139,11 @@ public class GController {
 			}
 		}
 	}
+	/**
+	 * A class for listen on the "Back to menu" or "exit" frame
+	 * that appears in the end of a game
+	 *
+	 */
 	class ResultListener implements ActionListener {
 		@Override
 		public void actionPerformed(ActionEvent e) {
@@ -131,6 +160,9 @@ public class GController {
 			}
 		}
 	}
+	/**
+	 * The timer used for displaying the next question in the gui
+	 */
 	class TimerListener implements ActionListener {
 		@Override
 		public void actionPerformed(ActionEvent e) {

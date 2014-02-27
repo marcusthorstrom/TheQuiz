@@ -21,13 +21,13 @@ public class Server {
 
 		while(true) {
 			Socket klientS = s.accept();
-			a = new ActiveObj(klientS);
+			a = new ActiveObj(klientS);								//This is created for every Connection to the server
 			a.run();
 		}
 	}
 	public static void main(String[] args) {
 		try {
-			frame = new JFrame("The server");
+			frame = new JFrame("The server");						//The frame is used to easier manage opening and closing of the server
 			frame.setVisible(true);
 			frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 			frame.setSize(300, 200);

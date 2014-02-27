@@ -12,7 +12,10 @@ public class ConnectionToServer {
 	private static Socket socket;
 	private ObjectInputStream in;
 	private ObjectOutputStream out;
-
+	/**
+	 * The Class responsible for the serverCommunication
+	 * @throws IOException
+	 */
 	public ConnectionToServer() throws IOException {
 		InetAddress ip = null;
 		ip = InetAddress.getByName("46.239.112.126");
@@ -20,7 +23,11 @@ public class ConnectionToServer {
 		out = new ObjectOutputStream(socket.getOutputStream());
 		in = new ObjectInputStream(socket.getInputStream());
 	}
-
+	/**
+	 * Method for writing Questions to the server
+	 * @param The Question as a SingleQuestionClient object
+	 * @throws IOException
+	 */
 	public void writeQuestion(SingleQuestionClient qu) throws IOException {
 
 		try {

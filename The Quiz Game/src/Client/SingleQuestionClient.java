@@ -1,8 +1,12 @@
 package Client;
 
 import java.util.ArrayList;
-
+/**
+ * This class is for storing a question object
+ *
+ */
 public class SingleQuestionClient{
+	
 
 	private String question;
 	private String correctAnswer;

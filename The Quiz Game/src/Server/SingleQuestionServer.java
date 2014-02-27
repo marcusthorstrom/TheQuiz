@@ -1,7 +1,10 @@
 package Server;
 
 import java.util.ArrayList;
-
+/**
+ * This class is for storing a question object
+ *
+ */
 public class SingleQuestionServer {
 
 	private String question;

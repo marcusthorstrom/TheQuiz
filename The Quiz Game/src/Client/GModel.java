@@ -4,9 +4,15 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Observable;
 
-
+/**
+ * The model is used for three things:
+ * Geting questions from the .txt file
+ * Writing questions to the .txt file
+ * Comparing if the right answer has been pressed
+ * 
+ */
 public class GModel extends Observable {
-
+	
 	private Options options;
 	private String rightAnswer;
 	private String chosenAnswer;
@@ -41,6 +47,10 @@ public class GModel extends Observable {
 			notifyObservers(activeQuestion);
 		}
 	}
+	/**
+	 * Initiates a game round with the submitted settings
+	 * @param options
+	 */
 	public void playGame(Options options) {
 		this.options = options;
 		try {
@@ -53,19 +63,21 @@ public class GModel extends Observable {
 		}
 		sounds.onOff(options.getVolume());
 	}
-
+	
 	public void setChosenAnswer(String chosenAnswer) {
 		this.chosenAnswer = chosenAnswer;
 	}
-
 	public void setRight(String rightAnswer) {
 		this.rightAnswer = rightAnswer;
 	}
-
 	public String getRight() {
 		return rightAnswer;
 	}
-
+	/**
+	 * This method does the comparing
+	 * of the pressed answer with the 
+	 * correct answer
+	 */
 	public void isRightAnswer() {
 		if (rightAnswer.equals(chosenAnswer)) {
 			sounds.playCorrect();
@@ -82,7 +94,10 @@ public class GModel extends Observable {
 		setChanged();
 		notifyObservers(isCorrect);
 	}
-
+	/**
+	 * the method for writing a question
+	 * @param qu
+	 */
 	public void createQuestion(SingleQuestionClient qu) {
 		try {
 			ConnectionToServer c = new ConnectionToServer();
