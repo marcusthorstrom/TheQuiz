@@ -2,6 +2,7 @@ package Server;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.EOFException;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -109,5 +110,6 @@ public class IO {
 		} catch (IOException e) {
 			System.out.println("ERROR! Error occurd when write");
 		}
+		
 	}
 }

@@ -11,10 +11,8 @@ public class Server {
 	private ActiveObj a;
 	
 	public Server() throws IOException {
+
 		s = new ServerSocket(13337);
-		JFrame window = new JFrame("Server");
-		window.setVisible(false);
-		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		System.out.println("Waiting for clients...");
 		
 		while(true) {

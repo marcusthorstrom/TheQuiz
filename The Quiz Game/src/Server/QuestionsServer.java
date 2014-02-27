@@ -19,18 +19,19 @@ public class QuestionsServer{
 	
 	public void writeQuestion(ArrayList<String> inQuestion) {
 		try {														//If the array is = null then this catches it
-		if(!inQuestion.isEmpty()) {									//Testing if the array is partially empty
-			io.newQuestion(inQuestion);
+			if(!inQuestion.isEmpty()) {									//Testing if the array is partially empty
+				io.newQuestion(inQuestion);
+			}
+			else {
+				System.out.println("Did not write");
+			}
 		}
-		else {
-			System.out.println("Did not write");
-		}
-		}
-		catch(NullPointerException e) {
-			//System.out.println("Did not write, catched error");
-		}
+			catch(NullPointerException e) {
+				//System.out.println("Did not write, catched error");
+			}
+		
 	}
-	
+
 	public ArrayList<ArrayList<String>> getQuestions(int y){
 		
 		newList = new ArrayList<ArrayList<String>>();
