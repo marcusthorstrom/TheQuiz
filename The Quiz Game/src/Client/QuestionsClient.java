@@ -17,7 +17,7 @@ public class QuestionsClient{
 	private ArrayList<SingleQuestionClient> objectList;
 	private IOClient io;
 	
-	public void QuestionsClient()
+	public QuestionsClient()
 	{
 	    io = new IOClient();												//Creates a new instance of IO.
 	    objectList = new ArrayList<SingleQuestionClient>();				//List for storing questionClasses

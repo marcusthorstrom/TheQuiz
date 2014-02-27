@@ -35,6 +35,7 @@ public class ActiveObj implements Runnable{
 		requestQuestion();				
 	}
 
+	@SuppressWarnings("unchecked")
 	private void requestQuestion() {
 		Object incoming;					//The incoming Object
 		while (true) {
