@@ -21,7 +21,7 @@ public class ConnectionToServer {
 		in = new ObjectInputStream(socket.getInputStream());
 	}
 
-	public void writeQuestion(SingleQuestion qu) throws IOException {
+	public void writeQuestion(SingleQuestionClient qu) throws IOException {
 
 		try {
 			if (!qu.isEmpty()) {
@@ -45,9 +45,9 @@ public class ConnectionToServer {
 	 * @throws IOException
 	 */
 	@SuppressWarnings("unchecked")
-	public ArrayList<SingleQuestion> getQuestions(int gameRounds)
+	public ArrayList<SingleQuestionClient> getQuestions(int gameRounds)
 			throws IOException {
-		ArrayList<SingleQuestion> sqList = new ArrayList<SingleQuestion>();
+		ArrayList<SingleQuestionClient> sqList = new ArrayList<SingleQuestionClient>();
 		ArrayList<ArrayList<String>> aal = new ArrayList<ArrayList<String>>();
 
 		/**
@@ -67,9 +67,8 @@ public class ConnectionToServer {
 				aal.trimToSize();
 				for (ArrayList<String> q : aal) {
 					q.trimToSize();
-					sqList.add(new SingleQuestion(q));
+					sqList.add(new SingleQuestionClient(q));
 				}
-
 			} catch (ClassNotFoundException e) {
 				e.printStackTrace();
 			}
@@ -78,7 +77,6 @@ public class ConnectionToServer {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-
 		socket.close();
 		return sqList;
 	}

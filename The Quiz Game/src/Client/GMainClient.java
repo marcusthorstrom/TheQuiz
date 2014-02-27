@@ -1,6 +1,6 @@
 package Client;
 
-public class GMain {
+public class GMainClient {
 	@SuppressWarnings("unused")
 	public static void main(String[] args) {
 		GView view = new GView();

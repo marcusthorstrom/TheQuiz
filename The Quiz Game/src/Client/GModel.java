@@ -10,17 +10,17 @@ public class GModel extends Observable {
 	private Options options;
 	private String rightAnswer;
 	private String chosenAnswer;
-	private SingleQuestion activeQuestion;
+	private SingleQuestionClient activeQuestion;
 	private int rightCount = 0;
 	private int wrongCount = 0;
 	private int qNumber = 0;
-	private ArrayList<SingleQuestion> qu;
+	private ArrayList<SingleQuestionClient> qu;
 	private boolean isCorrect = false;
-	private Questions q;
+	private QuestionsClient q;
 	private Sounds sounds;
 
 	public GModel() {
-		q = new Questions();
+		q = new QuestionsClient();
 		sounds = new Sounds();
 	}
 
@@ -83,7 +83,7 @@ public class GModel extends Observable {
 		notifyObservers(isCorrect);
 	}
 
-	public void createQuestion(SingleQuestion qu) {
+	public void createQuestion(SingleQuestionClient qu) {
 		try {
 			ConnectionToServer c = new ConnectionToServer();
 			c.writeQuestion(qu);	

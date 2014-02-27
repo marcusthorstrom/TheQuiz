@@ -3,7 +3,9 @@ package Client;
 
 
 final public class Options {
-
+/**
+ * This class is for keeping track of the settings the users make
+ */
 	private boolean volume;
 	private int gamerounds;
 	

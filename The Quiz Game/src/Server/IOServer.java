@@ -11,14 +11,14 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-public class IO {
+public class IOServer {
 
 	private static final String STANDARDFRAGOR = "fragor.txt";
 	private ArrayList<String> questions;
 	private ArrayList<ArrayList<String>> allQuestions;
 	private BufferedReader br;
 
-	public IO() {
+	public IOServer() {
 	}
 
 	/**
@@ -32,14 +32,14 @@ public class IO {
 			 * Checks what operating system the computer is running, then open
 			 * the file in different ways to get Swedish characters
 			 */
-			if (OSDetector.isMac()) {
+			if (OSDetectorServer.isMac()) {
 				br = new BufferedReader(new InputStreamReader(
 						new FileInputStream(STANDARDFRAGOR), "ISO-8859-1"));
-			} else if (OSDetector.isWindows()) {
+			} else if (OSDetectorServer.isWindows()) {
 				br = new BufferedReader(new FileReader(STANDARDFRAGOR));
 
 				//
-			} else if (OSDetector.isLinux()) {
+			} else if (OSDetectorServer.isLinux()) {
 				String file = (System.getProperty("user.home") + "/Desktop/" + STANDARDFRAGOR);
 				br = new BufferedReader(new InputStreamReader(
 						new FileInputStream(file), "ISO-8859-1"));

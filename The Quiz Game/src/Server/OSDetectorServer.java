@@ -1,5 +1,5 @@
-package Client;
-public class OSDetector
+package Server;
+public class OSDetectorServer
 {
     private static boolean isWindows = false;
     private static boolean isLinux = false;

@@ -8,11 +8,11 @@ public class QuestionsServer{
 	
 	private ArrayList<ArrayList<String>> originalList;
 	private ArrayList<ArrayList<String>> newList;
-	private IO io;
+	private IOServer io;
 	
 	public QuestionsServer()
 	{
-	    io = new IO();												//Creates a new instance of IO.
+	    io = new IOServer();												//Creates a new instance of IO.
 		originalList = io.getArray();								//Copies the original list from the IO class to a local list
 
 	}

@@ -4,25 +4,29 @@ import java.util.Random;
 import java.util.ArrayList;
 
 
-public class Questions{
-	
+public class QuestionsClient{
+	/**
+	 * This class is for getting the arraylist from the IO class and
+	 * putting it into the SingleQuestion Class and exporting the 
+	 * number of questions the user asks for
+	 */
 	private ArrayList<ArrayList<String>> originalList;
-	private ArrayList<SingleQuestion> newList;
-	private ArrayList<SingleQuestion> objectList;
-	private IO io;
+	private ArrayList<SingleQuestionClient> newList;
+	private ArrayList<SingleQuestionClient> objectList;
+	private IOClient io;
 	
-	public Questions()
+	public void QuestionsClient()
 	{
-	    io = new IO();												//Creates a new instance of IO.
-	    objectList = new ArrayList<SingleQuestion>();				//List for storing questionClasses
+	    io = new IOClient();												//Creates a new instance of IO.
+	    objectList = new ArrayList<SingleQuestionClient>();				//List for storing questionClasses
 		originalList = io.getArray();								//Copies the original list from the IO class to a local list
 		for(int i = 0; i < originalList.size(); i++)				//Loopes through the list to create a new list of Objects instead of ArrayList<String> which is returned from the IO class
 		{
-			objectList.add(new SingleQuestion(originalList.get(i)));	
+			objectList.add(new SingleQuestionClient(originalList.get(i)));	
 		}
 	}
 	
-	public void writeQuestion(SingleQuestion inQuestion) {
+	public void writeQuestion(SingleQuestionClient inQuestion) {
 		try {														//If the array is = null then this catches it
 		if(!inQuestion.isEmpty()) {									//Testing if the array is partially empty
 			ArrayList<String> tempQuestions = new ArrayList<String>();
@@ -38,9 +42,9 @@ public class Questions{
 		}
 	}
 	
-	public ArrayList<SingleQuestion> getQuestions(int y){
+	public ArrayList<SingleQuestionClient> getQuestions(int y){
 		
-		newList = new ArrayList<SingleQuestion>();
+		newList = new ArrayList<SingleQuestionClient>();
 		shuffle(objectList);	
 
 		for(int x = 0; x < y; x++){

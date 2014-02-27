@@ -1,8 +1,8 @@
-package Client;
+package Server;
 
 import java.util.ArrayList;
 
-public class SingleQuestion{
+public class SingleQuestionServer {
 
 	private String question;
 	private String correctAnswer;
@@ -12,7 +12,7 @@ public class SingleQuestion{
 	private String sound;
 	public boolean containsSound = false;
 	
-	public SingleQuestion(ArrayList<String> questionArray){
+	public SingleQuestionServer(ArrayList<String> questionArray){
 		this.question = questionArray.get(0);
 		this.correctAnswer = questionArray.get(1);
 		this.answer2 = questionArray.get(2);

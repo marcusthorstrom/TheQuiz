@@ -74,13 +74,6 @@ public class GController {
 				JButton button = (JButton) objekt;
 				model.setChosenAnswer(button.getText());
 				model.isRightAnswer();
-
-				/*
-				 * if(model.isRightAnswer(button.getText())) {
-				 * view.setRightAnswer(model.getRight()); } else {
-				 * view.setWrongAnswer(button.getText());
-				 * view.setRightAnswer(model.getRight()); }
-				 */
 			}
 			view.disableButtons();
 		}
@@ -93,7 +86,7 @@ public class GController {
 			if (objekt instanceof JButton) {
 				JButton b = (JButton)objekt;
 				if(b.getText().equals("Ok")){
-					SingleQuestion q = view.submitFields();
+					SingleQuestionClient q = view.submitFields();
 					model.createQuestion(q);
 					view.closeQWindow();
 				}

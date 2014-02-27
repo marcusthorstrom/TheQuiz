@@ -203,7 +203,7 @@ public class GView implements Observer {
 			b.setBackground(Color.white);
 		}
 	}
-	public void askQuestion(SingleQuestion quest) {
+	public void askQuestion(SingleQuestionClient quest) {
 
 		for(JButton b: buttons)
 			b.setBackground(Color.white);
@@ -362,7 +362,7 @@ public class GView implements Observer {
 			helpWindow.setResizable(false);
 		}
 	}
-	public SingleQuestion submitFields() {
+	public SingleQuestionClient submitFields() {
 		ArrayList<String> a = new ArrayList<String>();	
 		a.add(questionField.getText());
 		a.add(answerA.getText());
@@ -377,7 +377,7 @@ public class GView implements Observer {
 				return null;
 			}	
 		}
-		SingleQuestion q = new SingleQuestion(a);
+		SingleQuestionClient q = new SingleQuestionClient(a);
 		return q;
 	}
 	public void closeWindow() {
@@ -507,8 +507,8 @@ public class GView implements Observer {
 
 	@Override
 	public void update(Observable o, Object arg) {
-		if (o instanceof GModel && arg instanceof SingleQuestion) {
-			SingleQuestion quest = (SingleQuestion) arg;
+		if (o instanceof GModel && arg instanceof SingleQuestionClient) {
+			SingleQuestionClient quest = (SingleQuestionClient) arg;
 			askQuestion(quest);
 		} 
 
