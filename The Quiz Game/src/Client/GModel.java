@@ -7,7 +7,6 @@ import java.util.Observable;
 import Server.Questions;
 import Server.SingleQuestion;
 
-
 public class GModel extends Observable {
 
 	private Options options;
@@ -22,7 +21,6 @@ public class GModel extends Observable {
 	private Questions q;
 	private Sounds sounds;
 
-	
 	public GModel() {
 		q = new Questions();
 		sounds = new Sounds();
@@ -30,7 +28,7 @@ public class GModel extends Observable {
 
 	public void changeActiveQuestion() {
 		if (qNumber >= options.getGameRounds()) {
-			int[] a = {rightCount, wrongCount};
+			int[] a = { rightCount, wrongCount };
 			setChanged();
 			notifyObservers(a);
 			qNumber = 0;
@@ -45,22 +43,17 @@ public class GModel extends Observable {
 			notifyObservers(activeQuestion);
 		}
 	}
-
 	public void playGame(Options options) {
 		this.options = options;
-		
-		
+
 		try {
 			ConnectionToServer c = new ConnectionToServer();
 			
-			
-			
+			qu = c.getQuestions(options.getGameRounds());
+
 		} catch (IOException e) {
 			qu = q.getQuestions(options.getGameRounds());
 		}
-		
-		
-		
 
 		sounds.onOff(options.getVolume());
 
@@ -84,8 +77,7 @@ public class GModel extends Observable {
 			rightCount++;
 			isCorrect = true;
 			// return true;
-		} 
-		else {
+		} else {
 			wrongCount++;
 			sounds.playIncorrect();
 			isCorrect = false;
@@ -97,14 +89,9 @@ public class GModel extends Observable {
 		setChanged();
 		notifyObservers(isCorrect);
 	}
-	
+
 	public void createQuestion(SingleQuestion qu) {
-		if(c.conectionIsActive()) {
-			c.writeQuestion(qu);
-		}
-		else {
-			q.writeQuestion(qu);
-		}
-		
-	}
+
+		q.writeQuestion(qu);
+	} 
 }
