@@ -4,13 +4,13 @@ import java.util.Random;
 import java.util.ArrayList;
 
 
-public class Questions{
+public class QuestionsServer{
 	
 	private ArrayList<ArrayList<String>> originalList;
 	private ArrayList<ArrayList<String>> newList;
 	private IO io;
 	
-	public Questions()
+	public QuestionsServer()
 	{
 	    io = new IO();												//Creates a new instance of IO.
 		originalList = io.getArray();								//Copies the original list from the IO class to a local list

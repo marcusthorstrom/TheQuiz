@@ -9,7 +9,14 @@ import javax.swing.JFrame;
 public class Server {
 	private ServerSocket s;
 	private ActiveObj a;
-
+	public static void main(String[] args) {
+		try {
+			new Server();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 	public Server() throws IOException {
 		s = new ServerSocket(13337);
 		System.out.println("Waiting for clients...");
