@@ -17,7 +17,6 @@ public class ConnectionToServer {
 		InetAddress ip = null;
 		ip = InetAddress.getByName("46.239.112.126");
 		socket = new Socket(ip, 13337);
-
 		out = new ObjectOutputStream(socket.getOutputStream());
 		in = new ObjectInputStream(socket.getInputStream());
 	}
@@ -28,7 +27,6 @@ public class ConnectionToServer {
 			if (!qu.isEmpty()) {
 				ArrayList<String> tempQuestions = new ArrayList<String>();
 				tempQuestions = qu.printArrayList(tempQuestions);
-
 				out.writeObject(tempQuestions);
 			} else {
 				System.out.println("Did not write");
@@ -46,6 +44,7 @@ public class ConnectionToServer {
 	 * @return
 	 * @throws IOException
 	 */
+	@SuppressWarnings("unchecked")
 	public ArrayList<SingleQuestion> getQuestions(int gameRounds)
 			throws IOException {
 		ArrayList<SingleQuestion> sqList = new ArrayList<SingleQuestion>();

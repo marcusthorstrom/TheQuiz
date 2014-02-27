@@ -184,3 +184,9 @@ Ett tal
 Ett flyttal
 Ett program
 
+Vad heter sveriges kung?
+Carl XVI Gustaf
+Carl V Gustaf
+Carl XI Gustaf
+Carl XVII Gustaf
+

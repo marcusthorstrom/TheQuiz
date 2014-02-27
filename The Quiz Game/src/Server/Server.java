@@ -8,30 +8,22 @@ import java.net.Socket;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JPanel;
 
 public class Server {
 	private ServerSocket s;
 	private ActiveObj a;
 	private static JFrame frame;
-	private JLabel l;
 	public Server() throws IOException {
-		
 		s = new ServerSocket(13337);
 		System.out.println("Waiting for clients...");
 		Container c = frame.getContentPane();
-		c.add(l = new JLabel("Server Is Running...", JLabel.CENTER));
-		
-		
-		
-		
-		
+		c.add(new JLabel("Server Is Running...", JLabel.CENTER));
+
 		while(true) {
 			Socket klientS = s.accept();
 			a = new ActiveObj(klientS);
 			a.run();
 		}
-		
 	}
 	public static void main(String[] args) {
 		try {

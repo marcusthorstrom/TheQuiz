@@ -190,7 +190,6 @@ public class GView implements Observer {
 		borderPane.add(buttonC = new JButton("")); 
 		borderPane.add(buttonD = new JButton("")); 
 
-
 		buttons.add(buttonA);
 		buttons.add(buttonB);
 		buttons.add(buttonC);
@@ -278,7 +277,6 @@ public class GView implements Observer {
 			questionWindow.setVisible(true);
 		}
 		else {
-
 			isQBuild = true;
 			JPanel buttonsPanel = new JPanel();
 			JPanel all = new JPanel();
@@ -317,7 +315,6 @@ public class GView implements Observer {
 			buttonsPanel.add(cancelButtonQuestion);
 			buttonsPanel.add(okButtonQuestion);
 
-
 			questionWindow.setVisible(true);
 			questionWindow.setSize(dialog);	
 			questionWindow.setResizable(false);
@@ -355,7 +352,6 @@ public class GView implements Observer {
 
 			all.add(header, BorderLayout.NORTH);
 			all.add(textpanel, BorderLayout.CENTER);
-
 
 			all.add(buttonpanel, BorderLayout.SOUTH);
 
@@ -415,8 +411,6 @@ public class GView implements Observer {
 			all.add(soundBar);
 			all.add(buttonsPanel);
 			
-			
-			
 			settingsWindow.add(all);
 
 			noQuestions.setLayout(new FlowLayout());
@@ -460,7 +454,6 @@ public class GView implements Observer {
 		}
  		option.setVolume(volume);
 		return option;
-
 	}
 
 	public void resetOptions(Options option) {
@@ -506,6 +499,11 @@ public class GView implements Observer {
 		}
 		timer.start();
 	}
+	
+	public void setMenuFrameState(boolean state) {
+		for(JButton b:menuButtons)
+			b.setEnabled(state);
+	}
 
 	@Override
 	public void update(Observable o, Object arg) {
@@ -521,9 +519,15 @@ public class GView implements Observer {
 		else if(o instanceof GModel && arg instanceof int[]) {
 			showResultRestart((int[]) arg);
 		}
-	}
-	public void setMenuFrameState(boolean state) {
-		for(JButton b:menuButtons)
-			b.setEnabled(state);
+		else if(o instanceof GModel && arg instanceof Integer) {			//A way of displaying error codes from the model
+			int errorCode = (int)arg;
+			 Component errFrame = null;
+			 if(errorCode==1) {												//If a connection to the server can not be established, send error message
+				 JOptionPane.showMessageDialog(errFrame, "Kunde inte ansluta till servern, använder lokala frågor.");
+			 }
+			 else if(errorCode==2) {										//If a connection to the server can not be established, send error message
+				 JOptionPane.showMessageDialog(errFrame, "Kunde inte ansluta till servern, skriver frågan lokalt istället.");
+			 }
+		}
 	}
 }

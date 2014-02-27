@@ -43,18 +43,15 @@ public class GModel extends Observable {
 	}
 	public void playGame(Options options) {
 		this.options = options;
-
 		try {
 			ConnectionToServer c = new ConnectionToServer();
-			
 			qu = c.getQuestions(options.getGameRounds());
-
 		} catch (IOException e) {
+			setChanged();
+			notifyObservers(1);
 			qu = q.getQuestions(options.getGameRounds());
 		}
-
 		sounds.onOff(options.getVolume());
-
 	}
 
 	public void setChosenAnswer(String chosenAnswer) {
@@ -74,12 +71,10 @@ public class GModel extends Observable {
 			sounds.playCorrect();
 			rightCount++;
 			isCorrect = true;
-			// return true;
 		} else {
 			wrongCount++;
 			sounds.playIncorrect();
 			isCorrect = false;
-			// return false;
 		}
 		qNumber++;
 		setChanged();
@@ -89,13 +84,13 @@ public class GModel extends Observable {
 	}
 
 	public void createQuestion(SingleQuestion qu) {
-
 		try {
 			ConnectionToServer c = new ConnectionToServer();
-			
-			c.writeQuestion(qu);
+			c.writeQuestion(qu);	
 
 		} catch (IOException e) {
+			setChanged();
+			notifyObservers(2);						//Error code for not being able to write to the server
 			q.writeQuestion(qu);
 		}
 	} 
