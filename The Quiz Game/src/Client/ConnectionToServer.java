@@ -10,7 +10,6 @@ import java.util.ArrayList;
 
 public class ConnectionToServer {
 	private static Socket socket;
-	private InetAddress ip;
 	private ObjectInputStream in;
 	private ObjectOutputStream out;
 
