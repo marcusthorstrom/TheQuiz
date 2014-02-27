@@ -4,8 +4,6 @@ import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
 
-import javax.swing.JFrame;
-
 public class Server {
 	private ServerSocket s;
 	private ActiveObj a;

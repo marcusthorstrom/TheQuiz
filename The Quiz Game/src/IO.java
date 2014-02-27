@@ -16,8 +16,8 @@ public class IO {
 		try {
 			
 			if (OSDetector.isMac()){
-			//br = new BufferedReader(new FileReader(System.getProperty ("user.home") + "/Desktop/" + STANDARDFRAGOR));
-			br = new BufferedReader(new FileReader(STANDARDFRAGOR));
+				//br = new BufferedReader(new FileReader(System.getProperty ("user.home") + "/Desktop/" + STANDARDFRAGOR));
+				br = new BufferedReader(new FileReader(STANDARDFRAGOR));
 			}
 			else if (OSDetector.isWindows())
 			{
