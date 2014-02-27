@@ -38,37 +38,30 @@ public class ActiveObj implements Runnable{
 					if(incoming instanceof Integer) {
 						int noQuestions = (int)incoming;  
 						try {
-							System.out.println(s.getLocalAddress()+" vill hï¿½mta "+noQuestions+" st frï¿½gor");
 							ArrayList<ArrayList<String>> qList = q.getQuestions(noQuestions);
 							outStream.writeObject(qList);
+							System.out.println(s.getLocalAddress()+" har hämtat "+noQuestions+" st frågor");
+
 						} catch (IOException e) {
-							// TODO Auto-generated catch block
 							e.printStackTrace();
 						}
 					}
 					else if(incoming instanceof ArrayList<?>) {
-
-						System.out.println("FRÃ…GA SKA SKRIVAS");
-						ArrayList<String> question = new ArrayList<String>(); //inStream.readObject();
-						
+						ArrayList<String> question = new ArrayList<String>();
 						question = (ArrayList<String>) incoming;
-						
-						System.out.println("Efter lagt i array");
 						question.trimToSize();
-						System.out.println("Efter trim");
 						q.writeQuestion(question);
-						System.out.println("Frï¿½gan skriven.");
-
+						System.out.println("Fråga skriven.");						
 					}
+					inStream.close();
+					System.out.println(s.getLocalAddress()+" has disconected.");
+					s.close();
+					break;
 				} catch (Exception e) {
-					try {
-						inStream.close();
-						s.close();
-					} catch (IOException e1) { e1.printStackTrace();}
-					return;
+					
+
 				}
 			} catch (ClassNotFoundException | IOException e2) {
-				// TODO Auto-generated catch block
 				e2.printStackTrace();
 			}
 		}

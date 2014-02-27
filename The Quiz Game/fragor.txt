@@ -184,19 +184,7 @@ Ett tal
 Ett flyttal
 Ett program
 
-test
-1
-2
-3
-4
-
-Test
-1
-2
-3
-4
-
-test
+Frågan
 1
 2
 3
