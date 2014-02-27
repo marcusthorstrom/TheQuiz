@@ -23,7 +23,7 @@ public class ConnectionToServer {
 		in = new ObjectInputStream(socket.getInputStream());
 	}
 
-	public void writeQuestion(SingleQuestion qu) {
+	public void writeQuestion(SingleQuestion qu) throws IOException {
 
 		try {
 			if (!qu.isEmpty()) {
@@ -37,6 +37,7 @@ public class ConnectionToServer {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+		socket.close();
 	}
 
 	/**

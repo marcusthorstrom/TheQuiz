@@ -30,27 +30,42 @@ public class ActiveObj implements Runnable{
 	}
 
 	private void requestQuestion() {
-		int noQuestions;
+		Object incoming;
 		while (true) {
-		    try {
-		    	noQuestions = (int)inStream.readObject();     
-			} catch (Exception e) {
+			try {
+				incoming = inStream.readObject();
 				try {
-					inStream.close();
-					s.close();
-				} catch (IOException e1) { e1.printStackTrace();}
-				return;
-			}
-		    try {
-		    	System.out.println(s.getLocalAddress()+" vill hämta "+noQuestions+" st frågor");
-		    	ArrayList<ArrayList<String>> qList = q.getQuestions(noQuestions);
-				outStream.writeObject(qList);
-			} catch (IOException e) {
+					if(incoming instanceof Integer) {
+						int noQuestions = (int)incoming;  
+						try {
+							System.out.println(s.getLocalAddress()+" vill hämta "+noQuestions+" st frågor");
+							ArrayList<ArrayList<String>> qList = q.getQuestions(noQuestions);
+							outStream.writeObject(qList);
+						} catch (IOException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+					}
+					else if(incoming instanceof ArrayList<?>) {
+						ArrayList<String> question = (ArrayList<String>)inStream.readObject();
+						question.trimToSize();
+						q.writeQuestion(question);
+						System.out.println("Frågan skriven.");
+
+					}
+				} catch (Exception e) {
+					try {
+						inStream.close();
+						s.close();
+					} catch (IOException e1) { e1.printStackTrace();}
+					return;
+				}
+			} catch (ClassNotFoundException | IOException e2) {
 				// TODO Auto-generated catch block
-				e.printStackTrace();
+				e2.printStackTrace();
 			}
 		}
-		
+
 	}
 
 }
