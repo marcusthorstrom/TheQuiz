@@ -25,20 +25,13 @@ public class ConnectionToServer {
 	public ConnectionToServer() throws IOException {
 		InetAddress ip;
 		ip = InetAddress.getByName("localHost");
-		try {
 			socket = new Socket(ip, 13337);
-		} catch (IOException e) {
 			connection = false;
-			e.printStackTrace();
-		}
-
+			
 		DataInputStream in = new DataInputStream(socket.getInputStream());
 		DataOutputStream out = new DataOutputStream(socket.getOutputStream());
 		
 		
-	}
-	public boolean conectionIsActive() {
-		return false;
 	}
 	public void writeQuestion(SingleQuestion qu) {
 		try {

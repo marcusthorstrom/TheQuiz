@@ -21,15 +21,9 @@ public class GModel extends Observable {
 	private boolean isCorrect = false;
 	private Questions q;
 	private Sounds sounds;
-	private ConnectionToServer c;
 
 	
 	public GModel() {
-		try {
-			c = new ConnectionToServer();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
 		q = new Questions();
 		sounds = new Sounds();
 	}
@@ -54,14 +48,22 @@ public class GModel extends Observable {
 
 	public void playGame(Options options) {
 		this.options = options;
-		if(c.conectionIsActive()) {
-			c.getQuestions(options.getGameRounds());
-		}
-		else {
+		
+		
+		try {
+			ConnectionToServer c = new ConnectionToServer();
+			
+			
+			
+		} catch (IOException e) {
 			qu = q.getQuestions(options.getGameRounds());
 		}
-		sounds.onOff(options.getVolume());
 		
+		
+		
+
+		sounds.onOff(options.getVolume());
+
 	}
 
 	public void setChosenAnswer(String chosenAnswer) {
