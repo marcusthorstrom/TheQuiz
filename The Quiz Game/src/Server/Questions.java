@@ -7,27 +7,20 @@ import java.util.ArrayList;
 public class Questions{
 	
 	private ArrayList<ArrayList<String>> originalList;
-	private ArrayList<SingleQuestion> newList;
-	private ArrayList<SingleQuestion> objectList;
+	private ArrayList<ArrayList<String>> newList;
 	private IO io;
 	
 	public Questions()
 	{
 	    io = new IO();												//Creates a new instance of IO.
-	    objectList = new ArrayList<SingleQuestion>();				//List for storing questionClasses
 		originalList = io.getArray();								//Copies the original list from the IO class to a local list
-		for(int i = 0; i < originalList.size(); i++)				//Loopes through the list to create a new list of Objects instead of ArrayList<String> which is returned from the IO class
-		{
-			objectList.add(new SingleQuestion(originalList.get(i)));	
-		}
+
 	}
 	
-	public void writeQuestion(SingleQuestion inQuestion) {
+	public void writeQuestion(ArrayList<String> inQuestion) {
 		try {														//If the array is = null then this catches it
 		if(!inQuestion.isEmpty()) {									//Testing if the array is partially empty
-			ArrayList<String> tempQuestions = new ArrayList<String>();
-			tempQuestions = inQuestion.printArrayList(tempQuestions);
-			io.newQuestion(tempQuestions);
+			io.newQuestion(inQuestion);
 		}
 		else {
 			//System.out.println("Did not write");
@@ -38,13 +31,13 @@ public class Questions{
 		}
 	}
 	
-	public ArrayList<SingleQuestion> getQuestions(int y){
+	public ArrayList<ArrayList<String>> getQuestions(int y){
 		
-		newList = new ArrayList<SingleQuestion>();
-		shuffle(objectList);	
+		newList = new ArrayList<ArrayList<String>>();
+		shuffle(originalList);	
 
 		for(int x = 0; x < y; x++){
-			newList.add(objectList.get(x));
+			newList.add(originalList.get(x));
 		}	
 		return newList;
 	}
