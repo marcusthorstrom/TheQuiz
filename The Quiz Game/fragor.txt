@@ -1,22 +1,22 @@
-Hur många cm är en "inch"?
+Hur mï¿½nga cm ï¿½r en "inch"?
 2.54cm
 2.45cm
 2.98cm
 3.14cm
 
 Vad heter Sveriges sydligaste landskap?
-Skåne
-Västra götaland
+Skï¿½ne
+Vï¿½stra gï¿½taland
 Blekinge
-Småland
+Smï¿½land
 
-Vad är den absoluta nollpukten (i celcius)?
+Vad ï¿½r den absoluta nollpukten (i celcius)?
 -273,5
 -153,6
 -345,7
 245,3
 
-Vad betyder förkortningen "lol"?
+Vad betyder fï¿½rkortningen "lol"?
 laughing out loud
 liten olof ler
 lan of laser
@@ -28,23 +28,23 @@ Sidney
 Melbourne
 Darwin
 
-Hur många olika länder finns det på jordklottet?
+Hur mï¿½nga olika lï¿½nder finns det pï¿½ jordklottet?
 244
 192
 231
 253
 
-Hur många landskap har sverige?
+Hur mï¿½nga landskap har sverige?
 25
 19
 23
 20
 
-Vilken färg har de flesta taxibilarna i London?
+Vilken fï¿½rg har de flesta taxibilarna i London?
 Svart
 Gul
-Grön
-Röd
+Grï¿½n
+Rï¿½d
 
 Vilket land vann Eurovision Song Contest 2002?
 Lettland
@@ -52,41 +52,41 @@ Sverige
 Grekland
 Finland
 
-Vad kallas en sång- eller musikgrupp med tre medlemmar?
+Vad kallas en sï¿½ng- eller musikgrupp med tre medlemmar?
 En trio
 En kvartett
 En triangel
 En Trinett
 
-Vilken känd popgrupp från 60-talet hade en trumslagare som hette Ringo Starr?
+Vilken kï¿½nd popgrupp frï¿½n 60-talet hade en trumslagare som hette Ringo Starr?
 The Beatles
 The Animals
 The Beach Boys
 The Beegees
 
-I vilken månad firar vi midsommar?
+I vilken mï¿½nad firar vi midsommar?
 Juni
 Maj
 Juli
 Augusti
 
-Vilken färg har cirkeln i Japans flagga?
-Röd
-Blå
+Vilken fï¿½rg har cirkeln i Japans flagga?
+Rï¿½d
+Blï¿½
 Gul
 Svart
 
-Från vilket land kommer maträtten paella?
+Frï¿½n vilket land kommer matrï¿½tten paella?
 Spanien
 Italien
 Frankrike
 Brasilien
 
-Vad är densiteten på vatten vid 4grader cellsius?
-1 000kg/m³
-1 0kg/m³
-1 00kg/m³
-1 0000kg/m³
+Vad ï¿½r densiteten pï¿½ vatten vid 4grader cellsius?
+1 000kg/mï¿½
+1 0kg/mï¿½
+1 00kg/mï¿½
+1 0000kg/mï¿½
 
 Vid vilken temperatur kokar vatten?
 100grader
@@ -94,49 +94,49 @@ Vid vilken temperatur kokar vatten?
 120grader
 200grader
 
-Vilken färg är överst på ett rödljus?
-Röd
-Grön
+Vilken fï¿½rg ï¿½r ï¿½verst pï¿½ ett rï¿½dljus?
+Rï¿½d
+Grï¿½n
 Gul
-Blå
+Blï¿½
 
-Vilka färger består Sveriges flagga av?
-Blå och gul
-Gul och röd
-Blå och röd
-Röd och gul
+Vilka fï¿½rger bestï¿½r Sveriges flagga av?
+Blï¿½ och gul
+Gul och rï¿½d
+Blï¿½ och rï¿½d
+Rï¿½d och gul
 
-I vilket land hölls vinter-OS i år 2014?
+I vilket land hï¿½lls vinter-OS i ï¿½r 2014?
 Ryssland
 Tyskland
 Kanada
 Norge
 
-Hur många timmar går det på ett år med 365 dagar?
+Hur mï¿½nga timmar gï¿½r det pï¿½ ett ï¿½r med 365 dagar?
 8760
 8450
 8232
 8100
 
-Vilken är den fjärde decimalen i talet pi?
+Vilken ï¿½r den fjï¿½rde decimalen i talet pi?
 5
 1
 4
 9
 
-Hur många dagar har Januari?
+Hur mï¿½nga dagar har Januari?
 31
 30
 28
 29
 
-hur många minuter går det på ett dygn?
+hur mï¿½nga minuter gï¿½r det pï¿½ ett dygn?
 1440
 1236
 1340
 1280
 
-Vilket år grundades Facebook?
+Vilket ï¿½r grundades Facebook?
 2004
 2002
 2007
@@ -150,23 +150,23 @@ Manny Svensson
 
 Vad kan du lagra i en Integer(programmering)?
 Ett heltal
-En sträng
+En strï¿½ng
 Ett flyttal
 Ett program
 
-Hur många olika färger finns de bland de olympiska ringarna?
+Hur mï¿½nga olika fï¿½rger finns de bland de olympiska ringarna?
 5
 4
 3
 6
 
-vad är 1/8?
+vad ï¿½r 1/8?
 0,125
 0,120
 0,135
 0,150
 
-vad är 1/25?
+vad ï¿½r 1/25?
 0,040
 0,060
 0,085
@@ -183,3 +183,10 @@ En text
 Ett tal
 Ett flyttal
 Ett program
+
+test
+1
+2
+3
+4
+

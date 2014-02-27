@@ -23,7 +23,7 @@ public class QuestionsServer{
 			io.newQuestion(inQuestion);
 		}
 		else {
-			//System.out.println("Did not write");
+			System.out.println("Did not write");
 		}
 		}
 		catch(NullPointerException e) {

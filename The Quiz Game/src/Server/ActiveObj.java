@@ -38,7 +38,7 @@ public class ActiveObj implements Runnable{
 					if(incoming instanceof Integer) {
 						int noQuestions = (int)incoming;  
 						try {
-							System.out.println(s.getLocalAddress()+" vill hämta "+noQuestions+" st frågor");
+							System.out.println(s.getLocalAddress()+" vill hï¿½mta "+noQuestions+" st frï¿½gor");
 							ArrayList<ArrayList<String>> qList = q.getQuestions(noQuestions);
 							outStream.writeObject(qList);
 						} catch (IOException e) {
@@ -47,10 +47,17 @@ public class ActiveObj implements Runnable{
 						}
 					}
 					else if(incoming instanceof ArrayList<?>) {
-						ArrayList<String> question = (ArrayList<String>)inStream.readObject();
+
+						System.out.println("FRÃ…GA SKA SKRIVAS");
+						ArrayList<String> question = new ArrayList<String>(); //inStream.readObject();
+						
+						question = (ArrayList<String>) incoming;
+						
+						System.out.println("Efter lagt i array");
 						question.trimToSize();
+						System.out.println("Efter trim");
 						q.writeQuestion(question);
-						System.out.println("Frågan skriven.");
+						System.out.println("Frï¿½gan skriven.");
 
 					}
 				} catch (Exception e) {
