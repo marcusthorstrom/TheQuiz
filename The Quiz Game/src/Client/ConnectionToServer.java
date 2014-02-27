@@ -35,15 +35,31 @@ public class ConnectionToServer {
 	 * }
 	 */
 
-
-	public ArrayList<SingleQuestion> getQuestions(int gameRounds){
+	/**
+	 * Asks for questions from server
+	 * Returns questions from sever to GModel
+	 * @param gameRounds
+	 * @return
+	 * @throws IOException 
+	 */
+	public ArrayList<SingleQuestion> getQuestions(int gameRounds) throws IOException{
 		ArrayList<SingleQuestion> sqList = new ArrayList<SingleQuestion>();
 		ArrayList<ArrayList<String>> aal = new ArrayList<ArrayList<String>>();
 		
+		/**
+		 * Tries to ask server for x numbers of questions
+		 */
 		try{
 			out.writeObject(gameRounds);
+			/**
+			 * If succeeded, tires to read from server
+			 */
 			try{
 				aal=(ArrayList<ArrayList<String>>)in.readObject();
+				
+				/**
+				 * trims all Null elements out of ArrayLists 
+				 */
 				aal.trimToSize();
 				for(ArrayList<String> q : aal){
 					q.trimToSize();
@@ -59,6 +75,7 @@ public class ConnectionToServer {
 			e.printStackTrace();
 		}
 		
+		socket.close();
 		return sqList;
 	}
 }
