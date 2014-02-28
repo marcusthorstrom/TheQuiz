@@ -14,6 +14,11 @@ public class SingleQuestionClient{
 	private String answer3;
 	private String answer4;
 	
+	
+	/**
+	 * SingleQuestion takes an array and puts each element in each respective field.
+	 * @param questionArray containing one question with 4 answers.
+	 */
 	public SingleQuestionClient(ArrayList<String> questionArray){
 		this.question = questionArray.get(0);
 		this.correctAnswer = questionArray.get(1);
@@ -48,15 +53,10 @@ public class SingleQuestionClient{
 		return answer4;
 	}
 
-	//For testing
-	public ArrayList<String> printArrayList(ArrayList<String> inList) {
-		inList.add(0,question);
-		inList.add(1, correctAnswer);
-		inList.add(2, answer2);
-		inList.add(3, answer3);
-		inList.add(4, answer4);
-		return inList;
-	}
+	/**
+	 * A method for checking if the question is empty or not.
+	 * @return true is all fields are empty,  false.
+	 */
 	public boolean isEmpty() {
 		if(question.equals(null)||correctAnswer.equals(null)||answer2.equals(null)||answer3.equals(null)||answer4.equals(null)) {return true;}
 		else {return false;}

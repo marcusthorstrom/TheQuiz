@@ -83,7 +83,7 @@ public class GView implements Observer {
 	private JSpinner spinner = new JSpinner(new SpinnerNumberModel(5,1,10,1));
 
 	private JSlider slider = new JSlider(0,1,1);
-	
+
 	private Timer timer = new Timer(2000, new ActionListener() {
 		public void actionPerformed(ActionEvent e) {
 			timer.stop();
@@ -93,18 +93,18 @@ public class GView implements Observer {
 	private boolean isQBuild = false;		
 	private boolean isHBuild = false;		
 	private Sounds sound;
-/**
- *The constructor for the GView, this is responsible 
- *for setting up the JFrame and its conditions
- *adding listeners to the windows. 
- */
+	/**
+	 *The constructor for the GView, this is responsible 
+	 *for setting up the JFrame and its conditions
+	 *adding listeners to the windows. 
+	 */
 	public GView() {
 		gameWindow = new JFrame("The Quiz Game"); 	
 		gameWindow.setSize(450, 300); 										
 		gameWindow.setResizable(false); 
-		
-		
-		
+
+
+
 		gameWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); 			
 		questionWindow.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE); 	
 		settingsWindow.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);	
@@ -140,7 +140,7 @@ public class GView implements Observer {
 			public void windowDeiconified(WindowEvent arg0) {}
 			public void windowIconified(WindowEvent arg0) {}
 		});
-		
+
 		gameWindow.setVisible(true); 
 	}
 	/**
@@ -241,7 +241,7 @@ public class GView implements Observer {
 		buttonD.setText(answers.get(3));
 		enableButtons();
 	}
-	
+
 	void addMenuListener(ActionListener listenForMenu) {
 		start.addActionListener(listenForMenu);
 		create.addActionListener(listenForMenu);
@@ -291,7 +291,7 @@ public class GView implements Observer {
 			answerB.setText(null);
 			answerC.setText(null);
 			answerD.setText(null);
-			
+
 			questionWindow.setVisible(true);
 		}
 		else {
@@ -401,7 +401,7 @@ public class GView implements Observer {
 				JOptionPane.showMessageDialog(errFrame, "Du maste fylla i alla falt.");
 				return null;
 			}
-			
+
 			for(int x = 0; x<a.size(); x++){
 				if(i != x){
 					if(a.get(i).toLowerCase().equals(a.get(x).toLowerCase())){
@@ -411,9 +411,9 @@ public class GView implements Observer {
 					}
 				}
 			}
-			
+
 		}
-		
+
 		SingleQuestionClient q = new SingleQuestionClient(a);
 		return q;
 	}
@@ -429,9 +429,9 @@ public class GView implements Observer {
 	public void closeHWindow() {
 		helpWindow.dispose();
 	}
-/**
- * The options pop-up window
- */
+	/**
+	 * The options pop-up window
+	 */
 	public void options() {
 		if(isSBuild){
 			settingsWindow.setVisible(true);					//If this is not done this way, we have to reDraw the entire window every time
@@ -449,7 +449,7 @@ public class GView implements Observer {
 			all.add(sounds);
 			all.add(soundBar);
 			all.add(buttonsPanel);
-			
+
 			settingsWindow.add(all);
 
 			noQuestions.setLayout(new FlowLayout());
@@ -496,7 +496,7 @@ public class GView implements Observer {
 		else if((int)slider.getValue() == 1) {
 			volume = true;
 		}
- 		option.setVolume(volume);
+		option.setVolume(volume);
 		return option;
 	}
 	/**
@@ -533,21 +533,21 @@ public class GView implements Observer {
 			b.setEnabled(false);
 		}
 	}
-/**
- * Enables the question answers
- * in the next question
- */
+	/**
+	 * Enables the question answers
+	 * in the next question
+	 */
 	public void enableButtons() {
 		for (JButton b : buttons) {
 			b.setEnabled(true);
 		}
 	}
-/**
- * Sets the color of the pressed
- *  button, depending on wether
- *  the answer is right or wrong
- * @param chosenAnswer
- */
+	/**
+	 * Sets the color of the pressed
+	 *  button, depending on wether
+	 *  the answer is right or wrong
+	 * @param chosenAnswer
+	 */
 	public void setColor(String chosenAnswer) {
 		for (JButton b : buttons) {
 			if (b.getText().equals(chosenAnswer)){
@@ -593,13 +593,13 @@ public class GView implements Observer {
 		}
 		else if(o instanceof GModel && arg instanceof Integer) {			//A way of displaying error codes from the model
 			int errorCode = (int)arg;
-			 Component errFrame = null;
-			 if(errorCode==1) {												//If a connection to the server can not be established, send error message
-				 JOptionPane.showMessageDialog(errFrame, "Kunde inte ansluta till servern, anvander lokala fragor.");
-			 }
-			 else if(errorCode==2) {										//If a connection to the server can not be established, send error message
-				 JOptionPane.showMessageDialog(errFrame, "Kunde inte ansluta till servern, skriver fragan lokalt istallet.");
-			 }
+			Component errFrame = null;
+			if(errorCode==1) {												//If a connection to the server can not be established, send error message
+				JOptionPane.showMessageDialog(errFrame, "Kunde inte ansluta till servern, anvander lokala fragor.");
+			}
+			else if(errorCode==2) {										//If a connection to the server can not be established, send error message
+				JOptionPane.showMessageDialog(errFrame, "Kunde inte ansluta till servern, skriver fragan lokalt istallet.");
+			}
 		}
 	}
 }
