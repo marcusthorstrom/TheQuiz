@@ -37,7 +37,6 @@ public class Server {
 			frame.setSize(300, 200);
 			new Server();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}

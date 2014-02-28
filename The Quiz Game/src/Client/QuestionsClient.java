@@ -37,7 +37,6 @@ public class QuestionsClient{
 		try {														//If the array is = null then this catches it
 		if(!inQuestion.isEmpty()) {									//Testing if the array is partially empty
 			ArrayList<String> tempQuestions = new ArrayList<String>();
-			//tempQuestions = inQuestion.printArrayList(tempQuestions);
 			io.newQuestion(tempQuestions);
 		}
 		else {
