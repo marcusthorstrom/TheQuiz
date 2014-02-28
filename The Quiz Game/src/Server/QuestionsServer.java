@@ -15,14 +15,14 @@ public class QuestionsServer{
 	private ArrayList<ArrayList<String>> originalList;
 	private ArrayList<ArrayList<String>> newList;
 	private IOServer io;
-	
+
 	public QuestionsServer()
 	{
-	    io = new IOServer();												//Creates a new instance of IO.
+		io = new IOServer();												//Creates a new instance of IO.
 		originalList = io.getArray();								//Copies the original list from the IO class to a local list
 
 	}
-	
+
 	public void writeQuestion(ArrayList<String> inQuestion) {
 		try {														//If the array is = null then this catches it
 			if(!inQuestion.isEmpty()) {									//Testing if the array is partially empty
@@ -32,14 +32,19 @@ public class QuestionsServer{
 				System.out.println("Did not write");
 			}
 		}
-			catch(NullPointerException e) {
-				//System.out.println("Did not write, catched error");
-			}
-		
-	}
+		catch(NullPointerException e) {
+			//System.out.println("Did not write, catched error");
+		}
 
+	}
+	/**
+	 * Creates a new temporary array list in which a number of singleQuestions are stored. 
+	 * The full list of SingleQuestions are shuffled before they are added to the new list.
+	 * @param y - the number of questions asked for.
+	 * @return An array containing y-number of SingleQuestions.
+	 */
 	public ArrayList<ArrayList<String>> getQuestions(int y){
-		
+
 		newList = new ArrayList<ArrayList<String>>();
 		shuffle(originalList);	
 

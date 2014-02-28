@@ -10,7 +10,11 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Iterator;
-
+/**
+ * Responsible for reading and writing questions to .txt file
+ * @author Emil
+ *
+ */
 public class IOClient {
 
 	private static final String STANDARDFRAGOR = "fragor.txt";

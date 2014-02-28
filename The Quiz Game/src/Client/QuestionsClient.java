@@ -3,15 +3,16 @@ import java.util.Collections;
 import java.util.Random;
 import java.util.ArrayList;
 
+/**
+ * This class is for getting the arraylist from the IO class and
+ * putting it into the SingleQuestion Class and exporting the 
+ * number of questions the user asks for.
+ * The class also is responsible for converting the incoming 
+ * Question to an ArrayList.
+ */
 
 public class QuestionsClient{
-	/**
-	 * This class is for getting the arraylist from the IO class and
-	 * putting it into the SingleQuestion Class and exporting the 
-	 * number of questions the user asks for.
-	 * The class also is responsible for converting the incoming 
-	 * Question to an ArrayList.
-	 */
+
 	private ArrayList<ArrayList<String>> originalList;
 	private ArrayList<SingleQuestionClient> newList;
 	private ArrayList<SingleQuestionClient> objectList;

@@ -8,7 +8,11 @@ import java.net.Socket;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-
+/**
+ * 
+ * @author 
+ *
+ */
 public class Server {
 	private ServerSocket s;
 	private ActiveObj a;
