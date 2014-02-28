@@ -101,45 +101,29 @@ public class GView implements Observer {
 		gameWindow = new JFrame("The Quiz Game"); 	
 		gameWindow.setSize(450, 300); 										
 		gameWindow.setResizable(false); 
-
-
-
+		
+		ArrayList<JDialog> windowList = new ArrayList<JDialog>();
+		windowList.add(helpWindow);
+		windowList.add(questionWindow);
+		windowList.add(settingsWindow);
+		
+		for(JDialog w:windowList) {
+			w.addWindowListener(new WindowListener() {
+				public void windowOpened(WindowEvent arg0) {setMenuFrameState(false);}
+				public void windowActivated(WindowEvent arg0) {setMenuFrameState(false);}
+				public void windowClosed(WindowEvent arg0) {setMenuFrameState(true);}
+				public void windowClosing(WindowEvent arg0) {setMenuFrameState(true);}
+				public void windowDeactivated(WindowEvent arg0) {}
+				public void windowDeiconified(WindowEvent arg0) {}
+				public void windowIconified(WindowEvent arg0) {}
+			});
+		}
 		gameWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); 			
 		questionWindow.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE); 	
 		settingsWindow.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);	
 		helpWindow.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);		
 		contentPane = gameWindow.getContentPane();
 		makeMenu();
-
-		settingsWindow.addWindowListener(new WindowListener() {
-			public void windowOpened(WindowEvent arg0) {setMenuFrameState(false);}
-			public void windowActivated(WindowEvent arg0) {setMenuFrameState(false);}
-			public void windowClosed(WindowEvent arg0) {setMenuFrameState(true);}
-			public void windowClosing(WindowEvent arg0) {setMenuFrameState(true);}
-			public void windowDeactivated(WindowEvent arg0) {}
-			public void windowDeiconified(WindowEvent arg0) {}
-			public void windowIconified(WindowEvent arg0) {}
-		});
-
-		questionWindow.addWindowListener(new WindowListener() {
-			public void windowOpened(WindowEvent arg0) {setMenuFrameState(false);}
-			public void windowActivated(WindowEvent arg0) {setMenuFrameState(false);}
-			public void windowClosed(WindowEvent arg0) {setMenuFrameState(true);}
-			public void windowClosing(WindowEvent arg0) {setMenuFrameState(true);}
-			public void windowDeactivated(WindowEvent arg0) {}
-			public void windowDeiconified(WindowEvent arg0) {}
-			public void windowIconified(WindowEvent arg0) {}
-		});
-		helpWindow.addWindowListener(new WindowListener() {
-			public void windowOpened(WindowEvent arg0) {setMenuFrameState(false);}
-			public void windowActivated(WindowEvent arg0) {setMenuFrameState(false);}
-			public void windowClosed(WindowEvent arg0) {setMenuFrameState(true);}
-			public void windowClosing(WindowEvent arg0) {setMenuFrameState(true);}
-			public void windowDeactivated(WindowEvent arg0) {}
-			public void windowDeiconified(WindowEvent arg0) {}
-			public void windowIconified(WindowEvent arg0) {}
-		});
-
 		gameWindow.setVisible(true); 
 	}
 	/**
