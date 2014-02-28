@@ -91,8 +91,7 @@ public class GView implements Observer {
 	});
 	private boolean isSBuild = false;
 	private boolean isQBuild = false;		
-	private boolean isHBuild = false;		
-	private Sounds sound;
+	private boolean isHBuild = false;
 	/**
 	 *The constructor for the GView, this is responsible 
 	 *for setting up the JFrame and its conditions

@@ -8,6 +8,6 @@ public class GMainClient {
 		GView view = new GView();
 		GModel model = new GModel();
 		model.addObserver(view);
-		GController controller = new GController(view, model);
+		new GController(view, model);
 	}
 }
