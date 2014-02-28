@@ -58,7 +58,7 @@ public class ActiveObj implements Runnable{
 						question = (ArrayList<String>) incoming;
 						question.trimToSize();
 						q.writeQuestion(question);
-						System.out.println("Fråga skriven.");						
+						System.out.println("Skrev frågan: \n" +question.get(0)+"\n"+question.get(1)+"\n"+question.get(2)+"\n"+question.get(3)+"\n"+question.get(4));						
 					}
 					System.out.println(s.getLocalAddress()+" has disconected.");	//Closing the connection after delivering
 					inStream.close();
