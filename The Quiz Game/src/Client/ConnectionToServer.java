@@ -35,7 +35,6 @@ public class ConnectionToServer {
 		try {
 			if (!qu.isEmpty()) {
 				ArrayList<String> tempQuestions = new ArrayList<String>();
-				tempQuestions = qu.printArrayList(tempQuestions);
 				out.writeObject(tempQuestions);
 			} else {
 				System.out.println("Did not write");
