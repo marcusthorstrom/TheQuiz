@@ -240,10 +240,6 @@ public class GView implements Observer {
 		buttonC.setText(answers.get(2));
 		buttonD.setText(answers.get(3));
 		enableButtons();
-
-		if(quest.hasSound()){
-			sound.playSound(quest.getSound());
-		}
 	}
 	
 	void addMenuListener(ActionListener listenForMenu) {
@@ -404,8 +400,20 @@ public class GView implements Observer {
 				//System.out.println("Du m�ste fylla i alla f�lt");
 				JOptionPane.showMessageDialog(errFrame, "Du m�ste fylla i alla f�lt.");
 				return null;
-			}	
+			}
+			
+			for(int x = 0; x<a.size(); x++){
+				if(i != x){
+					if(a.get(i).toLowerCase().equals(a.get(x).toLowerCase())){
+						Component errFrame = null;
+						JOptionPane.showMessageDialog(errFrame, "Svarsalternativet får ej vara lika.");
+						return null;
+					}
+				}
+			}
+			
 		}
+		
 		SingleQuestionClient q = new SingleQuestionClient(a);
 		return q;
 	}

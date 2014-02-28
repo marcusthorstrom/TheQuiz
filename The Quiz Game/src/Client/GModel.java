@@ -100,14 +100,16 @@ public class GModel extends Observable {
 	 * @param qu
 	 */
 	public void createQuestion(SingleQuestionClient qu) {
-		try {
-			ConnectionToServer c = new ConnectionToServer();
-			c.writeQuestion(qu);	
+		if(qu != null){
+			try {
+				ConnectionToServer c = new ConnectionToServer();
+				c.writeQuestion(qu);	
 
-		} catch (IOException e) {
-			setChanged();
-			notifyObservers(2);						//Error code for not being able to write to the server
-			q.writeQuestion(qu);
+			} catch (IOException e) {
+				setChanged();
+				notifyObservers(2);						//Error code for not being able to write to the server
+				q.writeQuestion(qu);
+			}
 		}
 	} 
 }
