@@ -64,7 +64,7 @@ public class GView implements Observer {
 	private JButton start = new JButton("Start");
 	private JButton okButtonQuestion = new JButton("Ok");
 	private JButton cancelButtonQuestion = new JButton("Avbryt");
-	private JButton okButtonSetting = new JButton("Anv�nd");
+	private JButton okButtonSetting = new JButton("Anvand");
 	private JButton resetButtonSetting = new JButton("Aterstall");
 	private JButton backToMenu = new JButton("Aterga till meny");
 	private JButton resultquit = new JButton("Avsluta");
