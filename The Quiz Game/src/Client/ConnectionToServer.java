@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.InetAddress;
+import java.net.InetSocketAddress;
 import java.net.Socket;
 import java.net.SocketException;
 import java.util.ArrayList;
@@ -18,8 +19,9 @@ public class ConnectionToServer {
 	 */
 	public ConnectionToServer() throws IOException {
 		InetAddress ip = null;
-		ip = InetAddress.getByName("localhost");
-		socket = new Socket(ip, 13337);
+		socket = new Socket();
+		socket.connect(new InetSocketAddress(ip, 13337), 5000);
+		socket.setSoTimeout(5000);
 		out = new ObjectOutputStream(socket.getOutputStream());
 		in = new ObjectInputStream(socket.getInputStream());
 	}

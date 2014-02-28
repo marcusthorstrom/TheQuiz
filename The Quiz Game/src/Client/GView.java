@@ -39,9 +39,9 @@ import javax.swing.Timer;
 
 public class GView implements Observer {
 	private JFrame gameWindow;
-	private JDialog questionWindow = new JDialog(gameWindow,"Skapa Fr�ga");
-	private JDialog settingsWindow = new JDialog(gameWindow,"Inst�llningar");
-	private JDialog helpWindow = new JDialog(gameWindow,"Hj�lp");
+	private JDialog questionWindow = new JDialog(gameWindow,"Skapa Fraga");
+	private JDialog settingsWindow = new JDialog(gameWindow,"Installningar");
+	private JDialog helpWindow = new JDialog(gameWindow,"Hjalp");
 
 	private ArrayList<String> answers;
 	private ArrayList<JButton> buttons;
@@ -57,16 +57,16 @@ public class GView implements Observer {
 	private JButton buttonB;
 	private JButton buttonC;
 	private JButton buttonD;
-	private JButton create = new JButton("Egen Fr�ga");
-	private JButton options = new JButton("Inst�llningar");
-	private JButton help = new JButton("Hj�lp");
+	private JButton create = new JButton("Egen Fraga");
+	private JButton options = new JButton("Installningar");
+	private JButton help = new JButton("Hjalp");
 	private JButton quit = new JButton("Avsluta");
 	private JButton start = new JButton("Start");
 	private JButton okButtonQuestion = new JButton("Ok");
 	private JButton cancelButtonQuestion = new JButton("Avbryt");
 	private JButton okButtonSetting = new JButton("Anv�nd");
-	private JButton resetButtonSetting = new JButton("�terst�ll");
-	private JButton backToMenu = new JButton("�terg� till meny");
+	private JButton resetButtonSetting = new JButton("Aterstall");
+	private JButton backToMenu = new JButton("Aterga till meny");
 	private JButton resultquit = new JButton("Avsluta");
 	private JButton okButtonHelp = new JButton("Ok");
 
@@ -302,8 +302,8 @@ public class GView implements Observer {
 			all.setLayout(new GridLayout(5,2));
 
 			//The Components
-			JLabel l = new JLabel("Skriv in din fr�ga!", JLabel.CENTER);
-			JLabel q = new JLabel("Fr�ga:", JLabel.CENTER);
+			JLabel l = new JLabel("Skriv in din fraga!", JLabel.CENTER);
+			JLabel q = new JLabel("Fraga:", JLabel.CENTER);
 			JLabel qa = new JLabel("Svar:", JLabel.CENTER);
 			JLabel qb = new JLabel("Alt 1:", JLabel.CENTER);
 			JLabel qc = new JLabel("Alt 2:", JLabel.CENTER);
@@ -363,10 +363,10 @@ public class GView implements Observer {
 			//The Components
 			JLabel headertext = new JLabel("", BoxLayout.X_AXIS);
 			header.add(headertext);
-			JLabel helptext = new JLabel("<html><center>"+"Spelet The Quiz Game g�r ut"
-					+ " p� att svara r�tt p� fr�gorna man f�r. Svarar g�r man genom att "
-					+ "trycka p� svaret som man tror �r r�tt. I slutet av spelet f�r du reda p� antal r�tt av "
-					+ "antalet fr�gor som man svarat p�. Lycka till!"+"<html><center>", BoxLayout.X_AXIS);
+			JLabel helptext = new JLabel("<html><center>"+"Spelet The Quiz Game gar ut"
+					+ " pa att svara ratt pa fragorna man far. Svarar gor man genom att "
+					+ "trycka pa svaret som man tror ar ratt. I slutet av spelet far du reda pa antal ratt av "
+					+ "antalet fragor som man svarat pa. Lycka till!"+"<html><center>", BoxLayout.X_AXIS);
 			textpanel.add(helptext);
 			buttonpanel.add(okButtonHelp, BorderLayout.CENTER);
 
@@ -398,7 +398,7 @@ public class GView implements Observer {
 			if(a.get(i).isEmpty()) {
 				Component errFrame = null;
 				//System.out.println("Du m�ste fylla i alla f�lt");
-				JOptionPane.showMessageDialog(errFrame, "Du m�ste fylla i alla f�lt.");
+				JOptionPane.showMessageDialog(errFrame, "Du maste fylla i alla falt.");
 				return null;
 			}
 			
@@ -453,13 +453,13 @@ public class GView implements Observer {
 			settingsWindow.add(all);
 
 			noQuestions.setLayout(new FlowLayout());
-			noQuestions.add(new JLabel("Antal fr�gor: "));
+			noQuestions.add(new JLabel("Antal fragor: "));
 			noQuestions.add(spinner);
 			noQuestions.revalidate();
 
 			sounds.setLayout(new FlowLayout());
 
-			sounds.add(new JLabel("St�ll in ljud On/Off"));
+			sounds.add(new JLabel("Stall in ljud On/Off"));
 
 			soundBar.add(slider);
 			soundBar.setLayout(new FlowLayout());
@@ -515,7 +515,7 @@ public class GView implements Observer {
 		int rightA = a[0];
 		int wrongA = a[1];
 		borderPane.removeAll();
-		question.setText("Du fick: "+rightA+" r�tt av totalt "+(wrongA+rightA)+ " fr�gor");
+		question.setText("Du fick: "+rightA+" ratt av totalt "+(wrongA+rightA)+ " fragor");
 		backToMenu.setBackground(Color.WHITE);
 		resultquit.setBackground(Color.WHITE);
 		backToMenu.setPreferredSize(new Dimension(10, 60));
@@ -595,10 +595,10 @@ public class GView implements Observer {
 			int errorCode = (int)arg;
 			 Component errFrame = null;
 			 if(errorCode==1) {												//If a connection to the server can not be established, send error message
-				 JOptionPane.showMessageDialog(errFrame, "Kunde inte ansluta till servern, anv�nder lokala fr�gor.");
+				 JOptionPane.showMessageDialog(errFrame, "Kunde inte ansluta till servern, anvander lokala fragor.");
 			 }
 			 else if(errorCode==2) {										//If a connection to the server can not be established, send error message
-				 JOptionPane.showMessageDialog(errFrame, "Kunde inte ansluta till servern, skriver fr�gan lokalt ist�llet.");
+				 JOptionPane.showMessageDialog(errFrame, "Kunde inte ansluta till servern, skriver fragan lokalt istallet.");
 			 }
 		}
 	}
