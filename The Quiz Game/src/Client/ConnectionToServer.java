@@ -26,7 +26,7 @@ public class ConnectionToServer {
 		in = new ObjectInputStream(socket.getInputStream());
 	}
 	/**
-	 * Method for writing Questions to the server
+	 * Method for writing Questions over the server
 	 * @param The Question as a SingleQuestionClient object
 	 * @throws IOException
 	 */
