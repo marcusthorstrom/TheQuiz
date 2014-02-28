@@ -130,7 +130,7 @@ public class GController {
 					options = view.submitOptions(options);
 					view.closeSWindow();	
 				}
-				else if(b.getText().equals("aterstall")) {
+				else if(b.getText().equals("Aterstall")) {
 					view.resetOptions(options);
 					options = view.submitOptions(options);
 					options.resetGamerounds();
@@ -150,7 +150,7 @@ public class GController {
 			Object objekt = e.getSource();
 			if (objekt instanceof JButton) {
 				JButton b = (JButton)objekt;
-				if(b.getText().equals("aterga till meny")){			
+				if(b.getText().equals("Aterga till meny")){			
 					view.resetFrame();
 					view.makeMenu();								//aterskapar menyn
 				}
