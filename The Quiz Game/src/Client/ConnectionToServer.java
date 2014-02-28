@@ -18,7 +18,7 @@ public class ConnectionToServer {
 	 * @throws IOException
 	 */
 	public ConnectionToServer() throws IOException {
-		InetAddress ip = null;
+		InetAddress ip = InetAddress.getLocalHost();
 		socket = new Socket();
 		socket.connect(new InetSocketAddress(ip, 13337), 5000);
 		socket.setSoTimeout(5000);
@@ -35,6 +35,7 @@ public class ConnectionToServer {
 		try {
 			if (!qu.isEmpty()) {
 				ArrayList<String> tempQuestions = new ArrayList<String>();
+				tempQuestions = qu.printArray();
 				out.writeObject(tempQuestions);
 			} else {
 				System.out.println("Did not write");

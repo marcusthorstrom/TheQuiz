@@ -66,6 +66,7 @@ public class ActiveObj implements Runnable{
 					break;
 				} catch (Exception e) {
 				}
+				break;
 			} catch (ClassNotFoundException | IOException e2) {
 				e2.printStackTrace();
 			}

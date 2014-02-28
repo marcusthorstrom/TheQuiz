@@ -52,6 +52,17 @@ public class SingleQuestionClient{
 	{
 		return answer4;
 	}
+	
+	public ArrayList<String> printArray() {
+		ArrayList<String> returnList = new ArrayList<String>();
+		returnList.add(question);
+		returnList.add(correctAnswer);
+		returnList.add(answer2);
+		returnList.add(answer3);
+		returnList.add(answer4);
+		return returnList;
+		
+	}
 
 	/**
 	 * A method for checking if the question is empty or not.
