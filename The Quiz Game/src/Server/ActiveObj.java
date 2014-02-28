@@ -47,7 +47,7 @@ public class ActiveObj implements Runnable{
 						try {
 							ArrayList<ArrayList<String>> qList = q.getQuestions(noQuestions);
 							outStream.writeObject(qList);
-							System.out.println(s.getLocalAddress()+" har hämtat "+noQuestions+" st frågor");
+							System.out.println(s.getLocalAddress()+" har hamtat "+noQuestions+" st fragor");
 
 						} catch (IOException e) {
 							e.printStackTrace();
