@@ -406,7 +406,7 @@ public class GView implements Observer {
 				if(i != x){
 					if(a.get(i).toLowerCase().equals(a.get(x).toLowerCase())){
 						Component errFrame = null;
-						JOptionPane.showMessageDialog(errFrame, "Svarsalternativet får ej vara lika.");
+						JOptionPane.showMessageDialog(errFrame, "Svarsalternativet far ej vara lika.");
 						return null;
 					}
 				}

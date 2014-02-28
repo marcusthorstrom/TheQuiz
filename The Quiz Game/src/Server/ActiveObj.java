@@ -47,7 +47,7 @@ public class ActiveObj implements Runnable{
 						try {
 							ArrayList<ArrayList<String>> qList = q.getQuestions(noQuestions);
 							outStream.writeObject(qList);
-							System.out.println(s.getLocalAddress()+" har hämtat "+noQuestions+" st frågor");
+							System.out.println(s.getLocalAddress()+" har hamtat "+noQuestions+" st fragor");
 
 						} catch (IOException e) {
 							e.printStackTrace();
@@ -58,7 +58,7 @@ public class ActiveObj implements Runnable{
 						question = (ArrayList<String>) incoming;
 						question.trimToSize();
 						q.writeQuestion(question);
-						System.out.println("Fråga skriven.");						
+						System.out.println("Fraga skriven.");						
 					}
 					System.out.println(s.getLocalAddress()+" has disconected.");	//Closing the connection after delivering
 					inStream.close();

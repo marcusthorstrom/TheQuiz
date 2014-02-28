@@ -63,13 +63,13 @@ public class GController {
 					model.playGame(options);
 					model.changeActiveQuestion();
 				}
-				else if(button.getText().equals("Egen Fråga")) {
+				else if(button.getText().equals("Egen Fraga")) {
 					view.makeQuestion();
 				}
-				else if(button.getText().equals("Inställningar")) {
+				else if(button.getText().equals("Installningar")) {
 					view.options();
 				}
-				else if(button.getText().equals("Hjälp")) {
+				else if(button.getText().equals("Hjalp")) {
 					view.makeHelp();
 				}
 				else if(button.getText().equals("Avsluta")) {
@@ -126,11 +126,11 @@ public class GController {
 			Object objekt = e.getSource();
 			if (objekt instanceof JButton) {
 				JButton b = (JButton)objekt;
-				if(b.getText().equals("Använd")){
+				if(b.getText().equals("Anvand")){
 					options = view.submitOptions(options);
 					view.closeSWindow();	
 				}
-				else if(b.getText().equals("Återställ")) {
+				else if(b.getText().equals("aterstall")) {
 					view.resetOptions(options);
 					options = view.submitOptions(options);
 					options.resetGamerounds();
@@ -150,9 +150,9 @@ public class GController {
 			Object objekt = e.getSource();
 			if (objekt instanceof JButton) {
 				JButton b = (JButton)objekt;
-				if(b.getText().equals("Återgå till meny")){			
+				if(b.getText().equals("aterga till meny")){			
 					view.resetFrame();
-					view.makeMenu();								//Återskapar menyn
+					view.makeMenu();								//aterskapar menyn
 				}
 				else if(b.getText().equals("Avsluta")) {
 					view.closeWindow();
@@ -170,7 +170,7 @@ public class GController {
 			if (objekt instanceof Timer) {
 				Timer timer = (Timer) objekt;
 				timer.stop();
-				model.changeActiveQuestion();							//Hämtar nästa fråga.
+				model.changeActiveQuestion();							//Hamtar nasta fraga.
 			}
 		}
 	}
