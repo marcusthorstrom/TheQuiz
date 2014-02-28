@@ -39,9 +39,9 @@ import javax.swing.Timer;
 
 public class GView implements Observer {
 	private JFrame gameWindow;
-	private JDialog questionWindow = new JDialog(gameWindow,"Skapa Fråga");
-	private JDialog settingsWindow = new JDialog(gameWindow,"Inställningar");
-	private JDialog helpWindow = new JDialog(gameWindow,"Hjälp");
+	private JDialog questionWindow = new JDialog(gameWindow,"Skapa Frï¿½ga");
+	private JDialog settingsWindow = new JDialog(gameWindow,"Instï¿½llningar");
+	private JDialog helpWindow = new JDialog(gameWindow,"Hjï¿½lp");
 
 	private ArrayList<String> answers;
 	private ArrayList<JButton> buttons;
@@ -57,16 +57,16 @@ public class GView implements Observer {
 	private JButton buttonB;
 	private JButton buttonC;
 	private JButton buttonD;
-	private JButton create = new JButton("Egen Fråga");
-	private JButton options = new JButton("Inställningar");
-	private JButton help = new JButton("Hjälp");
+	private JButton create = new JButton("Egen Frï¿½ga");
+	private JButton options = new JButton("Instï¿½llningar");
+	private JButton help = new JButton("Hjï¿½lp");
 	private JButton quit = new JButton("Avsluta");
 	private JButton start = new JButton("Start");
 	private JButton okButtonQuestion = new JButton("Ok");
 	private JButton cancelButtonQuestion = new JButton("Avbryt");
-	private JButton okButtonSetting = new JButton("Använd");
-	private JButton resetButtonSetting = new JButton("Återställ");
-	private JButton backToMenu = new JButton("Återgå till meny");
+	private JButton okButtonSetting = new JButton("Anvï¿½nd");
+	private JButton resetButtonSetting = new JButton("ï¿½terstï¿½ll");
+	private JButton backToMenu = new JButton("ï¿½tergï¿½ till meny");
 	private JButton resultquit = new JButton("Avsluta");
 	private JButton okButtonHelp = new JButton("Ok");
 
@@ -101,8 +101,10 @@ public class GView implements Observer {
 	public GView() {
 		gameWindow = new JFrame("The Quiz Game"); 	
 		gameWindow.setSize(450, 300); 										
-		gameWindow.setResizable(false); 									
-		gameWindow.setVisible(true); 										
+		gameWindow.setResizable(false); 
+		
+		
+		
 		gameWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); 			
 		questionWindow.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE); 	
 		settingsWindow.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);	
@@ -138,6 +140,8 @@ public class GView implements Observer {
 			public void windowDeiconified(WindowEvent arg0) {}
 			public void windowIconified(WindowEvent arg0) {}
 		});
+		
+		gameWindow.setVisible(true); 
 	}
 	/**
 	 * Makes the menu
@@ -302,8 +306,8 @@ public class GView implements Observer {
 			all.setLayout(new GridLayout(5,2));
 
 			//The Components
-			JLabel l = new JLabel("Skriv in din fråga!", JLabel.CENTER);
-			JLabel q = new JLabel("Fråga:", JLabel.CENTER);
+			JLabel l = new JLabel("Skriv in din frï¿½ga!", JLabel.CENTER);
+			JLabel q = new JLabel("Frï¿½ga:", JLabel.CENTER);
 			JLabel qa = new JLabel("Svar:", JLabel.CENTER);
 			JLabel qb = new JLabel("Alt 1:", JLabel.CENTER);
 			JLabel qc = new JLabel("Alt 2:", JLabel.CENTER);
@@ -363,10 +367,10 @@ public class GView implements Observer {
 			//The Components
 			JLabel headertext = new JLabel("", BoxLayout.X_AXIS);
 			header.add(headertext);
-			JLabel helptext = new JLabel("<html><center>"+"Spelet The Quiz Game går ut"
-					+ " på att svara rätt på frågorna man får. Svarar gör man genom att "
-					+ "trycka på svaret som man tror är rätt. I slutet av spelet får du reda på antal rätt av "
-					+ "antalet frågor som man svarat på. Lycka till!"+"<html><center>", BoxLayout.X_AXIS);
+			JLabel helptext = new JLabel("<html><center>"+"Spelet The Quiz Game gï¿½r ut"
+					+ " pï¿½ att svara rï¿½tt pï¿½ frï¿½gorna man fï¿½r. Svarar gï¿½r man genom att "
+					+ "trycka pï¿½ svaret som man tror ï¿½r rï¿½tt. I slutet av spelet fï¿½r du reda pï¿½ antal rï¿½tt av "
+					+ "antalet frï¿½gor som man svarat pï¿½. Lycka till!"+"<html><center>", BoxLayout.X_AXIS);
 			textpanel.add(helptext);
 			buttonpanel.add(okButtonHelp, BorderLayout.CENTER);
 
@@ -397,8 +401,8 @@ public class GView implements Observer {
 		for(int i = 0; i < a.size(); i++) {
 			if(a.get(i).isEmpty()) {
 				Component errFrame = null;
-				//System.out.println("Du måste fylla i alla fält");
-				JOptionPane.showMessageDialog(errFrame, "Du måste fylla i alla fält.");
+				//System.out.println("Du mï¿½ste fylla i alla fï¿½lt");
+				JOptionPane.showMessageDialog(errFrame, "Du mï¿½ste fylla i alla fï¿½lt.");
 				return null;
 			}	
 		}
@@ -441,13 +445,13 @@ public class GView implements Observer {
 			settingsWindow.add(all);
 
 			noQuestions.setLayout(new FlowLayout());
-			noQuestions.add(new JLabel("Antal frågor: "));
+			noQuestions.add(new JLabel("Antal frï¿½gor: "));
 			noQuestions.add(spinner);
 			noQuestions.revalidate();
 
 			sounds.setLayout(new FlowLayout());
 
-			sounds.add(new JLabel("Ställ in ljud On/Off"));
+			sounds.add(new JLabel("Stï¿½ll in ljud On/Off"));
 
 			soundBar.add(slider);
 			soundBar.setLayout(new FlowLayout());
@@ -503,7 +507,7 @@ public class GView implements Observer {
 		int rightA = a[0];
 		int wrongA = a[1];
 		borderPane.removeAll();
-		question.setText("Du fick: "+rightA+" rätt av totalt "+(wrongA+rightA)+ " frågor");
+		question.setText("Du fick: "+rightA+" rï¿½tt av totalt "+(wrongA+rightA)+ " frï¿½gor");
 		backToMenu.setBackground(Color.WHITE);
 		resultquit.setBackground(Color.WHITE);
 		backToMenu.setPreferredSize(new Dimension(10, 60));
@@ -583,10 +587,10 @@ public class GView implements Observer {
 			int errorCode = (int)arg;
 			 Component errFrame = null;
 			 if(errorCode==1) {												//If a connection to the server can not be established, send error message
-				 JOptionPane.showMessageDialog(errFrame, "Kunde inte ansluta till servern, använder lokala frågor.");
+				 JOptionPane.showMessageDialog(errFrame, "Kunde inte ansluta till servern, anvï¿½nder lokala frï¿½gor.");
 			 }
 			 else if(errorCode==2) {										//If a connection to the server can not be established, send error message
-				 JOptionPane.showMessageDialog(errFrame, "Kunde inte ansluta till servern, skriver frågan lokalt istället.");
+				 JOptionPane.showMessageDialog(errFrame, "Kunde inte ansluta till servern, skriver frï¿½gan lokalt istï¿½llet.");
 			 }
 		}
 	}
