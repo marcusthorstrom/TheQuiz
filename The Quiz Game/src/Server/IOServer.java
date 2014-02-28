@@ -11,6 +11,11 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Iterator;
 
+/**
+ * Responsible for reading and writing questions to .txt file
+ * @author Emil
+ *
+ */
 public class IOServer {
 
 	private static final String STANDARDFRAGOR = "fragor.txt";
@@ -28,7 +33,7 @@ public class IOServer {
 		questions = new ArrayList<String>();
 		allQuestions = new ArrayList<ArrayList<String>>();
 		try {
-			/*
+			/**
 			 * Checks what operating system the computer is running, then open
 			 * the file in different ways to get Swedish characters
 			 */
@@ -45,7 +50,7 @@ public class IOServer {
 						new FileInputStream(file), "ISO-8859-1"));
 
 			}
-			/*
+			/**
 			 * reads line by line and add them to an ArrayList of strings, if
 			 * new row without signs the ArrayList will be added to a bigger
 			 * ArrrayList

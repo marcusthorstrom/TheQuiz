@@ -9,12 +9,13 @@ import javax.sound.sampled.Clip;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 
-
-public class Sounds {
 /**
  * This class is for managing the sounds that appear when a button is pressed
  * 
  */
+
+public class Sounds {
+
 	private String correct = "correct.wav";	
 	private String incorrect = "incorrect.wav";
 	private Clip clip;

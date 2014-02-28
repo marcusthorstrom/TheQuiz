@@ -64,10 +64,18 @@ public class GModel extends Observable {
 		}
 		sounds.onOff(options.getVolume());
 	}
-	
+	/**
+	 * Stores the answer chosen by the user.
+	 * @param chosenAnswer
+	 */
 	public void setChosenAnswer(String chosenAnswer) {
 		this.chosenAnswer = chosenAnswer;
 	}
+	
+	/**
+	 * Stores the right answer in a separate variable.
+	 * @param rightAnswer
+	 */
 	public void setRight(String rightAnswer) {
 		this.rightAnswer = rightAnswer;
 	}
