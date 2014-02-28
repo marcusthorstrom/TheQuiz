@@ -396,7 +396,6 @@ public class GView implements Observer {
 		for(int i = 0; i < a.size(); i++) {
 			if(a.get(i).isEmpty()) {
 				Component errFrame = null;
-				//System.out.println("Du m�ste fylla i alla f�lt");
 				JOptionPane.showMessageDialog(errFrame, "Du maste fylla i alla falt.");
 				return null;
 			}
