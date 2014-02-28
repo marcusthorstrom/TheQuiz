@@ -21,7 +21,7 @@ public class Sounds {
 	private boolean isOn = true; 
 
 	public Sounds() {}
-	/*
+	/**
 	 * Method which plays a sound when called upon. 
 	 * Path to file must be specified as parameter.
 	 */

@@ -101,6 +101,9 @@ public class GModel extends Observable {
 	 */
 	public void createQuestion(SingleQuestionClient qu) {
 		if(qu != null){
+			/**
+			 * Tries to connect to server, if not possible writes to local disk
+			 */
 			try {
 				ConnectionToServer c = new ConnectionToServer();
 				c.writeQuestion(qu);	
