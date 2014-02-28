@@ -56,6 +56,7 @@ public class GModel extends Observable {
 		try {
 			ConnectionToServer c = new ConnectionToServer();
 			qu = c.getQuestions(options.getGameRounds());
+			
 		} catch (IOException e) {
 			setChanged();
 			notifyObservers(1);

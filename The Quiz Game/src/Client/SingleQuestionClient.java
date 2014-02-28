@@ -13,8 +13,6 @@ public class SingleQuestionClient{
 	private String answer2;
 	private String answer3;
 	private String answer4;
-	private String sound;
-	public boolean containsSound = false;
 	
 	public SingleQuestionClient(ArrayList<String> questionArray){
 		this.question = questionArray.get(0);
@@ -22,12 +20,6 @@ public class SingleQuestionClient{
 		this.answer2 = questionArray.get(2);
 		this.answer3 = questionArray.get(3);
 		this.answer4 = questionArray.get(4);
-		
-		if(questionArray.size() > 5){
-			
-			containsSound = true;
-			this.sound = questionArray.get(5);
-		}
 	}
 	
 	
@@ -56,15 +48,6 @@ public class SingleQuestionClient{
 		return answer4;
 	}
 
-	public String getSound()
-	{
-		return sound;
-	}
-	
-	public boolean hasSound()
-	{
-		return containsSound;
-	}
 	//For testing
 	public ArrayList<String> printArrayList(ArrayList<String> inList) {
 		inList.add(0,question);
@@ -79,5 +62,4 @@ public class SingleQuestionClient{
 		else {return false;}
 		
 	}
-
 }
