@@ -1,4 +1,5 @@
 package Client;
+import java.io.IOException;
 import java.util.Collections;
 import java.util.Random;
 import java.util.ArrayList;
@@ -21,16 +22,13 @@ public class QuestionsClient{
 	
 	/**
 	 * Constructor creates a new IOClient and asks for an array to be converted into SingleQuestions'.
+	 * @throws IOException 
 	 */
 	public QuestionsClient()
 	{
 	    io = new IOClient();												//Creates a new instance of IO.
 	    objectList = new ArrayList<SingleQuestionClient>();				//List for storing questionClasses
-		originalList = io.getArray();								//Copies the original list from the IO class to a local list
-		for(int i = 0; i < originalList.size(); i++)				//Loops through the list to create a new list of Objects instead of ArrayList<String> which is returned from the IO class
-		{
-			objectList.add(new SingleQuestionClient(originalList.get(i)));	
-		}
+
 	}
 	
 	public void writeQuestion(SingleQuestionClient inQuestion) {
@@ -53,16 +51,16 @@ public class QuestionsClient{
 	 * The full list of SingleQuestions are shuffled before they are added to the new list.
 	 * @param y - the number of questions asked for.
 	 * @return An array containing y-number of SingleQuestions.
+	 * @throws IOException 
 	 */
-	public ArrayList<SingleQuestionClient> getQuestions(int y){
-		
+	public ArrayList<SingleQuestionClient> getQuestions(int y) throws IOException, java.io.FileNotFoundException {
+		originalList = io.getArray();								//Copies the original list from the IO class to a local list
+		shuffle(originalList);
+		for(int i = 0; i < y; i++){								//Loops through the list to create a new list of Objects instead of ArrayList<String> which is returned from the IO class
+			objectList.add(new SingleQuestionClient(originalList.get(i)));	
+		}
 		newList = new ArrayList<SingleQuestionClient>();
-		shuffle(objectList);	
-
-		for(int x = 0; x < y; x++){
-			newList.add(objectList.get(x));
-		}	
-		return newList;
+		return objectList;
 	}
 	
 	/**

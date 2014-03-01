@@ -1,5 +1,6 @@
 package Client;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Observable;
@@ -12,7 +13,7 @@ import java.util.Observable;
  * 
  */
 public class GModel extends Observable {
-	
+
 	private Options options;
 	private String rightAnswer;
 	private String chosenAnswer;
@@ -31,20 +32,22 @@ public class GModel extends Observable {
 	}
 
 	public void changeActiveQuestion() {
-		if (qNumber >= options.getGameRounds()) {
-			int[] a = { rightCount, wrongCount };
-			setChanged();
-			notifyObservers(a);
-			qNumber = 0;
-			wrongCount = 0;
-			rightCount = 0;
-		}
+		if(!qu.equals(null)) {
+			if (qNumber >= options.getGameRounds()) {
+				int[] a = { rightCount, wrongCount };
+				setChanged();
+				notifyObservers(a);
+				qNumber = 0;
+				wrongCount = 0;
+				rightCount = 0;
+			}
 
-		else {
-			activeQuestion = qu.get(qNumber);
-			setRight(activeQuestion.getCorrectAnswer());
-			setChanged();
-			notifyObservers(activeQuestion);
+			else {
+				activeQuestion = qu.get(qNumber);
+				setRight(activeQuestion.getCorrectAnswer());
+				setChanged();
+				notifyObservers(activeQuestion);
+			}
 		}
 	}
 	/**
@@ -56,12 +59,21 @@ public class GModel extends Observable {
 		try {
 			ConnectionToServer c = new ConnectionToServer();
 			qu = c.getQuestions(options.getGameRounds());
-			
+
 		} catch (IOException e) {
 			setChanged();
 			notifyObservers(1);
-			qu = q.getQuestions(options.getGameRounds());
+			try {
+				qu = q.getQuestions(options.getGameRounds());
+			} catch (IOException e1) {
+				e1.printStackTrace();
+				setChanged();
+				notifyObservers(3);
+				System.exit(0);
+			}
+
 		}
+
 		sounds.onOff(options.getVolume());
 	}
 	/**
@@ -71,7 +83,7 @@ public class GModel extends Observable {
 	public void setChosenAnswer(String chosenAnswer) {
 		this.chosenAnswer = chosenAnswer;
 	}
-	
+
 	/**
 	 * Stores the right answer in a separate variable.
 	 * @param rightAnswer

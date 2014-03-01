@@ -27,11 +27,12 @@ public class IOClient {
 
 	/**
 	 * Method for reading questions from .txt file.
+	 * @throws IOException 
 	 */
-	private void readFile() {
+	private void readFile() throws IOException, java.io.FileNotFoundException {
 		questions = new ArrayList<String>();
 		allQuestions = new ArrayList<ArrayList<String>>();
-		try {
+		
 			/**
 			 * Checks what operating system the computer is running, then open
 			 * the file in different ways to get Swedish characters
@@ -67,21 +68,15 @@ public class IOClient {
 				}
 			}
 			br.close();
-		} catch (FileNotFoundException e) {
-			System.out.println("File not found!");
-		}
-
-		catch (IOException e) {
-			System.out.println("ERROR! Error occurd when file was read.");
-		}
 	}
 
 	/**
 	 * Method for returning all the questions read from file
 	 * 
 	 * @return
+	 * @throws IOException 
 	 */
-	public ArrayList<ArrayList<String>> getArray() {
+	public ArrayList<ArrayList<String>> getArray() throws IOException {
 		readFile();
 		return allQuestions;
 	}
