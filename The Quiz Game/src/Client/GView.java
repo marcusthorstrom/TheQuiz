@@ -583,7 +583,7 @@ public class GView implements Observer {
 				JOptionPane.showMessageDialog(errFrame, "Kunde inte ansluta till servern, skriver fragan lokalt istallet.");
 			}
 			else if(errorCode==3) {
-				JOptionPane.showMessageDialog(errFrame, "Kunde inte hitta den lokala frågor filen. Finns den inte på servern så går programmet ej att köra.");
+				JOptionPane.showMessageDialog(errFrame, "Kunde inte hitta den lokala frågor filen. Finns den inte på servern \n så går programmet ej att köra och kommer nu att avslutas.");
 			}
 		}
 	}

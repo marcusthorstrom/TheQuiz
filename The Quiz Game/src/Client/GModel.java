@@ -2,6 +2,7 @@ package Client;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.Observable;
 
@@ -27,7 +28,12 @@ public class GModel extends Observable {
 	private Sounds sounds;
 
 	public GModel() {
-		q = new QuestionsClient();
+		try {
+			q = new QuestionsClient();
+		} catch (UnsupportedEncodingException | FileNotFoundException e) {
+			setChanged();
+			notifyObservers(3);
+		}
 		sounds = new Sounds();
 	}
 
@@ -65,15 +71,13 @@ public class GModel extends Observable {
 			notifyObservers(1);
 			try {
 				qu = q.getQuestions(options.getGameRounds());
-			} catch (IOException e1) {
+			} catch (Throwable e1) {
 				e1.printStackTrace();
 				setChanged();
 				notifyObservers(3);
 				System.exit(0);
 			}
-
 		}
-
 		sounds.onOff(options.getVolume());
 	}
 	/**

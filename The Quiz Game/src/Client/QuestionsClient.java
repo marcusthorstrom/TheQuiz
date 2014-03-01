@@ -1,5 +1,7 @@
 package Client;
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.util.Collections;
 import java.util.Random;
 import java.util.ArrayList;
@@ -22,9 +24,11 @@ public class QuestionsClient{
 	
 	/**
 	 * Constructor creates a new IOClient and asks for an array to be converted into SingleQuestions'.
+	 * @throws FileNotFoundException 
+	 * @throws UnsupportedEncodingException 
 	 * @throws IOException 
 	 */
-	public QuestionsClient()
+	public QuestionsClient() throws UnsupportedEncodingException, FileNotFoundException
 	{
 	    io = new IOClient();												//Creates a new instance of IO.
 	    objectList = new ArrayList<SingleQuestionClient>();				//List for storing questionClasses
@@ -51,9 +55,9 @@ public class QuestionsClient{
 	 * The full list of SingleQuestions are shuffled before they are added to the new list.
 	 * @param y - the number of questions asked for.
 	 * @return An array containing y-number of SingleQuestions.
-	 * @throws IOException 
+	 * @throws Throwable 
 	 */
-	public ArrayList<SingleQuestionClient> getQuestions(int y) throws IOException, java.io.FileNotFoundException {
+	public ArrayList<SingleQuestionClient> getQuestions(int y) throws Throwable {
 		originalList = io.getArray();								//Copies the original list from the IO class to a local list
 		shuffle(originalList);
 		for(int i = 0; i < y; i++){								//Loops through the list to create a new list of Objects instead of ArrayList<String> which is returned from the IO class

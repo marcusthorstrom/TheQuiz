@@ -20,11 +20,13 @@ public class SingleQuestionClient{
 	 * @param questionArray containing one question with 4 answers.
 	 */
 	public SingleQuestionClient(ArrayList<String> questionArray){
-		this.question = questionArray.get(0);
-		this.correctAnswer = questionArray.get(1);
-		this.answer2 = questionArray.get(2);
-		this.answer3 = questionArray.get(3);
-		this.answer4 = questionArray.get(4);
+		if(questionArray.size()==4) {
+			this.question = questionArray.get(0);
+			this.correctAnswer = questionArray.get(1);
+			this.answer2 = questionArray.get(2);
+			this.answer3 = questionArray.get(3);
+			this.answer4 = questionArray.get(4);
+		}
 	}
 	
 	

@@ -8,6 +8,7 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.Iterator;
 /**
@@ -22,34 +23,34 @@ public class IOClient {
 	private ArrayList<ArrayList<String>> allQuestions;
 	private BufferedReader br;
 
-	public IOClient() {
+	public IOClient() throws UnsupportedEncodingException, FileNotFoundException {
+		/**
+		 * Checks what operating system the computer is running, then open
+		 * the file in different ways to get Swedish characters
+		 */
+		if (OSDetectorClient.isMac()) {
+			br = new BufferedReader(new InputStreamReader(
+					new FileInputStream(STANDARDFRAGOR), "ISO-8859-1"));
+		} else if (OSDetectorClient.isWindows()) {
+			br = new BufferedReader(new FileReader(STANDARDFRAGOR));
+
+			//
+		} else if (OSDetectorClient.isLinux()) {
+			String file = (System.getProperty("user.home") + "/Desktop/" + STANDARDFRAGOR);
+			br = new BufferedReader(new InputStreamReader(
+					new FileInputStream(file), "ISO-8859-1"));
+
+		}
 	}
 
 	/**
 	 * Method for reading questions from .txt file.
 	 * @throws IOException 
 	 */
-	private void readFile() throws IOException, java.io.FileNotFoundException {
+	private void readFile() throws Exception {
 		questions = new ArrayList<String>();
 		allQuestions = new ArrayList<ArrayList<String>>();
-		
-			/**
-			 * Checks what operating system the computer is running, then open
-			 * the file in different ways to get Swedish characters
-			 */
-			if (OSDetectorClient.isMac()) {
-				br = new BufferedReader(new InputStreamReader(
-						new FileInputStream(STANDARDFRAGOR), "ISO-8859-1"));
-			} else if (OSDetectorClient.isWindows()) {
-				br = new BufferedReader(new FileReader(STANDARDFRAGOR));
-
-				//
-			} else if (OSDetectorClient.isLinux()) {
-				String file = (System.getProperty("user.home") + "/Desktop/" + STANDARDFRAGOR);
-				br = new BufferedReader(new InputStreamReader(
-						new FileInputStream(file), "ISO-8859-1"));
-
-			}
+			
 			/**
 			 * reads line by line and add them to an ArrayList of strings, if
 			 * new row without signs the ArrayList will be added to a bigger
@@ -74,9 +75,9 @@ public class IOClient {
 	 * Method for returning all the questions read from file
 	 * 
 	 * @return
-	 * @throws IOException 
+	 * @throws Throwable 
 	 */
-	public ArrayList<ArrayList<String>> getArray() throws IOException {
+	public ArrayList<ArrayList<String>> getArray() throws Throwable {
 		readFile();
 		return allQuestions;
 	}
