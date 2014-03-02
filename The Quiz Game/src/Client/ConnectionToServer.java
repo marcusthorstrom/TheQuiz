@@ -30,7 +30,7 @@ public class ConnectionToServer {
 	 * @param The Question as a SingleQuestionClient object
 	 * @throws IOException
 	 */
-	public void writeQuestion(SingleQuestionClient qu) throws IOException {
+	public void writeQuestion(SingleQuestion qu) throws IOException {
 
 		try {
 			if (!qu.isEmpty()) {
@@ -54,9 +54,9 @@ public class ConnectionToServer {
 	 * @throws IOException
 	 */
 	@SuppressWarnings("unchecked")
-	public ArrayList<SingleQuestionClient> getQuestions(int gameRounds)
+	public ArrayList<SingleQuestion> getQuestions(int gameRounds)
 			throws IOException {
-		ArrayList<SingleQuestionClient> sqList = new ArrayList<SingleQuestionClient>();
+		ArrayList<SingleQuestion> sqList = new ArrayList<SingleQuestion>();
 		ArrayList<ArrayList<String>> aal = new ArrayList<ArrayList<String>>();
 
 		/**
@@ -76,7 +76,7 @@ public class ConnectionToServer {
 				aal.trimToSize();
 				for (ArrayList<String> q : aal) {
 					q.trimToSize();
-					sqList.add(new SingleQuestionClient(q));
+					sqList.add(new SingleQuestion(q));
 				}
 			} catch (ClassNotFoundException e) {
 				e.printStackTrace();

@@ -17,8 +17,7 @@ import java.util.ArrayList;
 public class QuestionsClient{
 
 	private ArrayList<ArrayList<String>> originalList;
-	private ArrayList<SingleQuestionClient> newList;
-	private ArrayList<SingleQuestionClient> objectList;
+	private ArrayList<SingleQuestion> objectList;
 	private IOClient io;
 	
 	
@@ -31,11 +30,11 @@ public class QuestionsClient{
 	public QuestionsClient() throws UnsupportedEncodingException, FileNotFoundException
 	{
 	    io = new IOClient();												//Creates a new instance of IO.
-	    objectList = new ArrayList<SingleQuestionClient>();				//List for storing questionClasses
+	    objectList = new ArrayList<SingleQuestion>();				//List for storing questionClasses
 
 	}
 	
-	public void writeQuestion(SingleQuestionClient inQuestion) {
+	public void writeQuestion(SingleQuestion inQuestion) {
 		try {														//If the array is = null then this catches it
 		if(!inQuestion.isEmpty()) {									//Testing if the array is partially empty
 			ArrayList<String> tempQuestions = new ArrayList<String>();
@@ -57,13 +56,12 @@ public class QuestionsClient{
 	 * @return An array containing y-number of SingleQuestions.
 	 * @throws Throwable 
 	 */
-	public ArrayList<SingleQuestionClient> getQuestions(int y) throws Throwable {
+	public ArrayList<SingleQuestion> getQuestions(int y) throws Throwable {
 		originalList = io.getArray();								//Copies the original list from the IO class to a local list
 		shuffle(originalList);
 		for(int i = 0; i < y; i++){								//Loops through the list to create a new list of Objects instead of ArrayList<String> which is returned from the IO class
-			objectList.add(new SingleQuestionClient(originalList.get(i)));	
+			objectList.add(new SingleQuestion(originalList.get(i)));	
 		}
-		newList = new ArrayList<SingleQuestionClient>();
 		return objectList;
 	}
 	

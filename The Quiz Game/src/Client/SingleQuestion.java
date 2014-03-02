@@ -5,7 +5,7 @@ import java.util.ArrayList;
  * This class is for storing a question object
  *
  */
-public class SingleQuestionClient{
+public class SingleQuestion{
 	
 
 	private String question;
@@ -19,7 +19,7 @@ public class SingleQuestionClient{
 	 * SingleQuestion takes an array and puts each element in each respective field.
 	 * @param questionArray containing one question with 4 answers.
 	 */
-	public SingleQuestionClient(ArrayList<String> questionArray){
+	public SingleQuestion(ArrayList<String> questionArray){
 		if(questionArray.size()==4) {
 			this.question = questionArray.get(0);
 			this.correctAnswer = questionArray.get(1);

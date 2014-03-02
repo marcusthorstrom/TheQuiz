@@ -18,11 +18,11 @@ public class GModel extends Observable {
 	private Options options;
 	private String rightAnswer;
 	private String chosenAnswer;
-	private SingleQuestionClient activeQuestion;
+	private SingleQuestion activeQuestion;
 	private int rightCount = 0;
 	private int wrongCount = 0;
 	private int qNumber = 0;
-	private ArrayList<SingleQuestionClient> qu;
+	private ArrayList<SingleQuestion> qu;
 	private boolean isCorrect = false;
 	private QuestionsClient q;
 	private Sounds sounds;
@@ -123,7 +123,7 @@ public class GModel extends Observable {
 	 * the method for writing a question
 	 * @param qu
 	 */
-	public void createQuestion(SingleQuestionClient qu) {
+	public void createQuestion(SingleQuestion qu) {
 		if(qu != null){
 			/**
 			 * Tries to connect to server, if not possible writes to local disk

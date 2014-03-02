@@ -204,7 +204,7 @@ public class GView implements Observer {
 	 * components from makeQFrame
 	 * @param quest
 	 */
-	public void askQuestion(SingleQuestionClient quest) {
+	public void askQuestion(SingleQuestion quest) {
 
 		for(JButton b: buttons)
 			b.setBackground(Color.white);
@@ -370,7 +370,7 @@ public class GView implements Observer {
 	 * fields and sent them to the GModel class, via the GController
 	 * @return
 	 */
-	public SingleQuestionClient submitFields() {
+	public SingleQuestion submitFields() {
 		ArrayList<String> a = new ArrayList<String>();	
 		a.add(questionField.getText());
 		a.add(answerA.getText());
@@ -396,7 +396,7 @@ public class GView implements Observer {
 
 		}
 
-		SingleQuestionClient q = new SingleQuestionClient(a);
+		SingleQuestion q = new SingleQuestion(a);
 		return q;
 	}
 	public void closeWindow() {
@@ -561,8 +561,8 @@ public class GView implements Observer {
 	 */
 	@Override
 	public void update(Observable o, Object arg) {
-		if (o instanceof GModel && arg instanceof SingleQuestionClient) {
-			SingleQuestionClient quest = (SingleQuestionClient) arg;
+		if (o instanceof GModel && arg instanceof SingleQuestion) {
+			SingleQuestion quest = (SingleQuestion) arg;
 			askQuestion(quest);
 		} 
 
