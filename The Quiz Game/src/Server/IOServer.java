@@ -70,6 +70,7 @@ public class IOServer {
 			br.close();
 		} catch (FileNotFoundException e) {
 			System.out.println("File not found!");
+			System.exit(0);
 		}
 
 		catch (IOException e) {
