@@ -60,8 +60,7 @@ public class IOClient {
 			while ((line = br.readLine()) != null) {
 				if (line.equals("")) {
 					@SuppressWarnings("unchecked")
-					ArrayList<String> tempQuest = ((ArrayList<String>) questions
-							.clone());
+					ArrayList<String> tempQuest = ((ArrayList<String>) questions.clone());
 					allQuestions.add(tempQuest);
 					questions.clear();
 				} else {

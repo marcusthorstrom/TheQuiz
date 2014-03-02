@@ -76,7 +76,9 @@ public class ConnectionToServer {
 				aal.trimToSize();
 				for (ArrayList<String> q : aal) {
 					q.trimToSize();
-					sqList.add(new SingleQuestion(q));
+					if(!q.isEmpty()) {
+						sqList.add(new SingleQuestion(q));
+					}
 				}
 			} catch (ClassNotFoundException e) {
 				e.printStackTrace();

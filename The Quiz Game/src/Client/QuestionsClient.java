@@ -58,6 +58,7 @@ public class QuestionsClient{
 	 */
 	public ArrayList<SingleQuestion> getQuestions(int y) throws Throwable {
 		originalList = io.getArray();								//Copies the original list from the IO class to a local list
+		originalList.trimToSize();
 		shuffle(originalList);
 		for(int i = 0; i < y; i++){								//Loops through the list to create a new list of Objects instead of ArrayList<String> which is returned from the IO class
 			objectList.add(new SingleQuestion(originalList.get(i)));	
