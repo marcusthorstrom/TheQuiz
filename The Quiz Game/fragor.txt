@@ -1,0 +1,186 @@
+Hur många cm är en "inch"?
+2.54cm
+2.45cm
+2.98cm
+3.14cm
+
+Vad heter Sveriges sydligaste landskap?
+Skåne
+Västra götaland
+Blekinge
+Småland
+
+Vad är den absoluta nollpukten (i celcius)?
+-273,5
+-153,6
+-345,7
+245,3
+
+Vad betyder förkortningen "lol"?
+laughing out loud
+liten olof ler
+lan of laser
+little or large
+
+Vad heter Australiens huvudstad?
+Canberra
+Sidney
+Melbourne
+Darwin
+
+Hur många olika länder finns det på jordklottet?
+244
+192
+231
+253
+
+Hur många landskap har sverige?
+25
+19
+23
+20
+
+Vilken färg har de flesta taxibilarna i London?
+Svart
+Gul
+Grön
+Röd
+
+Vilket land vann Eurovision Song Contest 2002?
+Lettland
+Sverige
+Grekland
+Finland
+
+Vad kallas en sång- eller musikgrupp med tre medlemmar?
+En trio
+En kvartett
+En triangel
+En Trinett
+
+Vilken känd popgrupp från 60-talet hade en trumslagare som hette Ringo Starr?
+The Beatles
+The Animals
+The Beach Boys
+The Beegees
+
+I vilken månad firar vi midsommar?
+Juni
+Maj
+Juli
+Augusti
+
+Vilken färg har cirkeln i Japans flagga?
+Röd
+Blå
+Gul
+Svart
+
+Från vilket land kommer maträtten paella?
+Spanien
+Italien
+Frankrike
+Brasilien
+
+Vad är densiteten på vatten vid 4grader cellsius?
+1 000kg/m^3
+1 0kg/m^3
+1 00kg/m^3
+1 0000kg/m^3
+
+Vid vilken temperatur kokar vatten?
+100grader
+90grader
+120grader
+200grader
+
+Vilken färg är överst på ett rödljus?
+Röd
+Grön
+Gul
+Blå
+
+Vilka färger består Sveriges flagga av?
+Blå och gul
+Gul och röd
+Blå och röd
+Röd och gul
+
+I vilket land hölls vinter-OS i år 2014?
+Ryssland
+Tyskland
+Kanada
+Norge
+
+Hur många timmar går det på ett år med 365 dagar?
+8760
+8450
+8232
+8100
+
+Vilken är den fjärde decimalen i talet pi?
+5
+1
+4
+9
+
+Hur många dagar har Januari?
+31
+30
+28
+29
+
+hur många minuter går det på ett dygn?
+1440
+1236
+1340
+1280
+
+Vilket är grundades Facebook?
+2004
+2002
+2007
+2001
+
+Vad heter grundaren av Facebook?
+Mark Zuckerberg
+Mark Faceberg
+Max Zetterberg
+Manny Svensson
+
+Vad kan du lagra i en Integer(programmering)?
+Ett heltal
+En sträng
+Ett flyttal
+Ett program
+
+Hur många olika färger finns de bland de olympiska ringarna?
+5
+4
+3
+6
+
+vad är 1/8?
+0,125
+0,120
+0,135
+0,150
+
+vad är 1/25?
+0,040
+0,060
+0,085
+0,045
+
+Vad betyder forkortningen "brb"?
+Be Right Back
+Bara Roliga Barn
+Broken Road Border
+Bitches R' Black
+
+Vad kan man lagra i en String(Programmering)?
+En text
+Ett tal
+Ett flyttal
+Ett program
+
