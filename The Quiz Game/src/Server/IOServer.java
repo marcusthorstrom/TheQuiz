@@ -101,10 +101,12 @@ public class IOServer {
 														// the arrayList in
 														// order iterate through
 														// it.
+			
 			while (it.hasNext()) {
-				bw.write(it.next() + "\n");
+				bw.write(it.next());
+				bw.newLine();
 			}
-			bw.write("\n");
+			bw.newLine();
 			bw.close();
 			
 		} catch (IOException e) {
