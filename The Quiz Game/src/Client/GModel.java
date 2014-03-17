@@ -30,13 +30,17 @@ public class GModel extends Observable {
 	public GModel() {
 		try {
 			q = new QuestionsClient();
-		} catch (UnsupportedEncodingException | FileNotFoundException e) {
+		} catch (Throwable e) {
 			setChanged();
 			notifyObservers(3);
 		}
 		sounds = new Sounds();
 	}
-
+	/*
+	 * This metod changes the displayed 
+	 * question after the user has made 
+	 * his choice and the timer has run out
+	 */
 	public void changeActiveQuestion() {
 		if(!qu.equals(null)) {
 			if (qNumber >= options.getGameRounds()) {
@@ -56,9 +60,8 @@ public class GModel extends Observable {
 			}
 		}
 	}
-	/**
+	/*
 	 * Initiates a game round with the submitted settings
-	 * @param options
 	 */
 	public void playGame(Options options) {
 		this.options = options;
@@ -80,17 +83,15 @@ public class GModel extends Observable {
 		}
 		sounds.onOff(options.getVolume());
 	}
-	/**
+	/*
 	 * Stores the answer chosen by the user.
-	 * @param chosenAnswer
 	 */
 	public void setChosenAnswer(String chosenAnswer) {
 		this.chosenAnswer = chosenAnswer;
 	}
 
-	/**
+	/*
 	 * Stores the right answer in a separate variable.
-	 * @param rightAnswer
 	 */
 	public void setRight(String rightAnswer) {
 		this.rightAnswer = rightAnswer;
@@ -98,7 +99,7 @@ public class GModel extends Observable {
 	public String getRight() {
 		return rightAnswer;
 	}
-	/**
+	/*
 	 * This method does the comparing
 	 * of the pressed answer with the 
 	 * correct answer
@@ -119,13 +120,12 @@ public class GModel extends Observable {
 		setChanged();
 		notifyObservers(isCorrect);
 	}
-	/**
+	/*
 	 * the method for writing a question
-	 * @param qu
 	 */
 	public void createQuestion(SingleQuestion qu) {
 		if(qu != null){
-			/**
+			/*
 			 * Tries to connect to server, if not possible writes to local disk
 			 */
 			try {
@@ -135,7 +135,9 @@ public class GModel extends Observable {
 			} catch (IOException e) {
 				setChanged();
 				notifyObservers(2);						//Error code for not being able to write to the server
-				q.writeQuestion(qu);
+				try {
+					q.writeQuestion(qu);
+				} catch (UnsupportedEncodingException | FileNotFoundException e1) {	}
 			}
 		}
 	} 

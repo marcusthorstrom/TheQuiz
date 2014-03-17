@@ -37,11 +37,9 @@ public class QuestionsServer{
 		}
 
 	}
-	/**
+	/*
 	 * Creates a new temporary array list in which a number of singleQuestions are stored. 
 	 * The full list of SingleQuestions are shuffled before they are added to the new list.
-	 * @param y - the number of questions asked for.
-	 * @return An array containing y-number of SingleQuestions.
 	 */
 	public ArrayList<ArrayList<String>> getQuestions(int y){
 
@@ -53,7 +51,7 @@ public class QuestionsServer{
 		}	
 		return newList;
 	}
-	/**
+	/*
 	 * Shuffles Arraylist as parameter with system time as seed.
 	 */
 	private void shuffle(ArrayList<?> list)

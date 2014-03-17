@@ -9,9 +9,9 @@ import java.net.Socket;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 /**
- * 
- * @author 
- *
+ * This is the main class for the server, this checks for incoming 
+ * connections on port 13337 and accepts them creating a new 
+ * thread for every incoming connections.
  */
 public class Server {
 	private ServerSocket s;

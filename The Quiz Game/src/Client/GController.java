@@ -5,18 +5,17 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.Timer;
-
+/**
+ * The controller, managing both the View and Model
+ * @param view
+ * @param model
+ */
 public class GController {
 
 	private GView view;
 	private GModel model;
 	private Options options = new Options();
-	/**
-	 * The controller, managing both the View and Model
-	 * @param view
-	 * @param model
-	 */
-
+	
 	public GController(GView view, GModel model) {
 		this.view = view;
 		this.model = model;
@@ -34,8 +33,6 @@ public class GController {
 	}
 	/**
 	 * A Class for listen on the helpWindow in view
-	 * @author Marcus
-	 *
 	 */
 	class HelpListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {

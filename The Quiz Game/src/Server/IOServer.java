@@ -26,14 +26,14 @@ public class IOServer {
 	public IOServer() {
 	}
 
-	/**
+	/*
 	 * Method for reading questions from .txt file.
 	 */
 	private void readFile() {
 		questions = new ArrayList<String>();
 		allQuestions = new ArrayList<ArrayList<String>>();
 		try {
-			/**
+			/*
 			 * Checks what operating system the computer is running, then open
 			 * the file in different ways to get Swedish characters
 			 */
@@ -50,7 +50,7 @@ public class IOServer {
 						new FileInputStream(file), "ISO-8859-1"));
 
 			}
-			/**
+			/*
 			 * reads line by line and add them to an ArrayList of strings, if
 			 * new row without signs the ArrayList will be added to a bigger
 			 * ArrrayList
@@ -78,19 +78,16 @@ public class IOServer {
 		}
 	}
 
-	/**
+	/*
 	 * Method for returning all the questions read from file
-	 * 
-	 * @return
 	 */
 	public ArrayList<ArrayList<String>> getArray() {
 		readFile();
 		return allQuestions;
 	}
 
-	/**
+	/*
 	 * Method for adding questions to fragor.txt
-	 * 
 	 */
 	public void newQuestion(ArrayList<String> question) {
 		try {

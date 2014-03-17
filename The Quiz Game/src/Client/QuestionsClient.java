@@ -16,58 +16,49 @@ import java.util.ArrayList;
 
 public class QuestionsClient{
 
-	private ArrayList<ArrayList<String>> originalList;
-	private ArrayList<SingleQuestion> objectList;
 	private IOClient io;
+	private ArrayList <ArrayList<String>> originalList;
+	private ArrayList<SingleQuestion> objectList;
 	
-	
-	/**
-	 * Constructor creates a new IOClient and asks for an array to be converted into SingleQuestions'.
-	 * @throws FileNotFoundException 
-	 * @throws UnsupportedEncodingException 
-	 * @throws IOException 
+	/*
+	 * Constructor creates a new IOClient and asks 
+	 * for an array to be converted into SingleQuestions'. 
 	 */
-	public QuestionsClient() throws UnsupportedEncodingException, FileNotFoundException
+	public QuestionsClient() throws Throwable
 	{
-	    io = new IOClient();												//Creates a new instance of IO.
-	    objectList = new ArrayList<SingleQuestion>();				//List for storing questionClasses
-
+		io = new IOClient();	
+		
+		originalList = new  ArrayList <ArrayList<String>>();
+	    originalList = io.getArray();
+	    shuffle(originalList);
 	}
 	
-	public void writeQuestion(SingleQuestion inQuestion) {
+	public void writeQuestion(SingleQuestion inQuestion) throws UnsupportedEncodingException, FileNotFoundException {
 		try {														//If the array is = null then this catches it
-		if(!inQuestion.isEmpty()) {									//Testing if the array is partially empty
-			ArrayList<String> tempQuestions = new ArrayList<String>();
-			io.newQuestion(tempQuestions);
+			if(!inQuestion.isEmpty()) {									//Testing if the array is partially empty
+				ArrayList<String> tempQuestions = new ArrayList<String>();
+				tempQuestions = inQuestion.printArray();
+				io.newQuestion(tempQuestions);
+			}
 		}
-		else {
-			//System.out.println("Did not write");
-		}
-		}
-		catch(NullPointerException e) {
-			//System.out.println("Did not write, caught error");
-		}
+		catch(NullPointerException e) {}
 	}
 	
-	/**
+	/*
 	 * Creates a new temporary array list in which a number of singleQuestions are stored. 
 	 * The full list of SingleQuestions are shuffled before they are added to the new list.
-	 * @param y - the number of questions asked for.
-	 * @return An array containing y-number of SingleQuestions.
-	 * @throws Throwable 
 	 */
 	public ArrayList<SingleQuestion> getQuestions(int y) throws Throwable {
-		originalList = io.getArray();								//Copies the original list from the IO class to a local list
-		originalList.trimToSize();
 		shuffle(originalList);
+		 objectList = new ArrayList<SingleQuestion>();			//List for storing questionClasses
 		for(int i = 0; i < y; i++){								//Loops through the list to create a new list of Objects instead of ArrayList<String> which is returned from the IO class
 			objectList.add(new SingleQuestion(originalList.get(i)));	
 		}
 		return objectList;
 	}
 	
-	/**
-	 * Shuffles Array List as parameter with system time as seed.
+	/*
+	 * Shuffles Array List as parameter with system time as seed, this for a more randomized shuffle.
 	 */
 	private void shuffle(ArrayList<?> list)
 	{

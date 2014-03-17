@@ -18,9 +18,8 @@ public class OSDetectorServer
         isMac = os.contains("mac");
     }
 
-    /**
+    /*
      * return true for the OS your computer is running
-     * @return
      */
     public static boolean isWindows() {	return isWindows;}
     public static boolean isLinux() { return isLinux; }
