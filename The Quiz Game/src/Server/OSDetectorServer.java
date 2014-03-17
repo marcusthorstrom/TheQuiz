@@ -1,10 +1,11 @@
 package Server;
-public class OSDetectorServer
 /**
  * This class is for checking the operating system
  * on the running machine, because the reading of the file
  * is different on OS X, Windows and Linux 
  */
+public class OSDetectorServer
+
 {
     private static boolean isWindows = false;
     private static boolean isLinux = false;
